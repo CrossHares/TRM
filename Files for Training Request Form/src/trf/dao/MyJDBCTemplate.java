@@ -1,6 +1,5 @@
-package rf.dao;
+package trf.dao;
 
-import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

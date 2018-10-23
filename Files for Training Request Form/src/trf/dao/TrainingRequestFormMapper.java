@@ -1,15 +1,15 @@
-package rf.dao;
+package trf.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-public class RequestFormMapper implements RowMapper<RequestForm> {
+public class TrainingRequestFormMapper implements RowMapper<TrainingRequestForm> {
 
 	@Override
-	public RequestForm mapRow(ResultSet result, int arg1) throws SQLException {
-		RequestForm objRF = new RequestForm();
+	public TrainingRequestForm mapRow(ResultSet result, int arg1) throws SQLException {
+		TrainingRequestForm objRF = new TrainingRequestForm();
 		objRF.setTrfID(result.getInt(1));
 		objRF.setVerID(result.getInt(2));
 		objRF.setVenID(result.getInt(3));

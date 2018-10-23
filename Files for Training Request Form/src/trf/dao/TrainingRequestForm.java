@@ -1,6 +1,6 @@
-package rf.dao;
+package trf.dao;
 
-public class RequestForm {
+public class TrainingRequestForm {
 	int trfID;
 	int verID;
 	int venID;
