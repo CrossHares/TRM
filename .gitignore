@@ -1,4 +1,4 @@
-
+*.jar
 css/.DS_Store
 css/bootstrap-grid.css
 css/bootstrap-grid.css.map
