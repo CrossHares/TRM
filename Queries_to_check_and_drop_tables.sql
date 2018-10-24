@@ -13,7 +13,6 @@ describe internal_training;
 describe dev_training;
 describe vendor_training;
 
-
 select * from user_role;
 select * from ld_team;
 select * from vertical_type;
@@ -42,6 +41,7 @@ drop table ld_training_member cascade constraints;
 drop table internal_training cascade constraints;
 drop table dev_training cascade constraints;
 drop table vendor_training cascade constraints;
+drop table in_progress_training;
 
 /* Verify join between LD_Team and Vertical_Type*/
 select * from vertical_type v 
