@@ -1,0 +1,25 @@
+@CHARSET "ISO-8859-1";
+
+body{
+background-color: khaki;
+font-family:arial;
+}
+h1{
+font-family: arial;
+}
+img{
+height: 10;
+width: 120;
+}
+div{
+color: red;
+}
+p{
+color: red;
+}
+table{
+	margin-left: 50;
+	background-color: gray;
+	cell-padding: 6;
+	cell-spacing:6;
+}
