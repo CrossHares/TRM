@@ -1,2 +1,0 @@
-# TRM
-Training Resource Management 
