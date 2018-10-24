@@ -36,6 +36,111 @@ public class ConfirmedTrainingServices {
 		return ret;
 	}
 	
+	//What follows is additional update functions, designed to update one attribute at a time.
+	
+		//Update tsID
+		public int updateCTtsID(int ctID, int tsID)
+		{
+			int ret = temp.update("update CONFIRMED_TRAINING set TSTATUS_ID=? where CT_ID=?",
+					new Object[]{tsID, ctID});
+			return ret;
+		}
+		
+		//Update ttID
+			public int updateCTttID(int ctID, int ttID)
+			{
+				int ret = temp.update("update CONFIRMED_TRAINING set TT_ID=? where CT_ID=?",
+						new Object[]{ttID, ctID});
+				return ret;
+			}
+
+		//Update ldUserEmail
+			public int updateCTldUserEmail(int ctID, String ldUserEmail)
+			{
+				int ret = temp.update("update CONFIRMED_TRAINING set LD_USER_EMAIL=? where CT_ID=?",
+						new Object[]{ldUserEmail, ctID});
+				return ret;
+			}
+
+		//Update verID
+			public int updateCTverID(int ctID, int verID)
+			{
+				int ret = temp.update("update CONFIRMED_TRAINING set VER_ID=? where CT_ID=?",
+						new Object[]{verID, ctID});
+				return ret;
+			}
+		
+		//Update trfIDs
+			public int updateTRFids(int ctID, String trfIDs)
+			{
+				int ret = temp.update("update CONFIRMED_TRAINING set TRF_IDS=? where CT_ID=?",
+						new Object[]{trfIDs, ctID});
+				return ret;
+			}
+			
+		//Update iptStartDate
+			public int updateCTstartDate(int ctID, String ctStartDate)
+			{
+				int ret = temp.update("update CONFIRMED_TRAINING set CT_START_DATE=? where CT_ID=?",
+						new Object[]{ctStartDate, ctID});
+				return ret;
+			}
+
+		//Update iptEndDate
+			public int updateCTendDate(int ctID, String ctEndDate)
+			{
+				int ret = temp.update("update CONFIRMED_TRAINING set CT_END_DATE=? where CT_ID=?",
+						new Object[]{ctEndDate, ctID});
+				return ret;
+			}
+
+		//Update iptStartTime
+			public int updateCTstartTime(int ctID, String ctStartTime)
+			{
+				int ret = temp.update("update CONFIRMED_TRAINING set CT_START_TIME=? where CT_ID=?",
+						new Object[]{ctStartTime, ctID});
+				return ret;
+			}
+		
+		//Update iptEndTime
+			public int updateCTendTime(int ctID, String ctEndTime)
+			{
+				int ret = temp.update("update CONFIRMED_TRAINING set CT_END_TIME=? where CT_ID=?",
+						new Object[]{ctEndTime, ctID});
+				return ret;
+			}
+		
+		//Update iptTechnology
+			public int updateCTtechnology(int ctID, String ctTechnology)
+			{
+				int ret = temp.update("update CONFIRMED_TRAINING set CT_TECHNOLOGY=? where CT_ID=?",
+						new Object[]{ctTechnology, ctID});
+				return ret;
+			}
+			
+		//Update iptTrainingObj
+			public int updateCTtrainingObj(int ctID, String ctTrainingObj)
+			{
+				int ret = temp.update("update CONFIRMED_TRAINING set CT_TRAINING_OBJECTIVES=? where CT_ID=?",
+						new Object[]{ctTrainingObj, ctID});
+				return ret;
+			}
+		
+		//Update iptLocation
+			public int updateCTlocation(int ctID, String ctLocation)
+			{
+				int ret = temp.update("update CONFIRMED_TRAINING set CT_LOCATION=? where CT_ID=?",
+						new Object[]{ctLocation, ctID});
+				return ret;
+			}
+		
+		//Update iptNomFile
+			public int updateCTstartTimeomFile(int iptID, String iptNomFile)
+			{
+				int ret = temp.update("update IN_PROGRESS_TRAINING set CT_NOMINATION_FILE=? where CT_ID=?",
+						new Object[]{iptNomFile, iptID});
+				return ret;
+			}
 	
 	//Delete
 	public int deleteCT(int ctID)
@@ -43,6 +148,14 @@ public class ConfirmedTrainingServices {
 		int ret =  temp.update("delete from CONFIRMED_TRAINING where CT_ID=?",
 				new Object[]{ctID});
 		return ret;
+	}
+	
+	//Get a Confirmed Training object
+	public ConfirmedTraining getCT(int ctID)
+	{
+		ConfirmedTraining ct = (ConfirmedTraining)temp.queryForObject("select * from CONFIRMED_TRAINING where CT_ID=?", 
+				new Object[]{ctID}, new ConfirmedTrainingMapper());
+		return ct;
 	}
 	
 	public static void main(String args[])

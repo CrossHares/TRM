@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import ct.dao.ConfirmedTraining;
-import ct.dao.ConfirmedTrainingMapper;
 import trf.dao.MyJDBCTemplate;
 
 public class InProgressTrainingServices {
@@ -39,6 +37,105 @@ public class InProgressTrainingServices {
 		return ret;
 	}
 	
+	//What follows is additional update functions, designed to update one attribute at a time.
+	
+	//Update tsID
+	public int updateIPTtsID(int iptID, int tsID)
+	{
+		int ret = temp.update("update IN_PROGRESS_TRAINING set TSTATUS_ID=? where IPT_ID=?",
+				new Object[]{tsID, iptID});
+		return ret;
+	}
+	
+	//Update ttID
+		public int updateIPTttID(int iptID, int ttID)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set TT_ID=? where IPT_ID=?",
+					new Object[]{ttID, iptID});
+			return ret;
+		}
+
+	//Update ldUserEmail
+		public int updateIPTldUserEmail(int iptID, String ldUserEmail)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set LD_USER_EMAIL=? where IPT_ID=?",
+					new Object[]{ldUserEmail, iptID});
+			return ret;
+		}
+
+	//Update verID
+		public int updateIPTverID(int iptID, int verID)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set VER_ID=? where IPT_ID=?",
+					new Object[]{verID, iptID});
+			return ret;
+		}
+		
+	//Update iptStartDate
+		public int updateIPTstartDate(int iptID, String iptStartDate)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_START_DATE=? where IPT_ID=?",
+					new Object[]{iptStartDate, iptID});
+			return ret;
+		}
+
+	//Update iptEndDate
+		public int updateIPTendDate(int iptID, String iptEndDate)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_END_DATE=? where IPT_ID=?",
+					new Object[]{iptEndDate, iptID});
+			return ret;
+		}
+
+	//Update iptStartTime
+		public int updateIPTstartTime(int iptID, String iptStartTime)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_START_TIME=? where IPT_ID=?",
+					new Object[]{iptStartTime, iptID});
+			return ret;
+		}
+	
+	//Update iptEndTime
+		public int updateIPTendTime(int iptID, String iptEndTime)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_END_TIME=? where IPT_ID=?",
+					new Object[]{iptEndTime, iptID});
+			return ret;
+		}
+	
+	//Update iptTechnology
+		public int updateIPTtechnology(int iptID, String iptTechnology)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_TECHNOLOGY=? where IPT_ID=?",
+					new Object[]{iptTechnology, iptID});
+			return ret;
+		}
+		
+	//Update iptTrainingObj
+		public int updateIPTtrainingObj(int iptID, String iptTrainingObj)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_TRAINING_OBJECTIVES=? where IPT_ID=?",
+					new Object[]{iptTrainingObj, iptID});
+			return ret;
+		}
+	
+	//Update iptLocation
+		public int updateIPTlocation(int iptID, String iptLocation)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_LOCATION=? where IPT_ID=?",
+					new Object[]{iptLocation, iptID});
+			return ret;
+		}
+	
+	//Update iptNomFile
+		public int updateIPTstartTimeomFile(int iptID, String iptNomFile)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_NOMINATION_FILE=? where IPT_ID=?",
+					new Object[]{iptNomFile, iptID});
+			return ret;
+		}
+
+
 	//Delete
 	public int deleteIPT(int iptID)
 	{
@@ -46,6 +143,14 @@ public class InProgressTrainingServices {
 				new Object[]{iptID});
 		return ret;
 	}
+	
+	//Get a Confirmed Training object
+		public InProgressTraining getIPT(int iptID)
+		{
+			InProgressTraining ipt = (InProgressTraining)temp.queryForObject("select * from IN_PROGRESS_TRAINING where IPT_ID=?", 
+					new Object[]{iptID}, new InProgressTrainingMapper());
+			return ipt;
+		}
 	
 	public static void main(String args[])
 	{

@@ -33,11 +33,69 @@ public class TrainingRequestFormServices {
 	public int updateTRF(int venID, int ttID, String technology, String trainingObjectives, String proposedEndDate, int appxEmployees, 
 			String fileLocation, int trainingSource, int trfID)
 	{
-		int ret = temp.update("update TRAINING_REQUEST_FORM set VEN_ID=?, TT_ID=?, TRF_TECHNOLOGY=?, TRF_TRAINING_OBJECTIVES=?, TRF_PROPOSED_EDN_DATE=?, TRF_APPROX_NO_EMPLOYEES=?, TRF_APPROVED_FILE_LOCATION=?, TRF_TRAINING_SOURCE=? where TRF_ID=?",
+		int ret = temp.update("update TRAINING_REQUEST_FORM set VEN_ID=?, TT_ID=?, TRF_TECHNOLOGY=?, TRF_TRAINING_OBJECTIVES=?, TRF_PROPOSED_END_DATE=?, TRF_APPROX_NO_EMPLOYEES=?, TRF_APPROVED_FILE_LOCATION=?, TRF_TRAINING_SOURCE=? where TRF_ID=?",
 				new Object[]{venID, ttID, technology, trainingObjectives, proposedEndDate, appxEmployees, fileLocation, trainingSource, trfID});
 		return ret;
 	}
-			
+	
+	//What follows are update statements for each of the attributes of the TRF entity, excepting previously mentioned fields
+	public int updateTRFvenID(int venID, int trfID)
+	{
+		int ret = temp.update("update TRAINING_REQUEST_FORM set VEN_ID=? where TRF_ID=?",
+				new Object[]{venID, trfID});
+		return ret;
+	}
+	
+	public int updateTRFttID(int ttID, int trfID)
+	{
+		int ret = temp.update("update TRAINING_REQUEST_FORM set TSTATUS_ID=? where TRF_ID=?",
+				new Object[]{ttID, trfID});
+		return ret;
+	}
+	
+	public int updateTRFtechonology(String technology, int trfID)
+	{
+	int ret = temp.update("update TRAINING_REQUEST_FORM set TRF_TECHNOLOGY=? where TRF_ID=?",
+			new Object[]{technology, trfID});
+	return ret;
+	}
+	
+	public int updateTRFtrainingOjb(String trainingObjective, int trfID)
+	{
+		int ret = temp.update("update TRAINING_REQUEST_FORM set TRF_TRAINING_OBJECTIVES=? where TRF_ID=?",
+				new Object[]{trainingObjective, trfID});
+		return ret;
+	}
+	
+	public int updateTRFpropEndDate(String proposedEndDate, int trfID)
+	{
+		int ret = temp.update("update TRAINING_REQUEST_FORM set TRF_PROPOSED_END_DATE=? where TRF_ID=?",
+				new Object[]{proposedEndDate, trfID});
+		return ret;
+	}
+	
+	public int updateTRFappxEmployees(int appxEmployees, int trfID)
+	{
+		int ret = temp.update("update TRAINING_REQUEST_FORM set APPROX_NO_EMPLOYEES=? where TRF_ID=?",
+				new Object[]{appxEmployees, trfID});
+		return ret;
+	}
+	
+	public int updateTRFfileLocation(String fileLocation, int trfID)
+	{
+		int ret = temp.update("update TRAINING_REQUEST_FORM set TRF_APPROVED_FILE_LOCATION=? where TRF_ID",
+				new Object[]{fileLocation, trfID});
+		return ret;
+	}
+	
+	public int updateTRFtrainingSource(int trainingSource, int trfID)
+	{
+		int ret = temp.update("update TRAINING_REQUEST_FORM set TRF_TRAINING_SOURCE=? where TRF_ID=?",
+				new Object[]{trainingSource, trfID});
+		return ret;
+	}
+	
+	
 	//Delete
 	public int deleteTRF(int trfID)
 	{
@@ -54,6 +112,8 @@ public class TrainingRequestFormServices {
 				new Object[]{trfID}, new TrainingRequestFormMapper());
 		return newTRF;
 	}
+	
+	
 	
 	
 	public static void main(String args[])
