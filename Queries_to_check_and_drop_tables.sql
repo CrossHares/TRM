@@ -41,7 +41,7 @@ drop table ld_training_member cascade constraints;
 drop table internal_training cascade constraints;
 drop table dev_training cascade constraints;
 drop table vendor_training cascade constraints;
-drop table in_progress_training;
+drop table in_progress_training cascade constraints;
 
 /* Verify join between LD_Team and Vertical_Type*/
 select * from vertical_type v 

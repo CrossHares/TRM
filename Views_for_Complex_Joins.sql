@@ -4,3 +4,6 @@ join USER_ROLE u on l.UR_ID=u.UR_ID
 where l.UR_ID=12;
 
 
+select * from VERTICAL_SPOCS;
+
+create view 
