@@ -24,26 +24,30 @@
 	<script src="${jqueryJS}"></script>
 	<script src="${bootstrapJS}"></script>
 	
-<title>Admin Dashboard | L&D</title>
+<title>Admin Dashboard | TRM</title>
 </head>
 <body>
-<div id="nav-wrapper">
-	  <nav class="navbar navbar-expand-lg navbar-light bg-dashboard-darkblue"> 
-      <a class="navbar-brand" href="#"><img src="logo"></a>
-      <div id="profile">
-          <span>Hello, User!</span>
-      </div>
-	  </nav>
-    <nav id="nav-links" class="nav nav-pills nav-fill bg-dashboard-dark">
-      <li class="nav-item"><a class="nav-link nav-active" href="#"><i class="fas fa-desktop"></i> Home</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-chalkboard-teacher"></i> Training</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-wpforms"></i> Request Form</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-chart-bar"></i> Reports</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-users"></i> Users</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-box-open"></i> Vendors</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-book-reader"></i> Trainers</a></li>
-    </nav>
-  </div>
+
+	<!-- Navbar -->
+	<div id="nav-wrapper">
+		<nav class="navbar navbar-expand-lg navbar-light bg-dashboard-darkblue"> 
+	    <a class="navbar-brand" href="#"><img src="logo"></a>
+	    <div id="profile">
+	    	<span>Hello, User!</span>
+	    </div>
+		</nav>
+	    <nav id="nav-links" class="nav nav-pills nav-fill bg-dashboard-dark">
+	      <li class="nav-item"><a class="nav-link nav-active" href="#"><i class="fas fa-desktop"></i> Home</a></li>
+	      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-chalkboard-teacher"></i> Training</a></li>
+	      <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-wpforms"></i> Request Form</a></li>
+	      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-chart-bar"></i> Reports</a></li>
+	      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-users"></i> Users</a></li>
+	      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-box-open"></i> Vendors</a></li>
+	      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-book-reader"></i> Trainers</a></li>
+	    </nav>
+	</div>
+  
+  <!-- Main Content -->
   <div class="container-fluid main-content bg-dashboard-darkblue">
 
     <div class="row">
@@ -52,16 +56,16 @@
         <div class="col-lg-12 dashboard-critical-content">
             <div class="card">
               <div class="card-body">
-                  <div id="demo" class="carousel slide bg-dashboard-darkblue dashboard-carousel" data-ride="carousel" data-interval="3000">
+                  <div id="criticalCarousel" class="carousel slide bg-dashboard-darkblue dashboard-carousel" data-ride="carousel" data-interval="3000">
                     <!-- Indicators -->
                     <ul class="carousel-indicators">
-                      <li data-target="#demo" data-slide-to="0" class="active"></li>
-                      <li data-target="#demo" data-slide-to="1"></li>
-                      <li data-target="#demo" data-slide-to="2"></li>
-                      <li data-target="#demo" data-slide-to="3"></li>
-                      <li data-target="#demo" data-slide-to="4"></li>
+                      <li data-target="#criticalCarousel" data-slide-to="0" class="active"></li>
+                      <li data-target="#criticalCarousel" data-slide-to="1"></li>
+                      <li data-target="#criticalCarousel" data-slide-to="2"></li>
+                      <li data-target="#criticalCarousel" data-slide-to="3"></li>
+                      <li data-target="#criticalCarousel" data-slide-to="4"></li>
                     </ul> 
-                    <!-- The slideshow -->
+                    <!-- Slideshow -->
                     <div class="carousel-inner">
                       <div class="carousel-item active">
                         <h1>Dorothy</h1> <span>"Toto, I've got a feeling we're not in Kansas anymore." </span>
@@ -86,6 +90,7 @@
         </div>
 
     </div>
+    
     <div class="row">
 
       <!-- New Requests Card -->
@@ -155,7 +160,7 @@
           </div>
       </div>
 
-      <!-- Highlights Card-->
+      <!-- Queue Card -->
       <div class="col-lg-4">
           <div class="card">
               <div class="card-body list-scrollable info-card">
@@ -222,7 +227,7 @@
           </div>
       </div>
 
-      <!-- Trainers Card-->
+      <!-- Ongoing Card-->
       <div class="col-lg-4">
           <div class="card">
               <div class="card">
