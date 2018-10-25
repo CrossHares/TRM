@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ct.dao.ConfirmedTraining;
 import ct.dao.ConfirmedTrainingServices;
+import dao.ConfirmedTraining2;
+import dao.ConfirmedTrainingServices2;
 
 
 @Controller
@@ -29,6 +31,16 @@ public class ConfirmedTrainingController {
 		ctmap.addAttribute("ct", ctlist);
 		return "ctPage";
 	}
+	//version 2
+	//confirmed training page
+		@RequestMapping(value = "/confirmed2")
+		public String showCT(ModelMap ctmap){
+			ConfirmedTrainingServices2 ct = new ConfirmedTrainingServices2();
+			List<ConfirmedTraining2> ctlist = ct.readCT();
+			ctmap.addAttribute("ct", ctlist);
+			return "ctPage2";
+		}
+		
 	//delete ct
 	@RequestMapping(value = "/deleteCT/{CtID}") 
 	public ModelAndView deleteConfirmedTrainingService(@PathVariable Integer CtID){
