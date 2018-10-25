@@ -39,39 +39,59 @@
 	
 <table class = "data">
 	<tr>
-<th>Training ID</th>
-<th>Training Status ID</th>
-<th>Training Type ID</th>
-<th>L&D User Email</th>
-<th>Verification ID </th>
-<th>TRFS IDS</th>
-<th>Training Start Date</th>
-<th>Training End Date</th>
-<th>Training Start Time</th>
-<th>Training End Time</th>
-<th>Training Technology </th>
-<th>Training Objective </th>
-<th>Training Location </th>
-<th>Training Nomination File</th>
+<th>CT_ID </th>
+<th>IPT_ID</th>
+<th>TRF_ID</th>
+<th>VER_ID </th>
+<th>VEN_ID </th>
+<th>TT_ID</th>
+<th>OS_ID </th>
+<th>CT_PROJECT_ID</th>
+<th>CT_TECHNOLOGY  </th>
+<th>CT_TRAINING_OBJECTIVES</th>
+<th>CT_DATE_REQUESTED </th>
+<th>CT_PROPOSED_START_DATE</th>
+<th>CT_PROPOSED_END_DATE </th>
+<th>CT_PROPOSED_START_TIME</th>
+<th>CT_PROPOSED_END_TIME </th>
+<th>CT_PROPOSED_LOCATION  </th>
+<th>LDTM_ID  </th>
+<th>CT_APPROX_NO_EMPLOYEES  </th>
+<th>CT_REQUESTOR_EMPLOYEE_ID </th>
+<th>CT_APPROVED_FILE_LOCATION </th>
+<th>CT_TRAINING_SOURCE </th>
+<th>CT_NOMINATION_FILE </th>
+<th>CT_ASSIGNED_EXEC</th>
+<th>CT_HIDE_STATUS</th>
 <th>Update</th>
 <th>Delete</th>
 </tr>
 		<c:forEach var = "ctrain" items = "${ct}">
 				<tr>
-				<td>${ctrain.getCtID()}</td>
-				<td>${ctrain.getTsID()}</td>
-				<td>${ctrain.getTtID()}</td>
-				<td>${ctrain.getLdUserEmail()}</td>
+				<td>${ctrain.getCT_ID()}</td>
+				<td>${ctrain.getIPT_ID()}</td>
+				<td>${ctrain.getTRF_ID()}</td>
+				<td>${ctrain.getVER_ID()}</td>
 				<td>${ctrain.getVerID()}</td>
-				<td>${ctrain.getTrfIDs()}</td>
-				<td>${ctrain.getCtStartDate()}</td>
-				<td>${ctrain.getCtEndDate()}</td>
-				<td>${ctrain.getCtStartTime()}</td>
-				<td>${ctrain.getCtEndTime()}</td>
-				<td>${ctrain.getCtTechnology()}</td>
-				<td>${ctrain.getCtTrainingObj()}</td>
-				<td>${ctrain.getCtLocation()}</td>
-				<td>${ctrain.getCtNomFile()}</td>
+				<td>${ctrain.getVEN_ID()}</td>
+				<td>${ctrain.getTT_ID()}</td>
+				<td>${ctrain.getOS_ID()}</td>
+				<td>${ctrain.getCT_PROJECT_ID()}</td>
+				<td>${ctrain.getCT_TECHNOLOGY()}</td>
+				<td>${ctrain.getCT_TRAINING_OBJECTIVES()}</td>
+				<td>${ctrain.getCT_DATE_REQUESTED()}</td>
+				<td>${ctrain.getCT_PROPOSED_START_DATE()}</td>
+				<td>${ctrain.getCT_PROPOSED_END_DATE()}</td>
+				<td>${ctrain.getCT_PROPOSED_START_TIME()}</td>
+				<td>${ctrain.getCT_PROPOSED_LOCATION()}</td>
+				<td>${ctrain.getLDTM_ID()}</td>
+				<td>${ctrain.getCT_APPROX_NO_EMPLOYEES()}</td>
+				<td>${ctrain.getCT_REQUESTOR_EMPLOYEE_ID()}</td>
+				<td>${ctrain.getCT_APPROVED_FILE_LOCATION()}</td>
+				<td>${ctrain.getCT_TRAINING_SOURCE()}</td>
+				<td>${ctrain.getCT_NOMINATION_FILE()}</td>
+				<td>${ctrain.getCT_ASSIGNED_EXEC()}</td>
+				<td>${ctrain.getCT_HIDE_STATUS()}</td>
 			    <td><a href="editCT/${ctrain.getCtID()}">Edit</a></td>  
 				<!-- <td><a data-toggle="modal" data-target="#editCT" href="editCT/${ctrain.getCtID()}">Edit</a><td> --->
 				<td><a href="deleteCT/${ctrain.getCtID()}" onclick="return confirm('Are you sure?')">Delete</a></td>
