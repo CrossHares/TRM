@@ -51,8 +51,8 @@
 
 		<div class="row">
 
-			<!-- New Requests Card -->
-			<div class="col-lg-4">
+			<!-- Requests Card -->
+			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-body table-scrollable info-card">
 						<div class="card-title-border">
@@ -61,9 +61,12 @@
 						<table id="newRequestsTable" class="table">
 							<thead>
 								<tr>
-									<th scope="col">Request Name</th>
-									<th scope="col">Vertical</th>
-									<th scope="col">Move</th>
+									<th scope="col">Project ID</th>
+									<th scope="col">Project Name</th>
+									<th scope="col">Expect Training Date</th>
+									<th scope="col">Date Requested</th>
+									<th scope="col">Status</th>
+									<th scope="col">Actions</th>
 								</tr>
 							</thead>
 							<tbody>

@@ -14,9 +14,9 @@ public class MyController
 		return "AdminDashboard"; //returning view name
 	}
 	
-	/*@RequestMapping(value="/r")
+	@RequestMapping(value="/RequestDash")
 	public String showRequestorDashboard()
 	{
-		return "request"; //returning view name
-	}*/
+		return "RequestDash"; //returning view name
+	}
 }
