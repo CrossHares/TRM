@@ -172,7 +172,7 @@ public class ConfirmedTrainingServices {
 	//Update iptProposedLocation
 		public int updateCTproposedLocation(int ctID, String ctProposedLocation)
 		{
-			int ret = temp.update("update CONFIRMED_TRAINING set IPT_PROPOSED_LOCATION=? where TRF_ID=?",
+			int ret = temp.update("update CONFIRMED_TRAINING set CT_PROPOSED_LOCATION=? where TRF_ID=?",
 					new Object[]{ctProposedLocation, ctID});
 			return ret;
 		}
@@ -220,7 +220,7 @@ public class ConfirmedTrainingServices {
 	{
 		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
 		//4 ints, 10 strings, 1 int, 1 string, 1 int, 2 strings, 1 int, 2 strings, 2 ints
-		cts.createNewCT(1,1,1,1,"w","w","w","w","w","w","w","w","w","w",1,"w",1,"w","w",1,"w","w",1,1);
+		cts.createNewCT(1,101,1,1,"w","w","w","15-May-15","15-May-15","15-May-15","w","w","w","w",1,"w",1,"w","w",1,"w","w",1,1);
 		//System.out.println(iptSvcs.readIPT().size());
 		//iptSvcs.deleteIPT(12);
 		//System.out.println(iptSvcs.readIPT().size());
