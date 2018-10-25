@@ -29,7 +29,7 @@
 <body>
 <div id="nav-wrapper">
 	  <nav class="navbar navbar-expand-lg navbar-light bg-dashboard-darkblue"> 
-      <a class="navbar-brand" href="#"><img src="logo"></a>
+      <a class="navbar-brand" href="#"><img src="${logo}"></a>
       <div id="profile">
           <span>Hello, User!</span>
       </div>
