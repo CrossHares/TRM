@@ -1,5 +1,7 @@
 package ipt.dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,21 +11,81 @@ import trf.dao.MyJDBCTemplate;
 public class InProgressTrainingServices {
 	
 	JdbcTemplate temp = MyJDBCTemplate.getJdbcTemplate();
+//Date Parsing Functions
+	public String convertDateReq(String iptDateRequested)
+	{
+		try
+		{
+		Date javaDateIptDateReq = new SimpleDateFormat("yyy-MM-dd").parse(iptDateRequested);
+		String iptDateReq = new SimpleDateFormat("dd/MMM/yyyy").format(javaDateIptDateReq);
+		return iptDateReq;
+		}
+		catch(Exception e)
+		{
+			String error = "There has been an error with the date parsing process.";
+			return error;
+		}
+	}
+	
+	public String convertPropStartDate(String iptProposedStartDate)
+	{
+		try
+		{
+			Date javaDateIptPropStartDate = new SimpleDateFormat("yyy-MM-dd").parse(iptProposedStartDate);
+			String iptPropStartDate = new SimpleDateFormat("dd/MMM/yyyy").format(javaDateIptPropStartDate);
+			return iptPropStartDate;
+		}
+		catch(Exception e)
+		{
+			String error = "There has been an error with the date parsing process.";
+			return error;
+		}
+	}
+	
+	public String convertPropEndDate(String iptProposedEndDate)
+	{
+		try
+		{
+			Date javaDateIptPropEndDate = new SimpleDateFormat("yyy-MM-dd").parse(iptProposedEndDate);
+			String iptPropEndDate = new SimpleDateFormat("dd/MMM/yyyy").format(javaDateIptPropEndDate);
+			return iptPropEndDate;
+		}
+		catch(Exception e)
+		{
+			String error = "There has been an error with the date parsing process.";
+			return error;
+		}
+	}
+	
+	
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+
 	//Create
+	
+
+	
 	public int createNewIPT(int verID, int venID, int ttID, int trfID, int osID, String iptProjectID, String iptTechnology, String iptTrainingObj, 
 			String iptDateRequested, String iptProposedStartDate, String iptProposedEndDate, String iptProjTrainSpoc, int iptAppxEmployees, 
 			String iptRequestorID, String iptApprovedFileLoc, int iptTrainingSource, String iptProposedLoc, String iptProposedStartTime, 
-			String iptProposedEndTime)
+			String iptProposedEndTime, int LDTM_ID, String iptAssignedExec, int iptHideStatus, String iptNomFile, String iptRoomNo, int iptButtonCount)
 	{
-		int ret = temp.update("insert into IN_PROGRESS_TRAINING values(gIPTNo.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-				new Object[]{verID, venID, ttID, trfID, osID, iptProjectID, iptTechnology, iptTrainingObj, iptDateRequested, iptProposedStartDate, 
-						iptProposedEndDate, iptProjTrainSpoc, iptAppxEmployees, iptRequestorID, iptApprovedFileLoc, iptTrainingSource, iptProposedLoc, 
-						iptProposedStartTime, iptProposedEndTime});
-		return ret;
+		
+		String iptDateReq = convertDateReq(iptDateRequested);
+		String iptPropStartDate = convertPropStartDate(iptProposedStartDate);
+		String iptPropEndDate = convertPropEndDate(iptProposedEndDate);
+		
+			int ret = temp.update("insert into IN_PROGRESS_TRAINING values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+					new Object[]{verID, venID, ttID, trfID, osID, iptProjectID, iptTechnology, iptTrainingObj, iptDateReq, iptPropStartDate, 
+							iptPropEndDate, iptProjTrainSpoc, iptAppxEmployees, iptRequestorID, iptApprovedFileLoc, iptTrainingSource, iptProposedLoc, 
+							iptProposedStartTime, iptProposedEndTime, LDTM_ID, iptAssignedExec, iptHideStatus, iptNomFile, iptRoomNo, iptButtonCount});
+			return ret;
+				
 	}
 	
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Read
 	public List<InProgressTraining> readIPT()
 	{
@@ -38,14 +100,20 @@ public class InProgressTrainingServices {
 	public int updateIPT(int iptID, int verID, int venID, int ttID, int trfID, int osID, String iptProjectID, String iptTechnology, String iptTrainingObj, 
 			String iptDateRequested, String iptProposedStartDate, String iptProposedEndDate, String iptProjTrainSpoc, int iptAppxEmployees, 
 			String iptRequestorID, String iptApprovedFileLoc, int iptTrainingSource, String iptProposedLoc, String iptProposedStartTime, 
-			String iptProposedEndTime)
+			String iptProposedEndTime, int LDTM_ID, String iptAssignedExec, int iptHideStatus, String iptNomFile, String iptRoomNo, int iptButtonCount)
 	{
-		int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_ID=?, VER_ID=?, TT_ID=?, TRF_ID=?, OS_ID=?, IPT_PROJECT_ID=?, IPT_TECHNOLOGY=?, IPT_TRAINING_OBJECTIVES=?, IPT_DATE_REQUESTED=?, IPT_PROPOSED_START_DATE=?, IPT_PROPOSED_END_DATE=?, IPT_PROJECT__TRAINING_SPOC=?, IPT_APPROX_NO_EMPLOYEES=?, IPT_REQUESTOR_EMPLOYEE_ID=?, IPT_APPROVED_FILE_LOCATION=?, IPT_TRAINING_SOURCE=?, IPT_PROPOSED_LOCATION=?, IPT_PROPOSED_START_TIME=?, IPT_PROPOSED_END_TIME=?  where IPT_ID=?",
-				new Object[]{iptID, verID, venID, ttID, trfID, osID, iptProjectID, iptTechnology, iptTrainingObj, iptDateRequested, iptProposedStartDate,
-						iptProposedEndDate, iptProjTrainSpoc, iptAppxEmployees, iptRequestorID, iptApprovedFileLoc, iptTrainingSource, iptProposedLoc, 
-						iptProposedStartTime, iptProposedEndTime});
-		return ret;
+		String iptDateReq = convertDateReq(iptDateRequested);
+		String iptPropStartDate = convertPropStartDate(iptProposedStartDate);
+		String iptPropEndDate = convertPropEndDate(iptProposedEndDate);
+		
+		int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_ID=?, VER_ID=?, TT_ID=?, TRF_ID=?, OS_ID=?, IPT_PROJECT_ID=?, IPT_TECHNOLOGY=?, IPT_TRAINING_OBJECTIVES=?, IPT_DATE_REQUESTED=?, IPT_PROPOSED_START_DATE=?, IPT_PROPOSED_END_DATE=?, IPT_PROJECT__TRAINING_SPOC=?, IPT_APPROX_NO_EMPLOYEES=?, IPT_REQUESTOR_EMPLOYEE_ID=?, IPT_APPROVED_FILE_LOCATION=?, TS_TRAINING_SOURCE=?, IPT_PROPOSED_LOCATION=?, IPT_PROPOSED_START_TIME=?, IPT_PROPOSED_END_TIME=?, LDTM_ID=?, IPT_ASSIGNED_EXEC=?, IPT_HIDE_STATUS=?, IPT_NOMINATION_FILE=?, IPT_ROOM_NO=?, IPT_BUTTON_COUNT=? where IPT_ID=?",
+			new Object[]{iptID, verID, venID, ttID, trfID, osID, iptProjectID, iptTechnology, iptTrainingObj, iptDateReq, iptPropStartDate,
+					iptPropEndDate, iptProjTrainSpoc, iptAppxEmployees, iptRequestorID, iptApprovedFileLoc, iptTrainingSource, iptProposedLoc, 
+					iptProposedStartTime, iptProposedEndTime, LDTM_ID, iptAssignedExec, iptHideStatus, iptNomFile, iptRoomNo, iptButtonCount});
+			return ret;
 	}
+		
+	
 	
 	//What follows is additional update functions, designed to update one attribute at a time.
 	
@@ -114,23 +182,29 @@ public class InProgressTrainingServices {
 	//Update date requested
 		public int updateIPTdateRequested(int iptID, String iptDateRequested)
 		{
-			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_DATE_REQUESTED=? where IPT_ID=?",
-					new Object[]{iptDateRequested, iptID});
-			return ret;
+				String iptDateReq = convertDateReq(iptDateRequested);
+				int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_DATE_REQUESTED=? where IPT_ID=?",
+					new Object[]{iptDateReq, iptID});
+				return ret;
+			
 		}
 	//update proposed start date
 		public int updateIPTpropStartDate(int iptID, String iptProposedStartDate)
 		{
+			String iptPropStartDate = convertPropStartDate(iptProposedStartDate);
 			int ret=temp.update("update IN_PROGRESS_TRAINING set IPT_PROPOSED_START_DATE=? where IPT_ID=?",
-					new Object[]{iptProposedStartDate, iptID});
+					new Object[]{iptPropStartDate, iptID});
 			return ret;
+			
 		}
+		
 		
 	// update proposed end date
 		public int updateIPTpropEndDate(int iptID, String iptProposedEndDate)
 		{
+			String iptPropEndDate = convertPropEndDate(iptProposedEndDate);
 			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_PROPOSED_END_DATE=? where IPT_ID=?",
-					new Object[]{iptProposedEndDate, iptID});
+					new Object[]{iptPropEndDate, iptID});
 			return ret;
 		}
 	
@@ -167,7 +241,7 @@ public class InProgressTrainingServices {
 	
 		
 	//update training source
-		public int updateIPTtrainingSource(int iptID, String iptTrainingSource)
+		public int updateIPTtrainingSource(int iptID, int iptTrainingSource)
 		{
 			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_TRAINING_SOURCE=? where IPT_ID=?",
 					new Object[]{iptTrainingSource, iptID});
@@ -197,8 +271,54 @@ public class InProgressTrainingServices {
 					new Object[]{iptProposedEndTime, iptID});
 			return ret;
 		}
+		
+	//Update LDTM_ID
+		public int updateIPTlDTM_ID(int iptID, int LDTM_ID)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set LDTM_ID=? where IPT_ID=?",
+					new Object[]{LDTM_ID, iptID});
+			return ret;
+		}
 	
+	//update iptAssignedExec
+		public int updateIptAssignedExec(int iptID, String iptAssignedExec)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_ASSIGNED_EXEC=? where IPT_ID=?",
+					new Object[]{iptAssignedExec, iptID});
+			return ret;
+		}
 	
+	//update iptHideStatus
+		public int updateIptHideStatus(int iptID, int iptHideStatus)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_HIDE_STATUS=? where IPT_ID=?",
+					new Object[]{iptHideStatus, iptID});
+			return ret;
+		}
+		
+	//update iptNominationFile
+		public int updateIptNomFile(int iptID, String iptNomFile)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_NOMINATION_FILE=? where IPT_ID=?",
+					new Object[]{iptNomFile, iptID});
+			return ret;
+		}
+		
+	//update iptRoomNo
+		public int updateIptRoomNo(int iptID, String iptRoomNo)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_ROOM_NO=? where IPT_ID=?",
+					new Object[]{iptRoomNo, iptID});
+			return ret;
+		}
+	
+	//update iptButtonCount
+		public int updateIptButtonCount(int iptID, int iptButtonCount)
+		{
+			int ret = temp.update("update IN_PROGRESS_TRAINING set IPT_BUTTON_COUNT=? where IPT_ID=?", 
+					new Object[]{iptButtonCount, iptID});
+			return ret;
+		}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
 	//Delete
@@ -223,9 +343,10 @@ public class InProgressTrainingServices {
 	
 	public static void main(String args[])
 	{
-		//InProgressTrainingServices iptSvcs = new InProgressTrainingServices();
-		//System.out.println(iptSvcs.readIPT().size());
-		//iptSvcs.createNewIPT(4, 1, "CLINTON_EXODIA@SYNTELINC.COM", 5, 11, "21-FEB-18", "15-OCT-19", "0900", "1700","C SHARP", "OOP CONCEPTS", "MEMPHIS, TENNESSEE", "T:/TRAINIEES/3D_MODELING_TRAINIESS.DOCX");
+		InProgressTrainingServices iptSvcs = new InProgressTrainingServices();
+		System.out.println(iptSvcs.readIPT().size());
+		//iptSvcs.updateIPTdateRequested(4, "12-Feb-2019");
+		//System.out.println(iptSvcs.getIPT(9).getIptDateReq());
 		//System.out.println(iptSvcs.readIPT().size());
 		//iptSvcs.deleteIPT(12);
 		//System.out.println(iptSvcs.readIPT().size());

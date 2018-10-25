@@ -2,11 +2,10 @@ package ipt.dao;
 
 public class InProgressTraining {
 	
-	int iptID;
+	int trfID;
 	int verID;
 	int venID;
 	int ttID;
-	int trfID;
 	int osID;
 	String iptProjectID;
 	String iptTechnology;
@@ -14,21 +13,23 @@ public class InProgressTraining {
 	String iptDateReq;
 	String iptProposedStartDate;
 	String iptProposedEndDate;
+	String iptProposedStartTime;
+	String iptProposedEndTime;
+	String iptProposedLoc;
+	String iptRoomNo;
+	int LDTM_ID;
 	String iptProjTrainSpoc;
 	int iptAppxEmployees;
 	String iptRequestorID;
 	String iptApprovedFileLoc;
 	int iptTrainingSource;
-	String iptProposedLoc;
-	String iptProposedStartTime;
-	String iptProposedEndTime;
+	String iptNomFile;
+	String iptAssignedExec;
+	int iptHideStatus;
+	int iptButtonCount;
 	
-	public int getIptID() {
-		return iptID;
-	}
-	public void setIptID(int iptID) {
-		this.iptID = iptID;
-	}
+	
+	
 	public int getVerID() {
 		return verID;
 	}
@@ -142,6 +143,42 @@ public class InProgressTraining {
 	}
 	public void setIptProjectID(String iptProjectID) {
 		this.iptProjectID = iptProjectID;
+	}
+	public int getLDTM_ID() {
+		return LDTM_ID;
+	}
+	public void setLDTM_ID(int lDTM_ID) {
+		LDTM_ID = lDTM_ID;
+	}
+	public String getIptAssignedExec() {
+		return iptAssignedExec;
+	}
+	public void setIptAssignedExec(String iptAssignedExec) {
+		this.iptAssignedExec = iptAssignedExec;
+	}
+	public int getIptHideStatus() {
+		return iptHideStatus;
+	}
+	public void setIptHideStatus(int iptHideStatus) {
+		this.iptHideStatus = iptHideStatus;
+	}
+	public String getIptNomFile() {
+		return iptNomFile;
+	}
+	public void setIptNomFile(String iptNomFile) {
+		this.iptNomFile = iptNomFile;
+	}
+	public String getIptRoomNo() {
+		return iptRoomNo;
+	}
+	public void setIptRoomNo(String iptRoomNo) {
+		this.iptRoomNo = iptRoomNo;
+	}
+	public int getIptButtonCount() {
+		return iptButtonCount;
+	}
+	public void setIptButtonCount(int iptButtonCount) {
+		this.iptButtonCount = iptButtonCount;
 	}
 	
 	
