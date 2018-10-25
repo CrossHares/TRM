@@ -51,8 +51,8 @@
 
 		<div class="row">
 
-			<!-- Requests Card -->
-			<!-- <div class="col-lg-12">
+			
+			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-body table-scrollable info-card">
 						<div class="card-title-border">
@@ -61,74 +61,54 @@
 						<table id="newRequestsTable" class="table">
 							<thead>
 								<tr>
-									<th scope="col">Project ID</th>
-									<th scope="col">Project Name</th>
-									<th scope="col">Expect Training Date</th>
-									<th scope="col">Date Requested</th>
-									<th scope="col">Status</th>
-									<th scope="col">Actions</th>
+									<th scope="col"></th>
+									<th scope="col"></th>
+									<th scope="col"></th>
+									<th scope="col"></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<th>C# Training</th>
-									<td>BNSF</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>Java Training</th>
-									<td>Insurance</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>New Hire Training</th>
-									<td>RLT</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>C# Training</th>
-									<td>BNSF</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>Java Training</th>
-									<td>Insurance</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>New Hire Training</th>
-									<td>RLT</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>C# Training</th>
-									<td>BNSF</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>Java Training</th>
-									<td>Insurance</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>New Hire Training</th>
-									<td>RLT</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
+							         <tr>
+								          <td>Project ID:</td>    
+								          <td><input type="text"CT_PROJECT_ID"/></td>  
+								         <td>Technology:</td>    
+								          <td><input type="text"CT_TECHNOLOGY" /></td>  
+							         </tr> 
+							         <tr>
+								         <td>Training Objectives:</td>    
+								          <td><input type="text"CT_TRAINING_OBJECTIVES" /></td>  
+								         <td>Date Requested:</td>    
+								          <td><input type="text"CT_DATE_REQUESTED" /></td>  
+							         </tr> 
+							         <tr>
+								         
+								          <td>Proposed End Date:</td>    
+								          <td><input type="date"CT_PROPOSED_END_DATE"  /></td>  
+								          <td>Proposed Training Location:</td>    
+								          <td><input type="text"CT_PROPOSED_LOCATION"  /></td> 
+								     </tr> 
+							         <tr> 
+								         <td>Training Approx number of Employees:</td>    
+								         <td><input type="text" CT_APPROX_NO_EMPLOYEES"  /></td> 
+								         <td>Training Employee Requester ID:</td>    
+								         <td><input type="text"CT_REQUESTOR_EMPLOYEE_ID"  /></td>  
+								     </tr> 
+							         <tr>    
+								         <td>Training Approved File Location:</td>    
+								         <td><input type="text"CT_APPROVED_FILE_LOCATION"  /></td>  
+								         <td>Project Training SPOC:</td>    
+								         <td><input type="text"CT_APPROVED_FILE_LOCATION"  /></td>  
+							          </tr>
+							          <tr>
+							            
+							          <td colspan="4"><input type="submit" value="Submit" /></td>    
+							         </tr>    
+								
 							</tbody>
 						</table>
 					</div>
 				</div>
-			</div> -->
+			</div>
 		</div>
 	</div>
 

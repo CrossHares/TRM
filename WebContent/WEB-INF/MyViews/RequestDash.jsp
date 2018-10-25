@@ -76,54 +76,7 @@
 									<td><a href="#"><i
 											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
 								</tr>
-								<tr>
-									<th>Java Training</th>
-									<td>Insurance</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>New Hire Training</th>
-									<td>RLT</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>C# Training</th>
-									<td>BNSF</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>Java Training</th>
-									<td>Insurance</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>New Hire Training</th>
-									<td>RLT</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>C# Training</th>
-									<td>BNSF</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>Java Training</th>
-									<td>Insurance</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								<tr>
-									<th>New Hire Training</th>
-									<td>RLT</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
+								
 							</tbody>
 						</table>
 					</div>
