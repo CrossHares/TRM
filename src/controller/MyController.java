@@ -13,4 +13,10 @@ public class MyController
 	{
 		return "AdminDashboard"; //returning view name
 	}
+	
+	@RequestMapping(value="/Requestor")
+	public String showRequestorDashboard()
+	{
+		return "RequestorDashboard"; //returning view name
+	}
 }
