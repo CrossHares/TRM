@@ -18,51 +18,43 @@
  <form:form method="POST" action="../editctsave"> 
 
  <table >    
- 		<tr>  
-        <td>Confirmed Training ID:</td>    
-         <td><form:input  path="CT_ID" readonly="true" /></td>  
-         </tr> 
-        <tr>  
-        <td>In Progress Status ID:</td>    
-         <td><form:input  path="IPT_ID" readonly="true" /></td>  
-         </tr> 
            
          <tr>    
-          <td>Training Type ID: </td>   
-          <td><form:input path="TRF_ID" /></td>  
+          <td>Training Request ID: </td>   
+          <td><form:input path="TRF_ID" readonly="true"/></td>  
          </tr> 
             
          <tr>    
           <td>Verification ID:</td>    
-          <td><form:input path="VER_ID" readonly="true" /></td>  
+          <td><form:input path="VER_ID" /></td>  
          </tr>
             
          <tr>    
           <td>Vendor ID:</td>    
-          <td><form:input path="VEN_ID" readonly="true" /></td>  
+          <td><form:input path="VEN_ID" /></td>  
          </tr>  
           
             <tr>    
-          <td>Training Status ID:</td>    
-          <td><form:input path="TT_ID" readonly="true" /></td>  
+          <td>Training Type ID:</td>    
+          <td><form:input path="TT_ID" /></td>  
          </tr>   
          <tr>
-         <td>OS ID:</td>    
-          <td><form:input path="OS_ID" readonly="true"/></td>  
+         <td>Overall Status ID:</td>    
+          <td><form:input path="OS_ID" /></td>  
          </tr>   
          
          <tr>
           <td>Project ID:</td>    
-          <td><form:input path="CT_PROJECT_ID" readonly="true"/></td>  
+          <td><form:input path="CT_PROJECT_ID" /></td>  
          </tr>
           
          <tr>
          <td>Technology:</td>    
-          <td><form:input path="CT_TECHNOLOGY" readonly="true" /></td>  
+          <td><form:input path="CT_TECHNOLOGY"  /></td>  
          </tr> 
          <tr>
                   <td>Training Objectives:</td>    
-          <td><form:input path="CT_TRAINING_OBJECTIVES" readonly="true" /></td>  
+          <td><form:input path="CT_TRAINING_OBJECTIVES"/></td>  
          </tr> 
          <tr>
                   <td>Date Requested:</td>    
@@ -91,14 +83,23 @@
                   <td>Proposed Training Location:</td>    
           <td><form:input path="CT_PROPOSED_LOCATION"  /></td>  
          </tr> 
+          <tr>
+                  <td>Room Number:</td>    
+          <td><form:input path="CT_ROOM_NO" readonly="true"/></td>  
+         </tr> 
+         
+          <tr>
          <tr>
                   <td>Training LDTM ID:</td>    
-          <td><form:input path="LDTM_ID"  /></td>  
+          <td><form:input path="LDTM_ID" readonly="true" /></td>  
          </tr> 
          <tr>
-                  <td>Project Training SPOC:</td>    
+         
+                  <td>Project SPOC:</td>    
           <td><form:input path="CT_PROJECT_TRAINING_SPOC"  /></td>  
          </tr> 
+         
+         
          <tr>
                   <td>Training Approx number of Employees:</td>    
           <td><form:input path="CT_APPROX_NO_EMPLOYEES"  /></td>  
@@ -120,12 +121,16 @@
           <td><form:input path="CT_NOMINATION_FILE"  /></td>  
          </tr> 
           <tr>
-                  <td>Training ASSIGNED_EXEC:</td>    
+                  <td>Assigned Exec:</td>    
           <td><form:input path="CT_ASSIGNED_EXEC"  /></td>  
          </tr> 
           <tr>
-                  <td>Training HIDE_STATUS:</td>    
-          <td><form:input path="CT_HIDE_STATUS"  /></td>  
+                  <td>Hide Status:</td>    
+          <td><form:input path="CT_HIDE_STATUS"  readonly="true"/></td>  
+         </tr> 
+           <tr>
+                  <td>Button Count:</td>    
+          <td><form:input path="CT_BUTTON_COUNT"  /></td>  
          </tr> 
        <tr>    
           <td> </td>    
@@ -135,10 +140,7 @@
 		 </form:form>  
 		 
 </div>
- 	<div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
-        </div>
+
       </div>
     </div>
 </body>

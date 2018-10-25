@@ -21,14 +21,6 @@
  <form action="saveCT"> 
  
 <table >    
- 		<tr>  
-        <td>Confirmed Training ID:</td>    
-         <td><input type="text"CT_ID" readonly="true" /></td>  
-         </tr> 
-        <tr>  
-        <td>In Progress Status ID:</td>    
-         <td><input type="text"IPT_ID" readonly="true" /></td>  
-         </tr> 
            
          <tr>    
           <td>Training Type ID: </td>   
@@ -37,35 +29,35 @@
             
          <tr>    
           <td>Verification ID:</td>    
-          <td><input type="text"VER_ID" readonly="true" /></td>  
+          <td><input type="text"VER_ID" /></td>  
          </tr>
             
          <tr>    
           <td>Vendor ID:</td>    
-          <td><input type="text"VEN_ID" readonly="true" /></td>  
+          <td><input type="text"VEN_ID"  /></td>  
          </tr>  
           
             <tr>    
           <td>Training Status ID:</td>    
-          <td><input type="text"TT_ID" readonly="true" /></td>  
+          <td><input type="text"TT_ID" /></td>  
          </tr>   
          <tr>
          <td>OS ID:</td>    
-          <td><input type="text"OS_ID" readonly="true"/></td>  
+          <td><input type="text"OS_ID" /></td>  
          </tr>   
          
          <tr>
           <td>Project ID:</td>    
-          <td><input type="text"CT_PROJECT_ID" readonly="true"/></td>  
+          <td><input type="text"CT_PROJECT_ID" /></td>  
          </tr>
           
          <tr>
          <td>Technology:</td>    
-          <td><input type="text"CT_TECHNOLOGY" readonly="true" /></td>  
+          <td><input type="text"CT_TECHNOLOGY" /></td>  
          </tr> 
          <tr>
                   <td>Training Objectives:</td>    
-          <td><input type="text"CT_TRAINING_OBJECTIVES" readonly="true" /></td>  
+          <td><input type="text"CT_TRAINING_OBJECTIVES" /></td>  
          </tr> 
          <tr>
                   <td>Date Requested:</td>    
@@ -94,10 +86,18 @@
                   <td>Proposed Training Location:</td>    
           <td><input type="text"CT_PROPOSED_LOCATION"  /></td>  
          </tr> 
+         
+           <tr>
+                  <td>Room Number:</td>    
+          <td><input type="text "CT_ROOM_NO"  /></td>  
+         </tr> 
+         
          <tr>
                   <td>Training LDTM ID:</td>    
           <td><input type="text"="LDTM_ID"  /></td>  
          </tr> 
+         <tr>
+         
          <tr>
                   <td>Project Training SPOC:</td>    
           <td><input type="text"CT_PROJECT_TRAINING_SPOC"  /></td>  
@@ -130,6 +130,10 @@
                   <td>Training HIDE_STATUS:</td>    
           <td><input type="text"CT_HIDE_STATUS"  /></td>  
          </tr> 
+         <tr>  
+        <td>Number of Buttons:</td>    
+         <td><input type="text"CT_BUTTON_COUNT" readonly="true" /></td>  
+         </tr> 
        <tr>    
           <td> </td>    
           <td><input type="submit" value="Submit" /></td>    
@@ -137,12 +141,7 @@
         </table>    
         
 		 </form>  
-		 
-</div>
- 	<div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
-        </div>
+
       </div>
     </div>
 

@@ -1,9 +1,9 @@
 package ct.dao;
 
 public class ConfirmedTraining {
-	int CT_ID;                      
-	int IPT_ID;                          
-	int TRF_ID;                             
+	
+	int TRF_ID;              
+	int IPT_ID;                          	                            
 	int VER_ID;                             
 	int VEN_ID;                            
 	int TT_ID;                                
@@ -17,6 +17,7 @@ public class ConfirmedTraining {
 	String CT_PROPOSED_START_TIME;    
 	String CT_PROPOSED_END_TIME;   
 	String CT_PROPOSED_LOCATION;
+	String CT_ROOM_NO;
 	int LDTM_ID;   
 	String CT_PROJECT_TRAINING_SPOC;  
 	int CT_APPROX_NO_EMPLOYEES;     
@@ -26,13 +27,9 @@ public class ConfirmedTraining {
 	String CT_NOMINATION_FILE; 
 	String CT_ASSIGNED_EXEC;   
 	int CT_HIDE_STATUS;
+	int CT_BUTTON_COUNT;
 	
-	public int getCT_ID() {
-		return CT_ID;
-	}
-	public void setCT_ID(int cT_ID) {
-		CT_ID = cT_ID;
-	}
+
 	public int getIPT_ID() {
 		return IPT_ID;
 	}
@@ -176,6 +173,18 @@ public class ConfirmedTraining {
 	}
 	public void setCT_HIDE_STATUS(int cT_HIDE_STATUS) {
 		CT_HIDE_STATUS = cT_HIDE_STATUS;
+	}
+	public int getCT_BUTTON_COUNT() {
+		return CT_BUTTON_COUNT;
+	}
+	public void setCT_BUTTON_COUNT(int cT_BUTTON_COUNT) {
+		CT_BUTTON_COUNT = cT_BUTTON_COUNT;
+	}
+	public String getCT_ROOM_NO() {
+		return CT_ROOM_NO;
+	}
+	public void setCT_ROOM_NO(String cT_ROOM_NO) {
+		CT_ROOM_NO = cT_ROOM_NO;
 	}  
 
 }

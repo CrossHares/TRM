@@ -65,13 +65,37 @@ public class ConfirmedTrainingController {
 		//return new ModelAndView("redirect:/confirmed");
 		
 		//call update function
-			
-		int ret = cts.updateCTtechnology(ct.getCT_ID(), ct.getCT_TECHNOLOGY());
-		int ret2 = cts.updateCTtrfID(ct.getCT_ID(), ct.getTRF_ID());
-	
-//		int ret4 = cts.updateCTstartDate(ct.getCtID(), ct.getCtStartDate());
-//		int ret5 = cts.updateCTendDate(ct.getCtID(), ct.getCtEndDate());
-		if(ret>0 && ret2>0 ){
+
+		int TRF_ID = ct.getTRF_ID();
+		int VER_ID = ct.getVER_ID();
+		int VEN_ID= ct.getVEN_ID();
+		
+		int TT_ID = ct.getTT_ID();
+		int OS_ID = ct.getOS_ID();
+		String CT_PROJECT_ID = ct.getCT_PROJECT_ID();
+		String CT_TECHNOLOGY = ct.getCT_TECHNOLOGY();
+		String CT_TRAINING_OBJECTIVES = ct.getCT_TRAINING_OBJECTIVES();
+		String CT_DATE_REQUESTED = ct.getCT_DATE_REQUESTED();
+		String CT_PROPOSED_START_DATE =  ct.getCT_PROPOSED_START_DATE();
+		String CT_PROPOSED_END_DATE = ct.getCT_PROPOSED_END_DATE();
+		String CT_PROJECT_TRAINING_SPOC = ct.getCT_PROJECT_TRAINING_SPOC();
+		int CT_APPROX_NO_EMPLOYEES = ct.getCT_APPROX_NO_EMPLOYEES();
+		String CT_REQUESTOR_EMPLOYEE_ID = ct.getCT_REQUESTOR_EMPLOYEE_ID();
+		String CT_APPROVED_FILE_LOCATION = ct.getCT_APPROVED_FILE_LOCATION();
+		int CT_TRAINING_SOURCE = ct.getCT_TRAINING_SOURCE();
+		String CT_PROPOSED_LOCATION = ct.getCT_PROPOSED_LOCATION();
+		String CT_PROPOSED_START_TIME = ct.getCT_PROPOSED_START_TIME();
+		String CT_PROPOSED_END_TIME = ct.getCT_PROPOSED_END_TIME();
+		int CT_BUTTON_COUNT = ct.getCT_BUTTON_COUNT();
+		
+		int ret = cts.updateCT(VER_ID, VEN_ID, TT_ID, OS_ID, CT_PROJECT_ID, CT_TECHNOLOGY,
+				CT_TRAINING_OBJECTIVES, CT_DATE_REQUESTED, CT_PROPOSED_START_DATE,
+				CT_PROPOSED_END_DATE,CT_PROPOSED_START_TIME, CT_PROPOSED_END_TIME,
+				CT_PROPOSED_LOCATION, CT_PROJECT_TRAINING_SPOC, CT_APPROX_NO_EMPLOYEES,
+				CT_REQUESTOR_EMPLOYEE_ID, CT_APPROVED_FILE_LOCATION,CT_TRAINING_SOURCE, 
+				CT_BUTTON_COUNT , TRF_ID);
+		
+		if(ret>0){
 			return new ModelAndView("redirect:/confirmed");
 		}
 		else{
@@ -84,27 +108,55 @@ public class ConfirmedTrainingController {
 		System.out.println("insertion");
 		return "newconfirmedtraining";
 	}	
-	@RequestMapping(value = "/a")
-	public ModelAndView tester(@ModelAttribute("ct") ConfirmedTraining ct){
-		return new ModelAndView("redirect:/confirmed");
-	}
 	
 	@RequestMapping(value = "/saveCT")
 	public ModelAndView saveEmployeeFormService(@ModelAttribute("ct") ConfirmedTraining ct){
 		System.out.println("insertion Save");
 		
-//		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
-//		int ret = cts.createNewCT(ct.getTsID(), ct.getTtID(), ct.getLdUserEmail(), ct.getVerID(), ct.getTrfIDs(), 
-//				ct.getCtStartDate(), ct.getCtEndDate(), ct.getCtStartTime(), ct.getCtEndTime(),
-//				ct.getCtTechnology(), ct.getCtTrainingObj(), ct.getCtLocation(), ct.getCtNomFile());
-//		
-//		if(ret>0){
-//			return new ModelAndView("redirect:/confirmed");
-//		}
-//		else{
-//			return new ModelAndView("error");
-//		}
+		int VER_ID = ct.getVER_ID();
+		int VEN_ID= ct.getVEN_ID();
+		int TT_ID = ct.getTT_ID();
+		int OS_ID = ct.getOS_ID();
 		
-		return new ModelAndView("redirect:/confirmed");
+		String CT_PROJECT_ID = ct.getCT_PROJECT_ID();
+		String CT_TECHNOLOGY = ct.getCT_TECHNOLOGY();
+		String CT_TRAINING_OBJECTIVES = ct.getCT_TRAINING_OBJECTIVES();
+		String CT_DATE_REQUESTED = ct.getCT_DATE_REQUESTED();
+		String CT_PROPOSED_START_DATE =  ct.getCT_PROPOSED_START_DATE();
+		String CT_PROPOSED_END_DATE = ct.getCT_PROPOSED_END_DATE();
+		String CT_PROPOSED_START_TIME = ct.getCT_PROPOSED_START_TIME();
+		String CT_PROPOSED_END_TIME = ct.getCT_PROPOSED_END_TIME();
+		String CT_PROPOSED_LOCATION = ct.getCT_PROPOSED_LOCATION();
+		
+		String CT_PROJECT_TRAINING_SPOC = ct.getCT_PROJECT_TRAINING_SPOC();
+		int CT_APPROX_NO_EMPLOYEES = ct.getCT_APPROX_NO_EMPLOYEES();
+		String CT_REQUESTOR_EMPLOYEE_ID = ct.getCT_REQUESTOR_EMPLOYEE_ID();
+		String CT_APPROVED_FILE_LOCATION = ct.getCT_APPROVED_FILE_LOCATION();
+		String CT_ROOM_NO = ct.getCT_ROOM_NO();
+		int LDTM_ID = ct.getLDTM_ID();
+		
+		int CT_TRAINING_SOURCE = ct.getCT_TRAINING_SOURCE();
+		String CT_NOMINATION_FILE = ct.getCT_NOMINATION_FILE();
+		int CT_HIDE_STATUS = ct.getCT_HIDE_STATUS();
+		String CT_ASSIGNED_EXEC = ct.getCT_ASSIGNED_EXEC();
+		
+		int CT_BUTTON_COUNT = ct.getCT_BUTTON_COUNT();
+		
+		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
+		int ret = cts.createNewCT(VER_ID, VEN_ID, TT_ID, OS_ID, CT_PROJECT_ID,
+				CT_TECHNOLOGY,CT_TRAINING_OBJECTIVES, CT_DATE_REQUESTED, CT_PROPOSED_START_DATE, 
+				CT_PROPOSED_END_DATE, CT_PROPOSED_START_TIME, CT_PROPOSED_END_TIME,CT_PROPOSED_LOCATION, 
+				CT_ROOM_NO, LDTM_ID, CT_PROJECT_TRAINING_SPOC,CT_APPROX_NO_EMPLOYEES, 
+				CT_REQUESTOR_EMPLOYEE_ID, CT_APPROVED_FILE_LOCATION, CT_TRAINING_SOURCE,
+			  CT_NOMINATION_FILE, CT_ASSIGNED_EXEC, CT_HIDE_STATUS,CT_BUTTON_COUNT );
+
+
+		if(ret>0){
+			return new ModelAndView("redirect:/confirmed");
+		}
+		else{
+			return new ModelAndView("error");
+		}
+		
 	}
 }
