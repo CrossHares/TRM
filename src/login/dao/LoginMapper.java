@@ -1,4 +1,4 @@
-package dao;
+package login.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

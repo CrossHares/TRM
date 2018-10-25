@@ -1,8 +1,14 @@
-package controller;
+package dashboard.controller;
 
+
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import trf.dao.TrainingRequestForm;
+import trf.dao.TrainingRequestFormServices;
 
 @Controller
 public class MyController
@@ -15,8 +21,11 @@ public class MyController
 	}
 	
 	@RequestMapping(value="/RequestDash")
-	public String showRequestorDashboard()
+	public String showRequestorDashboard(ModelMap rfmap)
 	{
+		TrainingRequestFormServices objRF = new TrainingRequestFormServices();
+		List<TrainingRequestForm> listofRequests = objRF.readTRF();
+		rfmap.addAttribute("values", listofRequests);
 		return "RequestDash"; //returning view name
 	}
 	

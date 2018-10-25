@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,10 +43,10 @@
 		</div>
 		</nav>
 		<nav id="nav-links" class="nav nav-pills nav-fill bg-dashboard-dark">
-		<li class="nav-item"><a class="nav-link nav-active" href="RequestDash"><i
-				class="fas fa-desktop"></i> Home</a></li>
+		<li class="nav-item"><a class="nav-link nav-active"
+			href="RequestDash"><i class="fas fa-desktop"></i> Home</a></li>
 		<li class="nav-item"><a class="nav-link" href="NewRequest"><i
-				class="fas fa-chalkboard-teacher"></i> New Training Request</a></li>
+				class="fab fa-wpforms"></i> New Training Request</a></li>
 		</nav>
 	</div>
 	<div class="container-fluid main-content bg-dashboard-darkblue">
@@ -70,13 +72,18 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<th>C# Training</th>
-									<td>BNSF</td>
-									<td><a href="#"><i
-											class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-								</tr>
-								
+								<c:forEach var="trm" items="${values}">
+									<tr>
+										<td>${trm.getTrfProjectID()}</td>
+										<td>${trm.getTechnology()}</td>
+										<td>${trm.getProposedEndDate()}</td>
+										<td>${trm.getDateRequested()}</td>
+										
+										<td></td>
+										<td></td>
+									</tr>
+								</c:forEach>
+
 							</tbody>
 						</table>
 					</div>

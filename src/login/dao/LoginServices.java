@@ -1,4 +1,4 @@
-package dao;
+package login.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;

@@ -1,4 +1,4 @@
-package dao;
+package login.dao;
 
 public class Logindao {
 
