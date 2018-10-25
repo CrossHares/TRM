@@ -1,22 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
-	<!-- CSS & Font Awesome -->
 	<spring:url value="/resources/CSS/bootstrap.min.css"  var="bootstrapCSS"/>
 	<spring:url value="/resources/CSS/custom.css"  var="customCSS"/>
 	<spring:url value="/resources/FontAwesome/fontawesome-free-5.4.1-web/css/all.css" var="fontAwesome" />
-	
-	<!-- JavaScripts -->
 	<spring:url value="/resources/JSFiles/bootstrap.min.js"  var="bootstrapJS"/>
 	<spring:url value="/resources/JSFiles/jquery-3.3.1.min.js" var="jqueryJS" />
-	
-	<!-- Images -->
-	<spring:url value="/resources/imgs/atos_syntel.jpg" var="logo"></spring:url>
 	
 	<link href="${customCSS}" rel="stylesheet" />
 	<link href="${fontAwesome}" rel="stylesheet" />
@@ -24,12 +18,12 @@
 	<script src="${jqueryJS}"></script>
 	<script src="${bootstrapJS}"></script>
 	
-<title>Admin Dashboard | L&D</title>
+<title>Admin Dashboard | TRM</title>
 </head>
 <body>
 <div id="nav-wrapper">
 	  <nav class="navbar navbar-expand-lg navbar-light bg-dashboard-darkblue"> 
-      <a class="navbar-brand" href="#"><img src="logo"></a>
+      <a class="navbar-brand" href="#"><img src="/resources/imgs/logo-sm.png"></a>
       <div id="profile">
           <span>Hello, User!</span>
       </div>
