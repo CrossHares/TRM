@@ -19,4 +19,10 @@ public class MyController
 	{
 		return "RequestDash"; //returning view name
 	}
+	
+	@RequestMapping(value="/login")
+	public String showLogin()
+	{
+		return "login"; //returning view name
+	}
 }
