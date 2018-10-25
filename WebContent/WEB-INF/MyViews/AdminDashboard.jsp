@@ -18,12 +18,12 @@
 	<script src="${jqueryJS}"></script>
 	<script src="${bootstrapJS}"></script>
 	
-<title>Admin Dashboard | L&D</title>
+<title>Admin Dashboard | TRM</title>
 </head>
 <body>
 <div id="nav-wrapper">
 	  <nav class="navbar navbar-expand-lg navbar-light bg-dashboard-darkblue"> 
-      <a class="navbar-brand" href="#"><img src="atos_syntel.jpg"></a>
+      <a class="navbar-brand" href="#"><img src="/resources/imgs/logo-sm.png"></a>
       <div id="profile">
           <span>Hello, User!</span>
       </div>

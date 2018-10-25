@@ -89,8 +89,13 @@ a{
 }
 
 .btn-mint{
-    color: black;
+    color: black !important;
     background-color: #70ee9c !important;
+}
+
+.btn-delete{
+    color: white !important;
+    background-color: crimson;
 }
 
 .btn-lightblue{
