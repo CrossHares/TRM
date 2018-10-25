@@ -12,19 +12,26 @@ public class ConfirmedTrainingMapper implements RowMapper<ConfirmedTraining>{
 	{
 		ConfirmedTraining objCT = new ConfirmedTraining();
 		objCT.setCtID(result.getInt(1));
-		objCT.setTsID(result.getInt(2));
-		objCT.setTtID(result.getInt(3));
-		objCT.setLdUserEmail(result.getString(4));
-		objCT.setVerID(result.getInt(5));
-		objCT.setTrfIDs(result.getString(6));
-		objCT.setCtStartDate(result.getString(7));
-		objCT.setCtEndDate(result.getString(8));
-		objCT.setCtStartTime(result.getString(9));
-		objCT.setCtEndTime(result.getString(10));
-		objCT.setCtTechnology(result.getString(11));
-		objCT.setCtTrainingObj(result.getString(12));
-		objCT.setCtLocation(result.getString(13));
-		objCT.setCtNomFile(result.getString(14));
+		objCT.setVerID(result.getInt(2));
+		objCT.setVenID(result.getInt(3));
+		objCT.setTtID(result.getInt(4));
+		objCT.setTrfID(result.getInt(5));
+		objCT.setOsID(result.getInt(6));
+		objCT.setIptID(result.getInt(7));
+		objCT.setCtProjectID(result.getString(8));
+		objCT.setCtTechnology(result.getString(9));
+		objCT.setCtTrainingObj(result.getString(10));
+		objCT.setCtDateReq(result.getString(11));
+		objCT.setCtProposedStartDate(result.getString(12));
+		objCT.setCtProposedEndDate(result.getString(13));
+		objCT.setCtProjTrainSpoc(result.getString(14));
+		objCT.setCtAppxEmployees(result.getInt(15));
+		objCT.setCtRequestorID(result.getString(16));
+		objCT.setCtApprovedFileLoc(result.getString(17));
+		objCT.setCtTrainingSource(result.getInt(18));
+		objCT.setCtProposedLoc(result.getString(19));
+		objCT.setCtProposedStartTime(result.getString(20));
+		objCT.setCtProposedEndTime(result.getString(21));
 		
 		return objCT;
 	}

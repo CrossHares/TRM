@@ -2,20 +2,27 @@ package ct.dao;
 
 public class ConfirmedTraining {
 	int ctID;
-	int tsID;
-	int ttID;
-	String ldUserEmail;
 	int verID;
-	String trfIDs;
-	String ctStartDate;
-	String ctEndDate;
-	String ctStartTime;
-	String ctEndTime;
+	int venID;
+	int ttID;
+	int trfID;
+	int osID;
+	int iptID;
+	String ctProjectID;
 	String ctTechnology;
 	String ctTrainingObj;
-	String ctLocation;
-	String ctNomFile;
-	
+	String ctDateReq;
+	String ctProposedStartDate;
+	String ctProposedEndDate;
+	String ctProjTrainSpoc;
+	int ctAppxEmployees;
+	String ctRequestorID;
+	String ctApprovedFileLoc;
+	int ctTrainingSource;
+	int ctHideStatus;
+	String ctProposedLoc;
+	String ctProposedStartTime;
+	String ctProposedEndTime;
 	
 	public int getCtID() {
 		return ctID;
@@ -23,11 +30,17 @@ public class ConfirmedTraining {
 	public void setCtID(int ctID) {
 		this.ctID = ctID;
 	}
-	public int getTsID() {
-		return tsID;
+	public int getVerID() {
+		return verID;
 	}
-	public void setTsID(int tsID) {
-		this.tsID = tsID;
+	public void setVerID(int verID) {
+		this.verID = verID;
+	}
+	public int getVenID() {
+		return venID;
+	}
+	public void setVenID(int venID) {
+		this.venID = venID;
 	}
 	public int getTtID() {
 		return ttID;
@@ -35,47 +48,29 @@ public class ConfirmedTraining {
 	public void setTtID(int ttID) {
 		this.ttID = ttID;
 	}
-	public String getLdUserEmail() {
-		return ldUserEmail;
+	public int getTrfID() {
+		return trfID;
 	}
-	public void setLdUserEmail(String ldUserEmail) {
-		this.ldUserEmail = ldUserEmail;
+	public void setTrfID(int trfID) {
+		this.trfID = trfID;
 	}
-	public int getVerID() {
-		return verID;
+	public int getOsID() {
+		return osID;
 	}
-	public void setVerID(int verID) {
-		this.verID = verID;
+	public void setOsID(int osID) {
+		this.osID = osID;
 	}
-	public String getTrfIDs() {
-		return trfIDs;
+	public int getIptID() {
+		return iptID;
 	}
-	public void setTrfIDs(String trfIDs) {
-		this.trfIDs = trfIDs;
+	public void setIptID(int iptID) {
+		this.iptID = iptID;
 	}
-	public String getCtStartDate() {
-		return ctStartDate;
+	public String getCtProjectID() {
+		return ctProjectID;
 	}
-	public void setCtStartDate(String ctStartDate) {
-		this.ctStartDate = ctStartDate;
-	}
-	public String getCtEndDate() {
-		return ctEndDate;
-	}
-	public void setCtEndDate(String ctEndDate) {
-		this.ctEndDate = ctEndDate;
-	}
-	public String getCtStartTime() {
-		return ctStartTime;
-	}
-	public void setCtStartTime(String ctStartTime) {
-		this.ctStartTime = ctStartTime;
-	}
-	public String getCtEndTime() {
-		return ctEndTime;
-	}
-	public void setCtEndTime(String ctEndTime) {
-		this.ctEndTime = ctEndTime;
+	public void setCtProjectID(String ctProjectID) {
+		this.ctProjectID = ctProjectID;
 	}
 	public String getCtTechnology() {
 		return ctTechnology;
@@ -89,19 +84,77 @@ public class ConfirmedTraining {
 	public void setCtTrainingObj(String ctTrainingObj) {
 		this.ctTrainingObj = ctTrainingObj;
 	}
-	public String getCtLocation() {
-		return ctLocation;
+	public String getCtDateReq() {
+		return ctDateReq;
 	}
-	public void setCtLocation(String ctLocation) {
-		this.ctLocation = ctLocation;
+	public void setCtDateReq(String ctDateReq) {
+		this.ctDateReq = ctDateReq;
 	}
-	public String getCtNomFile() {
-		return ctNomFile;
+	public String getCtProposedStartDate() {
+		return ctProposedStartDate;
 	}
-	public void setCtNomFile(String ctNomFile) {
-		this.ctNomFile = ctNomFile;
+	public void setCtProposedStartDate(String ctProposedStartDate) {
+		this.ctProposedStartDate = ctProposedStartDate;
+	}
+	public String getCtProposedEndDate() {
+		return ctProposedEndDate;
+	}
+	public void setCtProposedEndDate(String ctProposedEndDate) {
+		this.ctProposedEndDate = ctProposedEndDate;
+	}
+	public String getCtProjTrainSpoc() {
+		return ctProjTrainSpoc;
+	}
+	public void setCtProjTrainSpoc(String ctProjTrainSpoc) {
+		this.ctProjTrainSpoc = ctProjTrainSpoc;
+	}
+	public int getCtAppxEmployees() {
+		return ctAppxEmployees;
+	}
+	public void setCtAppxEmployees(int ctAppxEmployees) {
+		this.ctAppxEmployees = ctAppxEmployees;
+	}
+	public String getCtRequestorID() {
+		return ctRequestorID;
+	}
+	public void setCtRequestorID(String ctRequestorID) {
+		this.ctRequestorID = ctRequestorID;
+	}
+	public String getCtApprovedFileLoc() {
+		return ctApprovedFileLoc;
+	}
+	public void setCtApprovedFileLoc(String ctApprovedFileLoc) {
+		this.ctApprovedFileLoc = ctApprovedFileLoc;
+	}
+	public int getCtTrainingSource() {
+		return ctTrainingSource;
+	}
+	public void setCtTrainingSource(int ctTrainingSource) {
+		this.ctTrainingSource = ctTrainingSource;
+	}
+	public int getCtHideStatus() {
+		return ctHideStatus;
+	}
+	public void setCtHideStatus(int ctHideStatus) {
+		this.ctHideStatus = ctHideStatus;
+	}
+	public String getCtProposedLoc() {
+		return ctProposedLoc;
+	}
+	public void setCtProposedLoc(String ctProposedLoc) {
+		this.ctProposedLoc = ctProposedLoc;
+	}
+	public String getCtProposedStartTime() {
+		return ctProposedStartTime;
+	}
+	public void setCtProposedStartTime(String ctProposedStartTime) {
+		this.ctProposedStartTime = ctProposedStartTime;
+	}
+	public String getCtProposedEndTime() {
+		return ctProposedEndTime;
+	}
+	public void setCtProposedEndTime(String ctProposedEndTime) {
+		this.ctProposedEndTime = ctProposedEndTime;
 	}
 	
-	
-
 }
