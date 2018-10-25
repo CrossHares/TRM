@@ -41,9 +41,9 @@
 		</div>
 		</nav>
 		<nav id="nav-links" class="nav nav-pills nav-fill bg-dashboard-dark">
-		<li class="nav-item"><a class="nav-link nav-active" href="RequestDash"><i
+		<li class="nav-item"><a class="nav-link" href="RequestDash"><i
 				class="fas fa-desktop"></i> Home</a></li>
-		<li class="nav-item"><a class="nav-link" href="NewRequest"><i
+		<li class="nav-item"><a class="nav-link nav-active" href="NewRequest"><i
 				class="fas fa-chalkboard-teacher"></i> New Training Request</a></li>
 		</nav>
 	</div>
@@ -52,11 +52,11 @@
 		<div class="row">
 
 			<!-- Requests Card -->
-			<div class="col-lg-12">
+			<!-- <div class="col-lg-12">
 				<div class="card">
 					<div class="card-body table-scrollable info-card">
 						<div class="card-title-border">
-							<h2 class="card-title">Training Requests</h2>
+							<h2 class="card-title">New Requests</h2>
 						</div>
 						<table id="newRequestsTable" class="table">
 							<thead>
@@ -128,7 +128,7 @@
 						</table>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
