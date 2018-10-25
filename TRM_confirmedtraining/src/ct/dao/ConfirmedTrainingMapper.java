@@ -31,11 +31,11 @@ public class ConfirmedTrainingMapper implements RowMapper<ConfirmedTraining>{
 		objCT.setCT_PROJECT_TRAINING_SPOC(result.getString(18));
 		objCT.setCT_APPROX_NO_EMPLOYEES(result.getInt(19));
 		objCT.setCT_REQUESTOR_EMPLOYEE_ID(result.getString(20));
-		objCT.setCT_APPROVED_FILE_LOCATION(result.getString(20));
-		objCT.setCT_TRAINING_SOURCE(result.getInt(21));
-		objCT.setCT_NOMINATION_FILE(result.getString(22));
-		objCT.setCT_ASSIGNED_EXEC(result.getString(23));
-		objCT.setCT_HIDE_STATUS(result.getInt(24));
+		objCT.setCT_APPROVED_FILE_LOCATION(result.getString(21));
+		objCT.setCT_TRAINING_SOURCE(result.getInt(22));
+		objCT.setCT_NOMINATION_FILE(result.getString(23));
+		objCT.setCT_ASSIGNED_EXEC(result.getString(24));
+		objCT.setCT_HIDE_STATUS(result.getInt(25));
 		
 		return objCT;
 	}

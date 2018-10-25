@@ -67,7 +67,7 @@ public class ConfirmedTrainingController {
 		//call update function
 			
 		int ret = cts.updateCTtechnology(ct.getCT_ID(), ct.getCT_TECHNOLOGY());
-		int ret2 = cts.updateIPTtrfID(ct.getCT_ID(), ct.getTRF_ID());
+		int ret2 = cts.updateCTtrfID(ct.getCT_ID(), ct.getTRF_ID());
 	
 //		int ret4 = cts.updateCTstartDate(ct.getCtID(), ct.getCtStartDate());
 //		int ret5 = cts.updateCTendDate(ct.getCtID(), ct.getCtEndDate());

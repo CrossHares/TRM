@@ -58,7 +58,7 @@ public class ConfirmedTrainingServices {
 			}
 			
 	//Update ttID
-		public int updateIPTttID(int ctID, int ttID)
+		public int updateCTttID(int ctID, int ttID)
 		{
 			int ret = temp.update("update IN_PROGRESS_TRAINING set TT_ID=? where IPT_ID=?",
 					new Object[]{ttID, ctID});
@@ -66,7 +66,7 @@ public class ConfirmedTrainingServices {
 		}
 
 	//Update trfID
-		public int updateIPTtrfID(int ctID, int trfID)
+		public int updateCTtrfID(int ctID, int trfID)
 		{
 			int ret = temp.update("update IN_PROGRESS_TRAINING set TRF_ID=? where IPT_ID=?",
 					new Object[]{trfID, ctID});
@@ -74,14 +74,14 @@ public class ConfirmedTrainingServices {
 		}
 	
 	//Update osID
-		public int updateIPTosID(int ctID, int osID)
+		public int updateCTosID(int ctID, int osID)
 		{
 			int ret = temp.update("update CONFIRMED_TRAINING set OS_ID=? where IPT_ID=?",
 					new Object[]{osID, ctID});
 			return ret;
 		}
 	//Update iptProjectID
-		public int updateIIPTprojectID(int ctID, String ctProjectID)
+		public int updateCTprojectID(int ctID, String ctProjectID)
 		{
 			int ret = temp.update("update CONFIRMED_TRAINING set CT_PROJECT_ID=? where CT_ID=?",
 					new Object[]{ctProjectID, ctID});
@@ -91,7 +91,7 @@ public class ConfirmedTrainingServices {
 	//Update iptTechnology
 			public int updateCTtechnology(int ctID, String ctTechnology)
 			{
-				int ret = temp.update("update CONFIRMED_TRAINING set IPT_TECHNOLOGY=? where CT_ID=?",
+				int ret = temp.update("update CONFIRMED_TRAINING set CT_TECHNOLOGY=? where CT_ID=?",
 						new Object[]{ctTechnology,ctID});
 				return ret;
 			}
