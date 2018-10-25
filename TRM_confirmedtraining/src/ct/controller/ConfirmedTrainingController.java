@@ -11,8 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ct.dao.ConfirmedTraining;
 import ct.dao.ConfirmedTrainingServices;
-import dao.ConfirmedTraining2;
-import dao.ConfirmedTrainingServices2;
 
 
 @Controller
@@ -31,15 +29,7 @@ public class ConfirmedTrainingController {
 		ctmap.addAttribute("ct", ctlist);
 		return "ctPage";
 	}
-	//version 2
-	//confirmed training page
-		@RequestMapping(value = "/confirmed2")
-		public String showCT(ModelMap ctmap){
-			ConfirmedTrainingServices2 ct = new ConfirmedTrainingServices2();
-			List<ConfirmedTraining2> ctlist = ct.readCT();
-			ctmap.addAttribute("ct", ctlist);
-			return "ctPage2";
-		}
+	
 		
 	//delete ct
 	@RequestMapping(value = "/deleteCT/{CtID}") 
@@ -76,12 +66,12 @@ public class ConfirmedTrainingController {
 		
 		//call update function
 			
-		int ret = cts.updateCTlocation(ct.getCtID(), ct.getCtLocation());
-		int ret2 = cts.updateCTtechnology(ct.getCtID(), ct.getCtTechnology());
-		int ret3 = cts.updateCTtrainingObj(ct.getCtID(), ct.getCtTrainingObj());
+		int ret = cts.updateCTtechnology(ct.getCT_ID(), ct.getCT_TECHNOLOGY());
+		int ret2 = cts.updateCTtrfID(ct.getCT_ID(), ct.getTRF_ID());
+	
 //		int ret4 = cts.updateCTstartDate(ct.getCtID(), ct.getCtStartDate());
 //		int ret5 = cts.updateCTendDate(ct.getCtID(), ct.getCtEndDate());
-		if(ret>0 && ret2>0 && ret3>0 ){
+		if(ret>0 && ret2>0 ){
 			return new ModelAndView("redirect:/confirmed");
 		}
 		else{
@@ -103,16 +93,18 @@ public class ConfirmedTrainingController {
 	public ModelAndView saveEmployeeFormService(@ModelAttribute("ct") ConfirmedTraining ct){
 		System.out.println("insertion Save");
 		
-		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
-		int ret = cts.createNewCT(ct.getTsID(), ct.getTtID(), ct.getLdUserEmail(), ct.getVerID(), ct.getTrfIDs(), 
-				ct.getCtStartDate(), ct.getCtEndDate(), ct.getCtStartTime(), ct.getCtEndTime(),
-				ct.getCtTechnology(), ct.getCtTrainingObj(), ct.getCtLocation(), ct.getCtNomFile());
+//		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
+//		int ret = cts.createNewCT(ct.getTsID(), ct.getTtID(), ct.getLdUserEmail(), ct.getVerID(), ct.getTrfIDs(), 
+//				ct.getCtStartDate(), ct.getCtEndDate(), ct.getCtStartTime(), ct.getCtEndTime(),
+//				ct.getCtTechnology(), ct.getCtTrainingObj(), ct.getCtLocation(), ct.getCtNomFile());
+//		
+//		if(ret>0){
+//			return new ModelAndView("redirect:/confirmed");
+//		}
+//		else{
+//			return new ModelAndView("error");
+//		}
 		
-		if(ret>0){
-			return new ModelAndView("redirect:/confirmed");
-		}
-		else{
-			return new ModelAndView("error");
-		}
+		return new ModelAndView("redirect:/confirmed");
 	}
 }

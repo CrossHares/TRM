@@ -10,7 +10,6 @@
 
 <a href ="confirmed">Show All Confirmed Trainings</a><br>
 
-<a href ="confirmed2">Show All Confirmed Trainings 2</a><br>
 
 </body>
 </html>
