@@ -26,57 +26,57 @@
             
          <tr>    
           <td>Verification ID:</td>    
-          <td><form:input path="VER_ID" /></td>  
+          <td><form:input path="VER_ID" readonly="true"/></td>  
          </tr>
             
          <tr>    
           <td>Vendor ID:</td>    
-          <td><form:input path="VEN_ID" /></td>  
+          <td><form:input path="VEN_ID" readonly="true"/></td>  
          </tr>  
           
             <tr>    
           <td>Training Type ID:</td>    
-          <td><form:input path="TT_ID" /></td>  
+          <td><form:input path="TT_ID" readonly="true"/></td>  
          </tr>   
          <tr>
          <td>Overall Status ID:</td>    
-          <td><form:input path="OS_ID" /></td>  
+          <td><form:input path="OS_ID" readonly="true"/></td>  
          </tr>   
          
          <tr>
           <td>Project ID:</td>    
-          <td><form:input path="CT_PROJECT_ID" /></td>  
+          <td><form:input path="CT_PROJECT_ID" readonly="true"/></td>  
          </tr>
           
          <tr>
          <td>Technology:</td>    
-          <td><form:input path="CT_TECHNOLOGY"  /></td>  
+          <td><form:input path="CT_TECHNOLOGY" readonly="true"/></td>  
          </tr> 
          <tr>
                   <td>Training Objectives:</td>    
-          <td><form:input path="CT_TRAINING_OBJECTIVES"/></td>  
+          <td><form:input path="CT_TRAINING_OBJECTIVES" readonly="true"/></td>  
          </tr> 
          <tr>
                   <td>Date Requested:</td>    
-          <td><form:input path="CT_DATE_REQUESTED" /></td>  
+          <td><form:input path="CT_DATE_REQUESTED" readonly="true"/></td>  
          </tr> 
          
          <tr>
                   <td>Proposed Start Date:</td>    
-          <td><form:input path="CT_PROPOSED_START_DATE"/></td>  
+          <td><form:input path="CT_PROPOSED_START_DATE" readonly="true"/></td>  
          </tr> 
          <tr>
                   <td>Proposed End Date:</td>    
-          <td><form:input path="CT_PROPOSED_END_DATE"  /></td>  
+          <td><form:input path="CT_PROPOSED_END_DATE"  readonly="true"/></td>  
          </tr> 
          
          <tr>
                   <td>Proposed Start Time:</td>    
-          <td><form:input path="CT_PROPOSED_START_TIME"  /></td>  
+          <td><form:input path="CT_PROPOSED_START_TIME" readonly="true" /></td>  
          </tr> 
          <tr>
                   <td>Proposed End Time:</td>    
-          <td><form:input path="CT_PROPOSED_END_TIME"  /></td>  
+          <td><form:input path="CT_PROPOSED_END_TIME" readonly="true" /></td>  
          </tr> 
        
          <tr>
@@ -85,40 +85,40 @@
          </tr> 
           <tr>
                   <td>Room Number:</td>    
-          <td><form:input path="CT_ROOM_NO" readonly="true"/></td>  
+          <td><form:input path="CT_ROOM_NO" /></td>  
          </tr> 
          
           <tr>
          <tr>
                   <td>Training LDTM ID:</td>    
-          <td><form:input path="LDTM_ID" readonly="true" /></td>  
+          <td><form:input path="LDTM_ID" /></td>  
          </tr> 
          <tr>
          
                   <td>Project SPOC:</td>    
-          <td><form:input path="CT_PROJECT_TRAINING_SPOC"  /></td>  
+          <td><form:input path="CT_PROJECT_TRAINING_SPOC" readonly="true" /></td>  
          </tr> 
          
          
          <tr>
                   <td>Training Approx number of Employees:</td>    
-          <td><form:input path="CT_APPROX_NO_EMPLOYEES"  /></td>  
+          <td><form:input path="CT_APPROX_NO_EMPLOYEES" readonly="true" /></td>  
          </tr> 
           <tr>
                   <td>Training Employee Requester ID:</td>    
-          <td><form:input path="CT_REQUESTOR_EMPLOYEE_ID"  /></td>  
+          <td><form:input path="CT_REQUESTOR_EMPLOYEE_ID" readonly="true" /></td>  
          </tr> 
           <tr>
                   <td>Training Approved File Location:</td>    
-          <td><form:input path="CT_APPROVED_FILE_LOCATION"  /></td>  
+          <td><form:input path="CT_APPROVED_FILE_LOCATION" readonly="true" /></td>  
          </tr> 
           <tr>
                   <td>Training Source:</td>    
-          <td><form:input path="CT_TRAINING_SOURCE"  /></td>  
+          <td><form:input path="CT_TRAINING_SOURCE" readonly="true" /></td>  
          </tr> 
           <tr>
                   <td>Training Nomination File:</td>    
-          <td><form:input path="CT_NOMINATION_FILE"  /></td>  
+          <td><form:input path="CT_NOMINATION_FILE" readonly="true" /></td>  
          </tr> 
           <tr>
                   <td>Assigned Exec:</td>    
@@ -130,7 +130,7 @@
          </tr> 
            <tr>
                   <td>Button Count:</td>    
-          <td><form:input path="CT_BUTTON_COUNT"  /></td>  
+          <td><form:input path="CT_BUTTON_COUNT" readonly="true" /></td>  
          </tr> 
        <tr>    
           <td> </td>    
