@@ -67,3 +67,4 @@ js/bootstrap.min.js.map
 .project
 .settings/.jsdtscope
 /bin/
+/build/
