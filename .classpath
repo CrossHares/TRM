@@ -44,5 +44,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-webmvc-3.2.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-webmvc-portlet-3.2.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ojdbc5.jar"/>
+	<classpathentry kind="src" path="/SpringMVC"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
