@@ -101,7 +101,7 @@
          
          
          <tr>
-                  <td>Training Approx number of Employees:</td>    
+                  <td>Class Size:</td>    
           <td><form:input path="CT_APPROX_NO_EMPLOYEES" readonly="true" /></td>  
          </tr> 
           <tr>

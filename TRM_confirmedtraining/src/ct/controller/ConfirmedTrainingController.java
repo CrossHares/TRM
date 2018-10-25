@@ -2,6 +2,9 @@ package ct.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,8 +37,7 @@ public class ConfirmedTrainingController {
 	//delete ct
 	@RequestMapping(value = "/deleteCT/{CtID}") 
 	public ModelAndView deleteConfirmedTrainingService(@PathVariable Integer CtID){
-		
-		System.out.println("delete----------");
+
 		ConfirmedTrainingServices obj = new ConfirmedTrainingServices();
 		int ret = obj.deleteCT(CtID);
 		if(ret>0){	//is successful
@@ -80,8 +82,41 @@ public class ConfirmedTrainingController {
 	}	
 	
 	@RequestMapping(value = "/saveCT")
-	public ModelAndView saveEmployeeFormService(@ModelAttribute("ct") ConfirmedTraining ct){
-		System.out.println("insertion Save");
+	public ModelAndView saveCTFormService(HttpServletRequest req,HttpServletResponse res){
+		ConfirmedTrainingServices obj = new ConfirmedTrainingServices();
+		
+		int verid = Integer.parseInt(req.getParameter("VER_ID"));
+		int venid = Integer.parseInt(req.getParameter("VEN_ID"));
+		int ttid = Integer.parseInt(req.getParameter("TT_ID"));
+		int osid = Integer.parseInt(req.getParameter("OS_ID"));
+		int hstatus = Integer.parseInt(req.getParameter("CT_HIDE_STATUS"));
+		int bcount = Integer.parseInt(req.getParameter("CT_BUTTON_COUNT"));
+		int ldtm = Integer.parseInt(req.getParameter("LDTM_ID"));
+		int capacity = Integer.parseInt(req.getParameter("CT_APPROX_NO_EMPLOYEES"));
+		int source = Integer.parseInt(req.getParameter("CT_TRAINING_SOURCE"));
+		
+		int ret = obj.createNewCT(verid, venid,ttid,osid,
+				req.getParameter("CT_PROJECT_ID"), req.getParameter("CT_TECHNOLOGY"),
+				req.getParameter("CT_TRAINING_OBJECTIVES"), req.getParameter("CT_DATE_REQUESTED"), req.getParameter("CT_PROPOSED_START_DATE"),
+				req.getParameter("CT_PROPOSED_END_DATE"), req.getParameter("CT_PROPOSED_START_TIME"), req.getParameter("CT_PROPOSED_END_TIME"), 
+				req.getParameter("CT_PROPOSED_LOCATION"), req.getParameter("CT_ROOM_NO"), ldtm, 
+				req.getParameter("CT_PROJECT_TRAINING_SPOC"), capacity, 
+				req.getParameter("CT_REQUESTOR_EMPLOYEE_ID"), req.getParameter("CT_APPROVED_FILE_LOCATION"), 
+				source, req.getParameter("CT_NOMINATION_FILE"), 
+				req.getParameter("CT_ASSIGNED_EXEC"), hstatus, bcount);
+
+		
+		if(ret>0){
+			return new ModelAndView("redirect:/showAllEmployees");
+		}
+		else{
+			return new ModelAndView("error");
+		}
+	}
+	
+	@RequestMapping(value = "/saveCT2")
+	public ModelAndView saveCTFormService2(@ModelAttribute("ct") ConfirmedTraining ct){
+		System.out.println("insertion Save----------");
 		
 		int VER_ID = ct.getVER_ID();
 		int VEN_ID= ct.getVEN_ID();

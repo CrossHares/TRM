@@ -17,12 +17,11 @@
 
 <body>
 <h1>Welcome to Confirmed Training Services</h1>
-<!-- Search Pop up forms -->
 
 <!-- Insert Section -->
 <a data-toggle="modal" data-target="#newCT"  href = "insertct">Insert</a>
 <br>
-<!-- <a href="insertct">Insert</a>  -->
+ <a href="insertct">Insert</a>  
 
   <div class="modal fade" id="newCT">
     <div class="modal-dialog modal-lg">

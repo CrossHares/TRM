@@ -30,6 +30,10 @@ public class ConfirmedTrainingServices {
 			return ret;
 		}
 	
+	public int createCT(){
+		int ret = 0;
+		return ret;
+	}
 	//Read
 	public List<ConfirmedTraining> readCT()
 	{
@@ -68,14 +72,6 @@ public class ConfirmedTrainingServices {
 		{
 			int ret = temp.update("update IN_PROGRESS_TRAINING set TT_ID=? where TRF_ID=?",
 					new Object[]{ttID, ctID});
-			return ret;
-		}
-
-	//Update trfID
-		public int updateCTtrfID(int ctID, int trfID)
-		{
-			int ret = temp.update("update IN_PROGRESS_TRAINING set TRF_ID=? where TRF_ID=?",
-					new Object[]{trfID, ctID});
 			return ret;
 		}
 	
@@ -222,9 +218,9 @@ public class ConfirmedTrainingServices {
 	
 	public static void main(String args[])
 	{
-		//InProgressTrainingServices iptSvcs = new InProgressTrainingServices();
-		//System.out.println(iptSvcs.readIPT().size());
-		//iptSvcs.createNewIPT(4, 1, "CLINTON_EXODIA@SYNTELINC.COM", 5, 11, "21-FEB-18", "15-OCT-19", "0900", "1700","C SHARP", "OOP CONCEPTS", "MEMPHIS, TENNESSEE", "T:/TRAINIEES/3D_MODELING_TRAINIESS.DOCX");
+		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
+		//4 ints, 10 strings, 1 int, 1 string, 1 int, 2 strings, 1 int, 2 strings, 2 ints
+		cts.createNewCT(1,1,1,1,"w","w","w","w","w","w","w","w","w","w",1,"w",1,"w","w",1,"w","w",1,1);
 		//System.out.println(iptSvcs.readIPT().size());
 		//iptSvcs.deleteIPT(12);
 		//System.out.println(iptSvcs.readIPT().size());
