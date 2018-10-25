@@ -41,14 +41,20 @@
 	<classpathentry kind="lib" path="C:/Users/syntel.PHX-E5440-5K7DP/Desktop/Spring JARs/spring-webmvc-3.2.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:/Users/syntel.PHX-E5440-5K7DP/Desktop/Spring JARs/spring-webmvc-portlet-3.2.7.RELEASE.jar"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 =======
+=======
+>>>>>>> 33ed819a700f5ed89bee7a0d0321dd885599c3ea
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre-9.0.1">
 		<attributes>
 			<attribute name="module" value="true"/>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+>>>>>>> 33ed819a700f5ed89bee7a0d0321dd885599c3ea
+=======
 >>>>>>> 33ed819a700f5ed89bee7a0d0321dd885599c3ea
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
