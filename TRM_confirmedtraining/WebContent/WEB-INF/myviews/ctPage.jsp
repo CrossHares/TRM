@@ -21,7 +21,7 @@
 <!-- Insert Section -->
 <a data-toggle="modal" data-target="#newCT"  href = "insertct">Insert</a>
 <br>
- <a href="insertct">Insert</a>  
+<!-- <a href="insertct">Insert</a>  -->
 
   <div class="modal fade" id="newCT">
     <div class="modal-dialog modal-lg">
@@ -38,45 +38,34 @@
 	
 <table class = "data">
 	<tr>
-<th>Training Request FormID</th>
-<th>Verification ID </th>
 <th>Vendor ID </th>
-<th>Training TypeID</th>
-<th>Overall Status ID </th>
-<th>PROJECT_ID</th>
-<th>TECHNOLOGY  </th>
-<th>TRAINING_OBJECTIVES</th>
-<th>DATE_REQUESTED </th>
-<th>PROPOSED_START_DATE</th>
-<th>PROPOSED_END_DATE </th>
-<th>PROPOSED_START_TIME</th>
-<th>PROPOSED_END_TIME </th>
-<th>PROPOSED_LOCATION  </th>
+<th>Training Type ID</th>
+<th>Project ID</th>
+<th>Technology</th>
+<th>Training Objectives</th>
+<th>Start Date</th>
+<th>End Date </th>
+<th>Start Time</th>
+<th>End Time </th>
+<th>Location</th>
 <th>Learning Development TM ID  </th>
-<th>ROOM_NO  </th>
-<th>PROJECT TRAINING SPOC</th>
-<th>APPROX NO EMPLOYEES  </th>
-<th>REQUESTOR EMPLOYEE ID </th>
-<th>APPROVED FILE LOCATION </th>
-<th>TRAINING SOURCE </th>
-<th>NOMINATION FILE </th>
-<th>ASSIGNED EXEC</th>
-<th>HIDE STATUS</th>
-<th>BUTTON COUNT</th>
+<th>Room </th>
+<th>Project SPOC</th>
+<th>Class Size  </th>
+<th>Requester ID </th>
+<th>Training Source </th>
+<th>Assigned Executive</th>
+
 <th>Update</th>
 <th>Delete</th>
 </tr>
 		<c:forEach var = "ctrain" items = "${ct}">
 				<tr>
-				<td>${ctrain.getTRF_ID()}</td>
-				<td>${ctrain.getVER_ID()}</td>
 				<td>${ctrain.getVEN_ID()}</td>
 				<td>${ctrain.getTT_ID()}</td>
-				<td>${ctrain.getOS_ID()}</td>
 				<td>${ctrain.getCT_PROJECT_ID()}</td>
 				<td>${ctrain.getCT_TECHNOLOGY()}</td>
 				<td>${ctrain.getCT_TRAINING_OBJECTIVES()}</td>
-				<td>${ctrain.getCT_DATE_REQUESTED()}</td>
 				<td>${ctrain.getCT_PROPOSED_START_DATE()}</td>
 				<td>${ctrain.getCT_PROPOSED_END_DATE()}</td>
 				<td>${ctrain.getCT_PROPOSED_START_TIME()}</td>
@@ -87,14 +76,11 @@
 				<td>${ctrain.getCT_PROJECT_TRAINING_SPOC()}</td>
 				<td>${ctrain.getCT_APPROX_NO_EMPLOYEES()}</td>
 				<td>${ctrain.getCT_REQUESTOR_EMPLOYEE_ID()}</td>
-				<td>${ctrain.getCT_APPROVED_FILE_LOCATION()}</td>
 				<td>${ctrain.getCT_TRAINING_SOURCE()}</td>
-				<td>${ctrain.getCT_NOMINATION_FILE()}</td>
 				<td>${ctrain.getCT_ASSIGNED_EXEC()}</td>
-				<td>${ctrain.getCT_HIDE_STATUS()}</td>
-				<td>${ctrain.getCT_BUTTON_COUNT()}</td>
-			    <td><a href="editCT/${ctrain.getTRF_ID()}">Edit</a></td> 
-				<!-- <td><a data-toggle="modal" data-target="#editCT" href="editCT/${ctrain.getTRF_ID()}">Edit</a><td> -->
+
+			    <!-- <td><a href="editCT/${ctrain.getTRF_ID()}">Edit</a></td> -->
+				<td><a data-toggle="modal" data-target="#editCT" href="editCT/${ctrain.getTRF_ID()}">Edit</a><td> 
 				<td><a href="deleteCT/${ctrain.getTRF_ID()}" onclick="return confirm('Are you sure?')">Delete</a></td>
 				</tr>
 		</c:forEach>

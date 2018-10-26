@@ -16,127 +16,153 @@
         <div class="modal-body">
 
  <form:form method="POST" action="../editctsave"> 
-
- <table >    
-           
-         <tr>    
-          <td>Training Request ID: </td>   
-          <td><form:input path="TRF_ID" readonly="true"/></td>  
-         </tr> 
-            
-         <tr>    
-          <td>Verification ID:</td>    
-          <td><form:input path="VER_ID" readonly="true"/></td>  
-         </tr>
-            
-         <tr>    
-          <td>Vendor ID:</td>    
-          <td><form:input path="VEN_ID" readonly="true"/></td>  
-         </tr>  
+ 
+ 
+ <table >   
           
-            <tr>    
-          <td>Training Type ID:</td>    
-          <td><form:input path="TT_ID" readonly="true"/></td>  
-         </tr>   
-         <tr>
-         <td>Overall Status ID:</td>    
-          <td><form:input path="OS_ID" readonly="true"/></td>  
-         </tr>   
-         
-         <tr>
-          <td>Project ID:</td>    
-          <td><form:input path="CT_PROJECT_ID" readonly="true"/></td>  
-         </tr>
-          
-         <tr>
+         <tr>  <!-- first row -->
          <td>Technology:</td>    
-          <td><form:input path="CT_TECHNOLOGY" readonly="true"/></td>  
-         </tr> 
-         <tr>
-                  <td>Training Objectives:</td>    
-          <td><form:input path="CT_TRAINING_OBJECTIVES" readonly="true"/></td>  
-         </tr> 
-         <tr>
-                  <td>Date Requested:</td>    
-          <td><form:input path="CT_DATE_REQUESTED" readonly="true"/></td>  
+          <td> <form:select path="CT_TECHNOLOGY">
+               <option>Java</option>
+               <option>C++</option>
+               <option>SQL</option>
+           </form:select></td>  
+           <td>Training Employee Requester ID:</td>
+           <td><form:input path="CT_REQUESTOR_EMPLOYEE_ID" type="text" /></td> 
          </tr> 
          
+         <!-- second row -->
          <tr>
-                  <td>Proposed Start Date:</td>    
-          <td><form:input path="CT_PROPOSED_START_DATE" readonly="true"/></td>  
+          <td>Date Requested:</td>    
+          <td><form:input path= "CT_DATE_REQUESTED" type="date"/></td>    
+          <td>Training Objectives:</td>    
+          <td><form:textarea path = "CT_TRAINING_OBJECTIVES" /></textarea> </td>      
          </tr> 
+         
+          <!-- third row -->
          <tr>
+                  <td>Proposed Start Date:</td> 
+                  <td><form:input path= "CT_PROPOSED_START_DATE" type="date" min="2000-01-02"/></td>        
+
                   <td>Proposed End Date:</td>    
-          <td><form:input path="CT_PROPOSED_END_DATE"  readonly="true"/></td>  
+          <td><form:input path= "CT_PROPOSED_END_DATE" type="date" min="2000-01-02"/></td>     
          </tr> 
          
+          <!--fourth row -->
          <tr>
                   <td>Proposed Start Time:</td>    
-          <td><form:input path="CT_PROPOSED_START_TIME" readonly="true" /></td>  
-         </tr> 
-         <tr>
+          <td><form:input path= "CT_PROPOSED_START_TIME" type="time"/></td>  
+
                   <td>Proposed End Time:</td>    
-          <td><form:input path="CT_PROPOSED_END_TIME" readonly="true" /></td>  
+          <td><form:input path= "CT_PROPOSED_END_TIME" type="time"/></td>  
          </tr> 
        
          <tr>
                   <td>Proposed Training Location:</td>    
-          <td><form:input path="CT_PROPOSED_LOCATION"  /></td>  
-         </tr> 
-          <tr>
-                  <td>Room Number:</td>    
-          <td><form:input path="CT_ROOM_NO" /></td>  
+          <td> 
+           <form:select path= "CT_PROPOSED_LOCATION">
+               <option>Nashville</option>
+               <option>Memphis</option>
+               <option>Phoenix</option>
+           </form:select>
+           <td>Room Number:</td>    
+          <td><form:input path= "CT_ROOM_NO" type="number"/></td>  
+       </td>  
          </tr> 
          
-          <tr>
+         <!-- fifth row -->
+         
+         <tr>    
+          <td>Vertical ID:</td>    
+          <td><form:select path = "VER_ID" >
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+           </form:select></td>  
+    
+          <td>Vendor ID:</td>    
+          <td><form:select  path = "VEN_ID" >
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+           </form:select></td>  
+         </tr>  
+          
+            <!-- sixth row -->
+            <tr>    
+          <td>Training Status ID:</td>    
+          <td>
+          <form:select  path ="TT_ID">
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+           </form:select></td>  
+         <td>Overall Status ID:</td>    
+          <td><form:select  path ="OS_ID">
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+           </form:select></td>  
+         </tr>   
+         
+         <!-- seventh row -->
          <tr>
-                  <td>Training LDTM ID:</td>    
-          <td><form:input path="LDTM_ID" /></td>  
+          <td>Project ID:</td>    
+          <td><form:select  path = "CT_PROJECT_ID">
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+           </form:select></td>  
+            <td>Training Assigned Executive:</td>    
+          <td>
+          <form:select path = "CT_ASSIGNED_EXEC" >
+               <option>Exec1</option>
+               <option>Exec2</option>
+               <option>Exec3</option>
+           </form:select>
+          </td>  
+         </tr>
+         
+         <!-- eightth row -->
+         <tr>
+                  <td>Learning Development Team Member ID:</td>    
+          <td> <form:select path = "LDTM_ID">
+               <option>Liji Shynu</option>
+               <option>Majesh Rajput</option>
+               <option>John Doe</option>
+           </form:select></td> 
+           
+            <td>Training Source:</td>    
+          <td> <form:select path = "CT_TRAINING_SOURCE">
+               <option>Internal</option>
+               <option>Development</option>
+               <option>Vendor</option>
+           </form:select></td>   
          </tr> 
          <tr>
          
-                  <td>Project SPOC:</td>    
-          <td><form:input path="CT_PROJECT_TRAINING_SPOC" readonly="true" /></td>  
-         </tr> 
-         
-         
+         <!-- row -->
          <tr>
-                  <td>Class Size:</td>    
-          <td><form:input path="CT_APPROX_NO_EMPLOYEES" readonly="true" /></td>  
+                  <td>Project Training SPOC:</td>    
+          <td><form:input path="CT_PROJECT_TRAINING_SPOC" type="text"  /></td>  
+           <td>Class Size:</td>    
+          <td><form:input path = "CT_APPROX_NO_EMPLOYEES" type="text"  /></td>  
          </tr> 
-          <tr>
-                  <td>Training Employee Requester ID:</td>    
-          <td><form:input path="CT_REQUESTOR_EMPLOYEE_ID" readonly="true" /></td>  
-         </tr> 
+
+		<!-- row -->
           <tr>
                   <td>Training Approved File Location:</td>    
-          <td><form:input path="CT_APPROVED_FILE_LOCATION" readonly="true" /></td>  
+          <td><form:input path= "CT_APPROVED_FILE_LOCATION" type="text" /></td>  
          </tr> 
-          <tr>
-                  <td>Training Source:</td>    
-          <td><form:input path="CT_TRAINING_SOURCE" readonly="true" /></td>  
-         </tr> 
+         
           <tr>
                   <td>Training Nomination File:</td>    
-          <td><form:input path="CT_NOMINATION_FILE" readonly="true" /></td>  
-         </tr> 
-          <tr>
-                  <td>Assigned Exec:</td>    
-          <td><form:input path="CT_ASSIGNED_EXEC"  /></td>  
-         </tr> 
-          <tr>
-                  <td>Hide Status:</td>    
-          <td><form:input path="CT_HIDE_STATUS"  readonly="true"/></td>  
-         </tr> 
-           <tr>
-                  <td>Button Count:</td>    
-          <td><form:input path="CT_BUTTON_COUNT" readonly="true" /></td>  
-         </tr> 
-       <tr>    
+          <td><form:input path= "CT_NOMINATION_FILE" type="text"/></td>  
+  
           <td> </td>    
-          <td><input type="submit" value="Save Edit" /></td>    
+          <td><input type="submit" value="Request" /></td>    
          </tr>    
-        </table>    
+        </table>  
 		 </form:form>  
 		 
 </div>

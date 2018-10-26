@@ -9,6 +9,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Edit</title>
 </head>
+<script>
+var date = new Date();
+y = date.getFullYear();
+m = date.getMonth() + 1;
+d = date.getDate();
+var mindate = y + "-" + m + "-" + d;
+var maxdate = y + "-"+ (m+2) + "-" + d;
+
+document.getElementById("startdate").min = mindate;
+document.getElementById("startdate").max = maxdate;
+document.getElementById("enddate").min = document.getElementById("startdate").innerHTML;
+document.getElementById("endtime").min = document.getElementById("starttime").innerHTML;
+</script>
+
 <body>
 
 
@@ -20,118 +34,154 @@
 
  <form action="saveCT"> 
  
-<table >    
-            
-         <tr>    
-          <td>Verification ID:</td>    
-          <td><input type="text" name = "VER_ID" /></td>  
-         </tr>
-            
-         <tr>    
-          <td>Vendor ID:</td>    
-          <td><input type="text" name = "VEN_ID" /></td>  
-         </tr>  
+<table >   
           
-            <tr>    
-          <td>Training Status ID:</td>    
-          <td><input type="text" name ="TT_ID" /></td>  
-         </tr>   
-         <tr>
-         <td>OS ID:</td>    
-          <td><input type="text" name ="OS_ID" /></td>  
-         </tr>   
-         
-         <tr>
-          <td>Project ID:</td>    
-          <td><input type="text" name = "CT_PROJECT_ID" /></td>  
-         </tr>
-          
-         <tr>
+         <tr>  <!-- first row -->
          <td>Technology:</td>    
-          <td><input type="text" name ="CT_TECHNOLOGY" /></td>  
-         </tr> 
-         <tr>
-                  <td>Training Objectives:</td>    
-          <td><input type="text" name = "CT_TRAINING_OBJECTIVES" /></td>  
-         </tr> 
-         <tr>
-                  <td>Date Requested:</td>    
-          <td><input type="text" name = "CT_DATE_REQUESTED" /></td>  
+          <td> <select name ="CT_TECHNOLOGY" >
+               <option>Java</option>
+               <option>C++</option>
+               <option>SQL</option>
+           </select></td>  
+           <td>Requester Employee ID:</td>
+           <td><input type="text" name="CT_REQUESTOR_EMPLOYEE_ID"  /></td> 
          </tr> 
          
+         <!-- second row -->
+         <tr>
+          <td>Date Requested:</td>    
+          <td><input type="date" name = "CT_DATE_REQUESTED" /></td>    
+          <td>Training Objectives:</td>    
+          <td><textarea name = "CT_TRAINING_OBJECTIVES" /></textarea> </td>      
+         </tr> 
+         
+          <!-- third row -->
          <tr>
                   <td>Proposed Start Date:</td>    
-          <td><input type="text" name = "CT_PROPOSED_START_DATE"/></td>  
-         </tr> 
-         <tr>
+          <td><input type="date" id="startdate" name = "CT_PROPOSED_START_DATE"></td>  
+
                   <td>Proposed End Date:</td>    
-          <td><input type="text" name = "CT_PROPOSED_END_DATE"  /></td>  
+          <td><input type="date"  id = "enddate" name = "CT_PROPOSED_END_DATE"></td>  
          </tr> 
          
+          <!--fourth row -->
          <tr>
                   <td>Proposed Start Time:</td>    
-          <td><input type="text" name ="CT_PROPOSED_START_TIME"  /></td>  
-         </tr> 
-         <tr>
+          <td><input type="time" id = "starttime" name ="CT_PROPOSED_START_TIME"/></td>  
+
                   <td>Proposed End Time:</td>    
-          <td><input type="text" name = "CT_PROPOSED_END_TIME"  /></td>  
+          <td><input type="time" id = "endtime" name = "CT_PROPOSED_END_TIME"  /></td>  
          </tr> 
        
          <tr>
                   <td>Proposed Training Location:</td>    
-          <td><input type="text" name = "CT_PROPOSED_LOCATION"  /></td>  
+          <td> 
+           <select name = "CT_PROPOSED_LOCATION">
+               <option>Nashville, Tennessee</option>
+               <option>Memphis, Tennessee</option>
+               <option>Phoenix, Arizona</option>
+               <option>New York, New York</option>
+               <option>Pune, India</option>
+               <option>Chennai, India</option>
+           </select>
+           <td>Room Number:</td>    
+          <td><input type="text" name = "CT_ROOM_NO"  /></td>  
+       </td>  
          </tr> 
          
-           <tr>
-                  <td>Room Number:</td>    
-          <td><input type="text name = "CT_ROOM_NO"  /></td>  
-         </tr> 
+         <!-- fifth row -->
          
+         <tr>    
+          <td>Vertical ID:</td>    
+          <td><select name = "VER_ID" >
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+           </select></td>  
+    
+          <td>Vendor ID:</td>    
+          <td><select  name = "VEN_ID" >
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+           </select></td>  
+         </tr>  
+          
+            <!-- sixth row -->
+            <tr>    
+          <td>Training Status ID:</td>    
+          <td>
+          <select  name ="TT_ID">
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+           </select></td>  
+         <td>Overall Status ID:</td>    
+          <td><select  name ="OS_ID">
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+           </select></td>  
+         </tr>   
+         
+         <!-- seventh row -->
          <tr>
-                  <td>Training LDTM ID:</td>    
-          <td><input type="text" name="LDTM_ID"  /></td>  
+          <td>Project ID:</td>    
+          <td><select  name = "CT_PROJECT_ID">
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+           </select></td>  
+            <td>Assigned Executive:</td>    
+          <td>
+          <select name = "CT_ASSIGNED_EXEC" >
+               <option>Exec1</option>
+               <option>Exec2</option>
+               <option>Exec3</option>
+           </select>
+          </td>  
+         </tr>
+         
+         <!-- eightth row -->
+         <tr>
+                  <td>Learning Development Team Member ID:</td>    
+          <td> <select name = "LDTM_ID">
+               <option>Liji Shynu</option>
+               <option>Majesh Rajput</option>
+               <option>John Doe</option>
+               <option>Brad Pitt</option>
+               <option>Jane Doe</option>
+           </select></td> 
+           
+            <td>Training Source:</td>    
+          <td> <select name = "CT_TRAINING_SOURCE">
+               <option>Internal</option>
+               <option>Development</option>
+               <option>Vendor</option>
+           </select></td>   
          </tr> 
          <tr>
          
+         <!-- row -->
          <tr>
-                  <td>Project Training SPOC:</td>    
+                  <td>Project SPOC:</td>    
           <td><input type="text" name = CT_PROJECT_TRAINING_SPOC"  /></td>  
+           <td>Class Size:</td>    
+          <td><input type="number" name = "CT_APPROX_NO_EMPLOYEES"  /></td>  
          </tr> 
-         <tr>
-                  <td>Class Size:</td>    
-          <td><input type="text" name = "CT_APPROX_NO_EMPLOYEES"  /></td>  
-         </tr> 
+
+		<!-- row -->
           <tr>
-                  <td>Training Employee Requester ID:</td>    
-          <td><input type="text" name="CT_REQUESTOR_EMPLOYEE_ID"  /></td>  
-         </tr> 
-          <tr>
-                  <td>Training Approved File Location:</td>    
+                  <td>Approved File Location:</td>    
           <td><input type="text" name ="CT_APPROVED_FILE_LOCATION"  /></td>  
          </tr> 
-          <tr>
-                  <td>Training Source:</td>    
-          <td><input type="text" name="CT_TRAINING_SOURCE"  /></td>  
-         </tr> 
+         
           <tr>
                   <td>Training Nomination File:</td>    
           <td><input type="text" name="CT_NOMINATION_FILE"  /></td>  
-         </tr> 
-          <tr>
-                  <td>Training ASSIGNED_EXEC:</td>    
-          <td><input type="text" name = "CT_ASSIGNED_EXEC"  /></td>  
-         </tr> 
-          <tr>
-                  <td>Training HIDE_STATUS:</td>    
-          <td><input type="text" name="CT_HIDE_STATUS"  /></td>  
-         </tr> 
-         <tr>  
-        <td>Number of Buttons:</td>    
-         <td><input type="text" name="CT_BUTTON_COUNT"/></td>  
-         </tr> 
-       <tr>    
+  
           <td> </td>    
-          <td><input type="submit" value="Submit" /></td>    
+          <td><input type="submit" value="Request Training" /></td>    
          </tr>    
         </table>    
         
