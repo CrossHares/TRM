@@ -156,7 +156,7 @@ document.getElementById("endtime").min = document.getElementById("starttime").in
             <td>Training Source:</td>    
           <td> <select name = "CT_TRAINING_SOURCE">
                <option>Internal</option>
-               <option>Development</option>
+               <option>Development Team</option>
                <option>Vendor</option>
            </select></td>   
          </tr> 

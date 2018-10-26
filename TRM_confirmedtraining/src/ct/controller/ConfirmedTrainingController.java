@@ -1,5 +1,6 @@
 package ct.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -81,16 +82,14 @@ public class ConfirmedTrainingController {
 		return "newconfirmedtraining";
 	}	
 	
-	@RequestMapping(value = "/saveCT")
-	public ModelAndView saveCTFormService(HttpServletRequest req,HttpServletResponse res){
+	@RequestMapping(value = "/saveCT") 
+	public ModelAndView saveCTFormService(HttpServletRequest req,HttpServletResponse res) throws ParseException{
 		ConfirmedTrainingServices obj = new ConfirmedTrainingServices();
 		
 		int verid = Integer.parseInt(req.getParameter("VER_ID"));
 		int venid = Integer.parseInt(req.getParameter("VEN_ID"));
 		int ttid = Integer.parseInt(req.getParameter("TT_ID"));
 		int osid = Integer.parseInt(req.getParameter("OS_ID"));
-		int hstatus = Integer.parseInt(req.getParameter("CT_HIDE_STATUS"));
-		int bcount = Integer.parseInt(req.getParameter("CT_BUTTON_COUNT"));
 		int ldtm = Integer.parseInt(req.getParameter("LDTM_ID"));
 		int capacity = Integer.parseInt(req.getParameter("CT_APPROX_NO_EMPLOYEES"));
 		int source = Integer.parseInt(req.getParameter("CT_TRAINING_SOURCE"));
@@ -103,7 +102,7 @@ public class ConfirmedTrainingController {
 				req.getParameter("CT_PROJECT_TRAINING_SPOC"), capacity, 
 				req.getParameter("CT_REQUESTOR_EMPLOYEE_ID"), req.getParameter("CT_APPROVED_FILE_LOCATION"), 
 				source, req.getParameter("CT_NOMINATION_FILE"), 
-				req.getParameter("CT_ASSIGNED_EXEC"), hstatus, bcount);
+				req.getParameter("CT_ASSIGNED_EXEC"));
 
 		
 		if(ret>0){
@@ -115,7 +114,7 @@ public class ConfirmedTrainingController {
 	}
 	
 	@RequestMapping(value = "/saveCT2")
-	public ModelAndView saveCTFormService2(@ModelAttribute("ct") ConfirmedTraining ct){
+	public ModelAndView saveCTFormService2(@ModelAttribute("ct") ConfirmedTraining ct) throws ParseException{
 		System.out.println("insertion Save----------");
 		
 		int VER_ID = ct.getVER_ID();
@@ -142,10 +141,8 @@ public class ConfirmedTrainingController {
 		
 		int CT_TRAINING_SOURCE = ct.getCT_TRAINING_SOURCE();
 		String CT_NOMINATION_FILE = ct.getCT_NOMINATION_FILE();
-		int CT_HIDE_STATUS = ct.getCT_HIDE_STATUS();
 		String CT_ASSIGNED_EXEC = ct.getCT_ASSIGNED_EXEC();
-		
-		int CT_BUTTON_COUNT = ct.getCT_BUTTON_COUNT();
+
 		
 		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
 		int ret = cts.createNewCT(VER_ID, VEN_ID, TT_ID, OS_ID, CT_PROJECT_ID,
@@ -153,7 +150,7 @@ public class ConfirmedTrainingController {
 				CT_PROPOSED_END_DATE, CT_PROPOSED_START_TIME, CT_PROPOSED_END_TIME,CT_PROPOSED_LOCATION, 
 				CT_ROOM_NO, LDTM_ID, CT_PROJECT_TRAINING_SPOC,CT_APPROX_NO_EMPLOYEES, 
 				CT_REQUESTOR_EMPLOYEE_ID, CT_APPROVED_FILE_LOCATION, CT_TRAINING_SOURCE,
-			  CT_NOMINATION_FILE, CT_ASSIGNED_EXEC, CT_HIDE_STATUS,CT_BUTTON_COUNT );
+			  CT_NOMINATION_FILE, CT_ASSIGNED_EXEC );
 
 
 		if(ret>0){

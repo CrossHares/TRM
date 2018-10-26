@@ -1,5 +1,8 @@
 package ct.dao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,16 +20,26 @@ public class ConfirmedTrainingServices {
 				String CT_PROPOSED_START_TIME, String CT_PROPOSED_END_TIME,String CT_PROPOSED_LOCATION, 
 				String CT_ROOM_NO , int LDTM_ID, String CT_PROJECT_TRAINING_SPOC, int CT_APPROX_NO_EMPLOYEES, 
 				String CT_REQUESTOR_EMPLOYEE_ID,String CT_APPROVED_FILE_LOCATION, int CT_TRAINING_SOURCE, 
-				String CT_NOMINATION_FILE, String CT_ASSIGNED_EXEC, int CT_HIDE_STATUS, 
-				int CT_BUTTON_COUNT )
+				String CT_NOMINATION_FILE, String CT_ASSIGNED_EXEC ) throws ParseException
 		{
+			//format date input
+			Date javareq = new SimpleDateFormat("yyyy-MM-dd").parse(CT_DATE_REQUESTED);
+			String oraclereq = new SimpleDateFormat("dd/MMM/yyyy").format(javareq);
+			
+			Date javaStartDate = new SimpleDateFormat("yyyy-MM-dd").parse(CT_DATE_REQUESTED);
+			String oracleStartDate = new SimpleDateFormat("dd/MMM/yyyy").format(javaStartDate);
+			
+			Date javaEndDate = new SimpleDateFormat("yyyy-MM-dd").parse(CT_DATE_REQUESTED);
+			String oraclEndDate = new SimpleDateFormat("dd/MMM/yyyy").format(javaEndDate);
+			
+			//insert into database
 			int ret = temp.update("insert into CONFIRMED_TRAINING values(gTRFno.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
 					new Object[]{VER_ID, VEN_ID, TT_ID, OS_ID, CT_PROJECT_ID,
-							CT_TECHNOLOGY,CT_TRAINING_OBJECTIVES, CT_DATE_REQUESTED, CT_PROPOSED_START_DATE, 
-							CT_PROPOSED_END_DATE, CT_PROPOSED_START_TIME, CT_PROPOSED_END_TIME,CT_PROPOSED_LOCATION, 
+							CT_TECHNOLOGY,CT_TRAINING_OBJECTIVES, oraclereq, oracleStartDate, 
+							oraclEndDate, CT_PROPOSED_START_TIME, CT_PROPOSED_END_TIME,CT_PROPOSED_LOCATION, 
 							CT_ROOM_NO, LDTM_ID, CT_PROJECT_TRAINING_SPOC,CT_APPROX_NO_EMPLOYEES, 
 							CT_REQUESTOR_EMPLOYEE_ID, CT_APPROVED_FILE_LOCATION, CT_TRAINING_SOURCE,
-						  CT_NOMINATION_FILE, CT_ASSIGNED_EXEC, CT_HIDE_STATUS,CT_BUTTON_COUNT });
+						  CT_NOMINATION_FILE, CT_ASSIGNED_EXEC });
 			return ret;
 		}
 	
@@ -216,12 +229,12 @@ public class ConfirmedTrainingServices {
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public static void main(String args[])
+	public static void main(String args[]) throws ParseException
 	{
 		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
 		//4 ints, 10 strings, 1 int, 1 string, 1 int, 2 strings, 1 int, 2 strings, 2 ints
 		
-		//cts.createNewCT(1,101,1,1,"w","w","w","15-May-15","15-May-15","15-May-15","w","w","w","w",1,"w",1,"w","w",1,"w","w",1,1);
+		//cts.createNewCT(1,101,1,1,"w","w","w","2015-05-15","2015-05-15","2015-05-15","w","w","w","w",1,"w",1,"w","w",1,"w","w",1,1);
 		
 	}
 }

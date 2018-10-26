@@ -38,21 +38,10 @@
 	
 <table class = "data">
 	<tr>
-<th>Vendor ID </th>
-<th>Training Type ID</th>
-<th>Project ID</th>
 <th>Technology</th>
-<th>Training Objectives</th>
 <th>Start Date</th>
-<th>End Date </th>
-<th>Start Time</th>
-<th>End Time </th>
 <th>Location</th>
-<th>Learning Development TM ID  </th>
-<th>Room </th>
 <th>Project SPOC</th>
-<th>Class Size  </th>
-<th>Requester ID </th>
 <th>Training Source </th>
 <th>Assigned Executive</th>
 
@@ -61,21 +50,10 @@
 </tr>
 		<c:forEach var = "ctrain" items = "${ct}">
 				<tr>
-				<td>${ctrain.getVEN_ID()}</td>
-				<td>${ctrain.getTT_ID()}</td>
-				<td>${ctrain.getCT_PROJECT_ID()}</td>
 				<td>${ctrain.getCT_TECHNOLOGY()}</td>
-				<td>${ctrain.getCT_TRAINING_OBJECTIVES()}</td>
 				<td>${ctrain.getCT_PROPOSED_START_DATE()}</td>
-				<td>${ctrain.getCT_PROPOSED_END_DATE()}</td>
-				<td>${ctrain.getCT_PROPOSED_START_TIME()}</td>
-				<td>${ctrain.getCT_PROPOSED_END_TIME()}</td>
 				<td>${ctrain.getCT_PROPOSED_LOCATION()}</td>
-				<td>${ctrain.getCT_ROOM_NO()}</td>
-				<td>${ctrain.getLDTM_ID()}</td>
 				<td>${ctrain.getCT_PROJECT_TRAINING_SPOC()}</td>
-				<td>${ctrain.getCT_APPROX_NO_EMPLOYEES()}</td>
-				<td>${ctrain.getCT_REQUESTOR_EMPLOYEE_ID()}</td>
 				<td>${ctrain.getCT_TRAINING_SOURCE()}</td>
 				<td>${ctrain.getCT_ASSIGNED_EXEC()}</td>
 
