@@ -78,8 +78,10 @@
 										<td>${trm.getTechnology()}</td>
 										<td>${trm.getProposedEndDate()}</td>
 										<td>${trm.getDateRequested()}</td>
-										
-										<td></td>
+										<!-- Status Bar -->
+										<td>
+											
+										</td>
 										<td></td>
 									</tr>
 								</c:forEach>

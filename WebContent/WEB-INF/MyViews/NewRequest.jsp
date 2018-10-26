@@ -58,54 +58,71 @@
 						<div class="card-title-border">
 							<h2 class="card-title">New Requests</h2>
 						</div>
-						<table id="newRequestsTable" class="table">
-							<thead>
-								<tr>
-									<th scope="col"></th>
-									<th scope="col"></th>
-									<th scope="col"></th>
-									<th scope="col"></th>
-								</tr>
-							</thead>
-							<tbody>
-							         <tr>
-								          <td>Project ID:</td>    
-								          <td><input type="text"CT_PROJECT_ID"/></td>  
-								         <td>Technology:</td>    
-								          <td><input type="text"CT_TECHNOLOGY" /></td>  
-							         </tr> 
-							         <tr>
-								         <td>Training Objectives:</td>    
-								          <td><input type="text"CT_TRAINING_OBJECTIVES" /></td>  
-								         <td>Date Requested:</td>    
-								          <td><input type="text"CT_DATE_REQUESTED" /></td>  
-							         </tr> 
-							         <tr>
-								         
-								          <td>Proposed End Date:</td>    
-								          <td><input type="date"CT_PROPOSED_END_DATE"  /></td>  
-								          <td>Proposed Training Location:</td>    
-								          <td><input type="text"CT_PROPOSED_LOCATION"  /></td> 
-								     </tr> 
-							         <tr> 
-								         <td>Training Approx number of Employees:</td>    
-								         <td><input type="text" CT_APPROX_NO_EMPLOYEES"  /></td> 
-								         <td>Training Employee Requester ID:</td>    
-								         <td><input type="text"CT_REQUESTOR_EMPLOYEE_ID"  /></td>  
-								     </tr> 
-							         <tr>    
-								         <td>Training Approved File Location:</td>    
-								         <td><input type="text"CT_APPROVED_FILE_LOCATION"  /></td>  
-								         <td>Project Training SPOC:</td>    
-								         <td><input type="text"CT_APPROVED_FILE_LOCATION"  /></td>  
-							          </tr>
-							          <tr>
-							            
-							          <td colspan="4"><input type="submit" value="Submit" /></td>    
-							         </tr>    
-								
-							</tbody>
-						</table>
+						<form method="post" action="send">
+							<table id="newRequestsTable" class="table">
+								<thead>
+									<tr>
+										<th scope="col"></th>
+										<th scope="col"></th>
+										<th scope="col"></th>
+										<th scope="col"></th>
+									</tr>
+								</thead>
+								<tbody>
+								         <tr>
+									          <td>Project ID:</td>    
+									          <td><input type="text"name="CT_PROJECT_ID"/></td>  
+									         <td>Technology:</td>    
+									          <td><input type="text"name="CT_TECHNOLOGY" /></td>  
+								         </tr> 
+								         <tr>
+									         <td>Training Objectives:</td>    
+									          <td><input type="text"name="CT_TRAINING_OBJECTIVES" /></td>  
+									         <td>Date Requested:</td>
+									         <script>
+									         $(document).ready(function() {
+									        	    var date = new Date();
+	
+									        	    var day = date.getDate();
+									        	    var month = date.getMonth() + 1;
+									        	    var year = date.getFullYear();
+	
+									        	    if (month < 10) month = "0" + month;
+									        	    if (day < 10) day = "0" + day;
+	
+									        	    var today = year + "-" + month + "-" + day;       
+									        	    $("#theDate").attr("value", today);
+									        	});
+									         </script>    
+									          <td><input type="date" name="CT_DATE_REQUESTED" id="theDate" readonly="true"/></td>  
+								         </tr> 
+								         <tr>
+									         
+									          <td>Proposed End Date:</td>    
+									          <td><input type="date" name="CT_PROPOSED_END_DATE"  /></td>  
+									          <td>Proposed Training Location:</td>    
+									          <td><input type="text"name="CT_PROPOSED_LOCATION"  /></td> 
+									     </tr> 
+								         <tr> 
+									         <td>Training Approx number of Employees:</td>    
+									         <td><input type="text" name="CT_APPROX_NO_EMPLOYEES"  /></td> 
+									         <td>Training Employee Requester ID:</td>    
+									         <td><input type="text"name="CT_REQUESTOR_EMPLOYEE_ID"  /></td>  
+									     </tr> 
+								         <tr>    
+									         <td>Training Approved File Location:</td>    
+									         <td><input type="text"name="CT_APPROVED_FILE_LOCATION"  /></td>  
+									         <td>Project Training SPOC:</td>    
+									         <td><input type="text"name="CT_PROJECT_SPOC"  /></td>  
+								          </tr>
+								          <tr>
+								            
+								          <td colspan="4"><input type="submit" value="Submit" /></td>    
+								         </tr>    
+									
+								</tbody>
+							</table>
+						</form>
 					</div>
 				</div>
 			</div>
