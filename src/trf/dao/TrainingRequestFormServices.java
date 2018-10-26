@@ -19,21 +19,8 @@ public class TrainingRequestFormServices {
 			String dateRequested, String proposedEndDate, String projectSPOC, int appxEmployees, String requestorEmpID,
 			String fileLocation, int trainingSource)
 	{
-		int ret = temp.update("insert into TRAINING_REQUEST_FORM values(gTRFNo.nextval,?,?,?,?,NULL,?,?,?,NULL,?,NULL,NULL,NULL,NULL,NULL,?,?,?,?,?,NULL,NULL,NULL,NULL)",
+		int ret = temp.update("insert into TRAINING_REQUEST_FORM values(gTRFNo.nextval,?,?,?,1,?,?,?,?,NULL,?,NULL,NULL,NULL,NULL,NULL,?,?,?,?,?,NULL,NULL,NULL,NULL)",
 				new Object[]{verID, venID, ttID, trfProjectID, technology, trainingObjectives, dateRequested, proposedEndDate, projectSPOC, appxEmployees,
-						requestorEmpID, fileLocation, trainingSource});
-		return ret;
-		
-	}
-	
-	public int insertNewTRFLocation(int verID, int venID, int ttID, String trfProjectID, 
-			String technology, String trainingObjectives, 
-			String dateRequested, String proposedEndDate, String location, String projectSPOC,
-			int appxEmployees, String requestorEmpID,
-			String fileLocation, int trainingSource)
-	{
-		int ret = temp.update("insert into TRAINING_REQUEST_FORM values(gTRFNo.nextval,?,?,?,?,NULL,?,?,?,NULL,?,NULL,NULL,NULL,?,NULL,?,?,?,?,?,NULL,NULL,NULL,NULL)",
-				new Object[]{verID, venID, ttID, trfProjectID, technology, trainingObjectives, dateRequested, proposedEndDate, location, projectSPOC, appxEmployees,
 						requestorEmpID, fileLocation, trainingSource});
 		return ret;
 		
@@ -47,13 +34,18 @@ public class TrainingRequestFormServices {
 		return list;
 	}
 	
-	//Read by RID
-		public List<TrainingRequestForm> readTRFByRId(String requestorID) 
-		{
-			
-			List<TrainingRequestForm> list = temp.query("select * from TRAINING_REQUEST_FORM where TRF_REQUESTOR_EMPLOYEE_ID = ?",new Object[] {requestorID},new TrainingRequestFormMapper());
-			return list;
-		}
+	public int updateStatusInProgress(int trfID,int osID)
+	{
+		int ret = temp.update("update IN_PROGRESS_TRAINING set OS_ID=? where TRF_ID=?", new Object[]{osID,trfID});
+		
+		return ret;
+	}
+	public List<TrainingRequestForm> readTRFByRId(String requestorID) 
+	{
+		
+		List<TrainingRequestForm> list = temp.query("select * from TRAINING_REQUEST_FORM where TRF_REQUESTOR_EMPLOYEE_ID = ?",new Object[] {requestorID},new TrainingRequestFormMapper());
+		return list;
+	}
 	
 	//Update
 	

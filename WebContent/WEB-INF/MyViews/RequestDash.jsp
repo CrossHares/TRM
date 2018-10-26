@@ -3,6 +3,7 @@
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -30,7 +31,11 @@
 <link href="${bootstrapCSS}" rel="stylesheet" />
 <script src="${jqueryJS}"></script>
 <script src="${bootstrapJS}"></script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel = "stylesheet" type = "text/css" href = "/WEB-INF/resources/style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Requestor Dashboard | TRM</title>
 </head>
 <body>
@@ -80,9 +85,19 @@
 										<td>${trm.getDateRequested()}</td>
 										<!-- Status Bar -->
 										<td>
+											<div class="progress">
+												<div class="progress-bar progressbar-TE" role="progressbar"
+													aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+													style="width: 100%;">${trm.getOsID()}</div>
+											</div>
+										</td>
+										<!-- Actions-->
+										<td>
+											<c:if test='${trm.getOsID()==1}'>
+												<a data-toggle="modal" data-target="#editRequest" href="editRequest/${trm.getTrfID()}">Edit a Request</a>
+											</c:if>
 											
 										</td>
-										<td></td>
 									</tr>
 								</c:forEach>
 
@@ -93,6 +108,15 @@
 			</div>
 		</div>
 	</div>
+			<div id="editRequest" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+			      		<div class="modal-footer">
+			        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      		</div>
+			    	</div>
+			  	</div>
+			</div>
 
 	<!-- Footer -->
 	<div>

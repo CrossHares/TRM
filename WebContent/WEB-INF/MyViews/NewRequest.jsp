@@ -43,84 +43,133 @@
 		<nav id="nav-links" class="nav nav-pills nav-fill bg-dashboard-dark">
 		<li class="nav-item"><a class="nav-link" href="RequestDash"><i
 				class="fas fa-desktop"></i> Home</a></li>
-		<li class="nav-item"><a class="nav-link nav-active" href="NewRequest"><i
-				class="fas fa-chalkboard-teacher"></i> New Training Request</a></li>
+		<li class="nav-item"><a class="nav-link nav-active"
+			href="NewRequest"><i class="fas fa-chalkboard-teacher"></i> New
+				Training Request</a></li>
 		</nav>
 	</div>
 	<div class="container-fluid main-content bg-dashboard-darkblue">
 
 		<div class="row">
 
-			
+
 			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-body table-scrollable info-card">
 						<div class="card-title-border">
 							<h2 class="card-title">New Requests</h2>
 						</div>
-						<form method="post" action="send">
-							<table id="newRequestsTable" class="table">
-								<thead>
-									<tr>
-										<th scope="col"></th>
-										<th scope="col"></th>
-										<th scope="col"></th>
-										<th scope="col"></th>
-									</tr>
-								</thead>
-								<tbody>
-								         <tr>
-									          <td>Project ID:</td>    
-									          <td><input type="text"name="CT_PROJECT_ID"/></td>  
-									         <td>Technology:</td>    
-									          <td><input type="text"name="CT_TECHNOLOGY" /></td>  
-								         </tr> 
-								         <tr>
-									         <td>Training Objectives:</td>    
-									          <td><input type="text"name="CT_TRAINING_OBJECTIVES" /></td>  
-									         <td>Date Requested:</td>
-									         <script>
-									         $(document).ready(function() {
-									        	    var date = new Date();
-	
-									        	    var day = date.getDate();
-									        	    var month = date.getMonth() + 1;
-									        	    var year = date.getFullYear();
-	
-									        	    if (month < 10) month = "0" + month;
-									        	    if (day < 10) day = "0" + day;
-	
-									        	    var today = year + "-" + month + "-" + day;       
-									        	    $("#theDate").attr("value", today);
-									        	});
-									         </script>    
-									          <td><input type="date" name="CT_DATE_REQUESTED" id="theDate" readonly="true"/></td>  
-								         </tr> 
-								         <tr>
-									         
-									          <td>Proposed End Date:</td>    
-									          <td><input type="date" name="CT_PROPOSED_END_DATE"  /></td>  
-									          <td>Proposed Training Location:</td>    
-									          <td><input type="text"name="CT_PROPOSED_LOCATION"  /></td> 
-									     </tr> 
-								         <tr> 
-									         <td>Training Approx number of Employees:</td>    
-									         <td><input type="text" name="CT_APPROX_NO_EMPLOYEES"  /></td> 
-									         <td>Training Employee Requester ID:</td>    
-									         <td><input type="text"name="CT_REQUESTOR_EMPLOYEE_ID"  /></td>  
-									     </tr> 
-								         <tr>    
-									         <td>Training Approved File Location:</td>    
-									         <td><input type="text"name="CT_APPROVED_FILE_LOCATION"  /></td>  
-									         <td>Project Training SPOC:</td>    
-									         <td><input type="text"name="CT_PROJECT_SPOC"  /></td>  
-								          </tr>
-								          <tr>
-								            
-								          <td colspan="4"><input type="submit" value="Submit" /></td>    
-								         </tr>    
-									
-								</tbody>
+						<form action="savenew">
+							<table>
+								<tr>
+									<td>Vertical ID :</td>
+									<td><select name="verID">
+											<option value="NONE" label="--- Select an Option ---" />
+											<option value="1" label="Banking and Financial Services" />
+											<option value="2" label="Healthcare and Life Sciences" />
+											<option value="3" label="Insurance" />
+											<option value="4" label="Retail and Logistics" />
+											<option value="5" label="Telecom, Media, and Tech" />
+											<option value="6" label="Manufacturing" />
+									</select></td>
+								</tr>
+								<tr>
+									<td>Vendor ID :</td>
+									<td><input type="text" name="venID" /></td>
+								</tr>
+								<tr>
+									<td>Training Type ID :</td>
+									<td><select name="ttID">
+											<option value="NONE" label="--- Select an Option ---" />
+											<option value="1" label="Classroom" />
+											<option value="2" label="Virtual Classroom" />
+											<option value="3" label="Webex" />
+									</select></td>
+								</tr>
+								<tr>
+									<td>Project ID:</td>
+									<td><input type="text" name="trfProjectID" required
+										size="30" height="40" /></td>
+								</tr>
+								<tr>
+									<td>Technology:</td>
+									<td><input type="text" name="technology" required
+										size="30" height="40" /></td>
+								</tr>
+								<tr>
+									<td>Training Objectives:</td>
+									<td><input type="text" name="trainingObjectives" required
+										size="30" height="40" /></td>
+								</tr>
+								<tr>
+									<td>Date Requested:</td>
+									<script>
+										$(document)
+												.ready(
+														function() {
+															var date = new Date();
+
+															var day = date
+																	.getDate();
+															var month = date
+																	.getMonth() + 1;
+															var year = date
+																	.getFullYear();
+
+															if (month < 10)
+																month = "0"
+																		+ month;
+															if (day < 10)
+																day = "0" + day;
+
+															var today = year
+																	+ "-"
+																	+ month
+																	+ "-" + day;
+															$("#theDate").attr(
+																	"value",
+																	today);
+														});
+									</script>
+									<td><input id="theDate" type="date" name="dateRequested"
+										readonly="true" required size="30" height="40" /></td>
+								</tr>
+								<tr>
+									<td>Proposed End Date:</td>
+									<td><input type="date" name="proposedEndDate" required
+										size="30" height="40" /></td>
+								</tr>
+								<tr>
+									<td>Project SPOC:</td>
+									<td><input type="text" name="projectSPOC" required
+										size="30" height="40" /></td>
+								</tr>
+								<tr>
+									<td>Approx. No. Employees:</td>
+									<td><input type="text" name="appxEmployees" required
+										size="30" height="40" /></td>
+								</tr>
+								<tr>
+									<td>Requestor Employee ID:</td>
+									<td><input type="text" name="requestorEmpID" required
+										size="30" height="40" /></td>
+								</tr>
+								<tr>
+									<td>File Location:</td>
+									<td><input type="text" name="fileLocation" size="30"
+										height="40" /></td>
+								</tr>
+								<tr>
+									<td>Training Source:</td>
+									<td><input type="radio" name="trainingSource" value="1"
+										size="30" height="40" />Internal<br> <input type="radio"
+										name="trainingSource" value="2" size="30" height="40" />Development
+										Team<br> <input type="radio" name="trainingSource"
+										value="3" size="30" height="40" />Vendor</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><input type="submit" value="save form" /></td>
 							</table>
 						</form>
 					</div>
@@ -137,3 +186,5 @@
 
 </body>
 </html>
+
+

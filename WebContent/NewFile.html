@@ -1,0 +1,6 @@
+	public List<TrainingRequestForm> readTRFByRId(String requestorID) 
+		{
+			
+			List<TrainingRequestForm> list = temp.query("select * from TRAINING_REQUEST_FORM where TRF_REQUESTOR_EMPLOYEE_ID = ?",new Object[] {requestorID},new TrainingRequestFormMapper());
+			return list;
+		}

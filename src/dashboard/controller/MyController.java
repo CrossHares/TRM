@@ -1,6 +1,9 @@
 package dashboard.controller;
 
 
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,20 +49,64 @@ public class MyController
 		return "login"; //returning view name
 	}
 	
-	@RequestMapping(value="/send")
-	public ModelAndView saveRequest(HttpServletRequest req, HttpServletResponse res)
+	@RequestMapping(value="/f")
+	public String showForm()
 	{
-		System.out.println("Here");
-		TrainingRequestFormServices objRF = new TrainingRequestFormServices();
-		int ret = objRF.insertNewTRFLocation(1,1,1,req.getParameter("CT_PROJECT_ID"), req.getParameter("CT_TECHNOLOGY"),
-				req.getParameter("CT_TRAINING_OBJECTIVES"), req.getParameter("CT_DATE_REQUESTED"),
-				req.getParameter("CT_PROPOSED_END_DATE"), req.getParameter("CT_PROPOSED_LOCATION"),
-				req.getParameter("CT_PROJECT_SPOC"),
-				Integer.parseInt(req.getParameter("CT_APPROX_NO_EMPLOYEES")),req.getParameter("CT_REQUESTOR_EMPLOYEE_ID"),
-				req.getParameter("CT_APPROVED_FILE_LOCATION"), 0);
-		
-			return new ModelAndView("redirect:/RequestDash");
+		return "requestForm"; //returning view name
+	}
 	
+	
+	@RequestMapping(value="/savenew")
+	public ModelAndView createConfirmService(HttpServletRequest req, HttpServletResponse res) throws ParseException {
+		TrainingRequestFormServices objRF = new TrainingRequestFormServices();
+		Date javaRD = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("dateRequested"));
+		Date javaPD= new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("proposedEndDate"));
+		String oracleRD = new SimpleDateFormat("dd/MMM/yyyy").format(javaRD);
+		String oraclePD = new SimpleDateFormat("dd/MMM/yyyy").format(javaPD);
+		int ret = objRF.insertNewTRF(Integer.parseInt(req.getParameter("verID").trim()),Integer.parseInt(req.getParameter("venID")),
+									Integer.parseInt(req.getParameter("ttID")),req.getParameter("trfProjectID"),req.getParameter("technology"),
+									req.getParameter("trainingObjectives"),oracleRD,oraclePD,
+									req.getParameter("projectSPOC"),Integer.parseInt(req.getParameter("appxEmployees")),req.getParameter("requestorEmpID"),
+									req.getParameter("fileLocation"),Integer.parseInt(req.getParameter("trainingSource")));
+		if (ret > 0) {
+			return new ModelAndView("redirect:/RequestDash");
+		} else {
+			return new ModelAndView("error");
+		}
+	}
+	
+	@RequestMapping(value="/editRequest/{trfID}")
+	public ModelAndView updateService(@PathVariable int trfID) {
+		TrainingRequestFormServices objRF = new TrainingRequestFormServices();
+		TrainingRequestForm trf = objRF.fetchTrainingRequest(trfID);
+		return new ModelAndView("editRequest", "command", trf);
+	}
+	
+
+	@RequestMapping(value="/saveEditRequest")
+	public ModelAndView updateConfirmService(HttpServletRequest req, HttpServletResponse res) throws ParseException {
+		TrainingRequestFormServices objRF = new TrainingRequestFormServices();
+		Date javaRD = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("dateRequested"));
+		Date javaPD= new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("proposedEndDate"));
+		int ret;
 		
+		if (Integer.parseInt(req.getParameter("venID")) > 0) {
+			ret = objRF.updateTRF(Integer.parseInt(req.getParameter("trfID")), Integer.parseInt(req.getParameter("verID")),Integer.parseInt(req.getParameter("venID")),
+					Integer.parseInt(req.getParameter("ttID")),req.getParameter("trfProjectID"),req.getParameter("technology"),
+					req.getParameter("trainingObjectives"), javaRD, javaPD,
+					req.getParameter("projectSPOC"),Integer.parseInt(req.getParameter("appxEmployees")),req.getParameter("requestorEmpID"),
+					req.getParameter("fileLocation"),Integer.parseInt(req.getParameter("trainingSource")));
+		} else {
+			ret = objRF.updateTRF(Integer.parseInt(req.getParameter("trfID")), Integer.parseInt(req.getParameter("verID")),
+					Integer.parseInt(req.getParameter("ttID")),req.getParameter("trfProjectID"),req.getParameter("technology"),
+					req.getParameter("trainingObjectives"), javaRD, javaPD,
+					req.getParameter("projectSPOC"),Integer.parseInt(req.getParameter("appxEmployees")),req.getParameter("requestorEmpID"),
+					req.getParameter("fileLocation"),Integer.parseInt(req.getParameter("trainingSource")));
+		}
+		if (ret > 0) {
+			return new ModelAndView("redirect:/RequestDash");
+		} else {
+			return new ModelAndView("error");
+		}
 	}
 }
