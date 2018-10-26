@@ -1,0 +1,24 @@
+html{
+    height: 100%;
+}
+
+body{
+    min-height: 100%;
+}
+
+.bg{
+    background: url('../media/loginbackground.jpg');
+    height: 100vh;
+    background-size: 100%;
+   
+
+}
+.form-container{
+    border: 1px solid #ffffff;
+    padding: 40px 30px;
+    margin-top: 25vh;
+    box-shadow: 15px 20px 49px -6px rgba(38,11,38,1);
+}
+h1,label{
+    color: #fff;
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_144">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.0">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/aopalliance.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/aspectj-1.6.10-src.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/aspectjweaver.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/jstl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/jstl-1.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/jstl-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/jstl-impl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/org-apache-commons-logging.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-aop-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-aspects-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-beans-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-build-src-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-context-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-context-support-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-core-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-expression-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-framework-bom-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-instrument-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-instrument-tomcat-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-jdbc-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-jms-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-orm-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-oxm-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-struts-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-test-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-tx-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-web-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-webmvc-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-webmvc-portlet-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/sqldeveloper/jdbc/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Additional JARs/json-simple-1.1.1.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
