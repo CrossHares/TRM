@@ -15,17 +15,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.dashboard_firstTable.FirstTableService;
+import dao.dashboard_firstTable.SecondTable;
 import trf.dao.TrainingRequestForm;
 import trf.dao.TrainingRequestFormServices;
 
 @Controller
 public class MyController
 {
-	
+	//for testing purposes set to request dash
 	@RequestMapping(value="/")
 	public String showDashboard()
 	{
-		return "AdminDashboard"; //returning view name
+		return "RequestDash"; //returning view name
 	}
 	
 	@RequestMapping(value="/RequestDash")
@@ -84,9 +86,9 @@ public class MyController
 	
 	@RequestMapping(value="/confirmTRFDetails/{trfID}")
 	public ModelAndView confirmService(@PathVariable int trfID) {
-		TrainingRequestFormServices objRF = new TrainingRequestFormServices();
-		TrainingRequestForm trf = objRF.fetchTrainingRequest(trfID);
-		return new ModelAndView("confirmTRFDetails", "command", trf);
+		FirstTableService objRF = new FirstTableService();
+		SecondTable iptrf = objRF.getSecondTableDataByTRFID(trfID);
+		return new ModelAndView("confirmTRFDetails", "command", iptrf);
 	}
 	
 	@RequestMapping(value="/nomineeUpload/{trfID}")
@@ -117,6 +119,21 @@ public class MyController
 					req.getParameter("fileLocation"),Integer.parseInt(req.getParameter("trainingSource")));
 		}
 		if (ret > 0) {
+			return new ModelAndView("redirect:/RequestDash");
+		} else {
+			return new ModelAndView("error");
+		}
+	}
+	
+	@RequestMapping(value="/confirmTraining")
+	public ModelAndView confirmTrainingService(HttpServletRequest req, HttpServletResponse res) throws ParseException {
+		TrainingRequestFormServices objRF = new TrainingRequestFormServices();
+		FirstTableService objIPRF = new FirstTableService();
+		int ret = 0;
+		
+	   ret = objRF.updateTRFOS_ID(Integer.parseInt(req.getParameter("trfID")), 3);
+		
+	   if (ret > 1) {
 			return new ModelAndView("redirect:/RequestDash");
 		} else {
 			return new ModelAndView("error");

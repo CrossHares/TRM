@@ -40,7 +40,7 @@ public class TrainingRequestFormServices {
 		
 		return ret;
 	}
-	
+		
 	public List<TrainingRequestForm> readTRFByRId(String requestorID) 
 	{
 		
@@ -101,6 +101,14 @@ public class TrainingRequestFormServices {
 	public TrainingRequestForm fetchTrainingRequest(int trfID) {
 		TrainingRequestForm obj = (TrainingRequestForm) temp.queryForObject("select * from TRAINING_REQUEST_FORM where TRF_ID=?", new Object[]{trfID}, new TrainingRequestFormMapper());
 		return obj;
+	}
+	
+	public int updateTRFOS_ID(int trfID, int osID)
+	{
+		
+		int ret = temp.update("update TRAINING_REQUEST_FORM set OS_ID = ? where TRF_ID=?", new Object[]{osID, trfID});
+		ret += temp.update("update IN_PROGRESS_TRAINING set OS_ID = ? where TRF_ID = ?", new Object[]{osID, trfID});
+		return ret;
 	}
 	
 	//Delete
