@@ -15,6 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dao.Login.Login;
 import dao.Login.LoginServices;
+import dao.ldtm.LDTeam;
+import dao.ldtm.LDTeamServices;
+import dao.vendor.Vendor;
+import dao.vendor.VendorServices;
+import dao.vendoremp.VendorEmp;
+import dao.vendoremp.VendorEmpServices;
 import dao.Charts.ChartServices;
 import dao.DashboardTables.Executives;
 import dao.DashboardTables.NewRequestTable;
@@ -89,6 +96,290 @@ public class MyController{
 				
 		return "AdminDashboard";
 	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/showAllVendors")
+	public String showAllVEndorsService(ModelMap vendorMap, HttpServletRequest req)
+	{
+		VendorServices objVendorService = new VendorServices();
+		List<Vendor> listOfVendors = objVendorService.showAllVendorService();
+		vendorMap.addAttribute("vendorList", listOfVendors);
+		req.getSession().putValue("loginMessage", " ");
+		return "showAllVendors";
+	}
+	
+	@RequestMapping(value="/insertVendorForm")
+	public String inserVendorService()
+	{
+		return "insertVendorForm";
+	}
+	
+	
+	@RequestMapping(value="/saveVendor")
+	public ModelAndView saveVendorFormService(HttpServletRequest req, HttpServletResponse res)
+	{
+		VendorServices objVendorService = new VendorServices();
+		int ret = objVendorService.insertNewVendorService(req.getParameter("venName"),req.getParameter("venLocation"), 
+					req.getParameter("venAddress"), req.getParameter("venSpoc"), req.getParameter("venPhone"), 
+					req.getParameter("venEmail"));  
+		if(ret>0){
+			req.getSession().putValue("loginMessage", " ");
+			return new ModelAndView("redirect:/showAllVendors");
+		}
+		else
+		{
+			String message = req.getParameter("venEmail") + " Already Exists";
+			req.getSession().putValue("loginMessage", message);
+			return new ModelAndView("insertVendorForm");
+		}
+	}
+	
+	
+	@RequestMapping(value="/deleteVendor/{venId}")
+	public ModelAndView deleteEmployeeService(@PathVariable Integer venId)
+	{
+		VendorServices objVendorService = new VendorServices();
+		int ret = objVendorService.deleteVendorService(venId);
+		if(ret>0)
+		{
+			return new ModelAndView("redirect:/showAllVendors");
+		}
+		return new ModelAndView("welcome");
+	}
+	
+	
+	@RequestMapping(value="/editVendorSave")
+	public ModelAndView editEmployeeService(@ModelAttribute("vendor") Vendor vendor)
+	{
+		VendorServices objVendorService = new VendorServices();
+		// Call Update
+		objVendorService.updateVendorService(vendor.getVenId(), vendor.getVenName(), vendor.getVenLocation(), 
+				vendor.getVenAddress(), vendor.getVenSpoc(), vendor.getVenPhone(), vendor.getVenEmail());
+		return new ModelAndView("redirect:/showAllVendors");
+	}
+	
+	
+	@RequestMapping(value="/editVendor/{venId}")
+	public ModelAndView editEmployeeService(@PathVariable Integer venId)
+	{
+		VendorServices objVendorService = new VendorServices();
+		Vendor vendor = objVendorService.getVendor(venId);
+		return new ModelAndView("vendorEditForm", "command", vendor);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/showVendorEmp")
+	public String showVendorEmpService(ModelMap vendorEmpMap, HttpServletRequest req)
+	{
+		VendorEmpServices vendEmpObj = new VendorEmpServices();
+		List<VendorEmp> listOfVendorEmps = vendEmpObj.showAllVendorEmployeeService();
+		vendorEmpMap.addAttribute("vendorEmpList", listOfVendorEmps);
+		req.getSession().putValue("loginMessage", " ");
+		return "showVendorEmp";
+	}
+	
+	@RequestMapping(value="/insertVendorEmp")
+	public String insertVendorEmpService()
+	{
+		return "insertVendorEmp";
+	}
+	
+	
+	@RequestMapping(value="/saveVendorEmp")
+	public ModelAndView saveVendorEmployeeFormService(HttpServletRequest req, HttpServletResponse res)
+	{
+		VendorEmpServices vendEmpObj = new VendorEmpServices();
+		int ret = vendEmpObj.insertNewVendorEmployeeService(Integer.parseInt(req.getParameter("venId")), req.getParameter("vEmpName"), 
+				req.getParameter("vEmpEmail"), req.getParameter("vEmpLocation"), req.getParameter("vEmpAddress"), 
+				req.getParameter("vEmpPhone"), req.getParameter("vEmpSpecialty"));
+				
+		if(ret>0){
+			req.getSession().putValue("loginMessage", " ");
+			return new ModelAndView("redirect:/showVendorEmp");
+		}
+		else
+		{
+			String message = req.getParameter("vEmpEmail") + " Already Exists";
+			req.getSession().putValue("loginMessage", message);
+			return new ModelAndView("insertVendorEmp");
+		}
+	}
+	
+	
+	@RequestMapping(value="/deleteVendorEmployee/{vEmpId}")
+	public ModelAndView deleteVendorEmployeeService(@PathVariable Integer vEmpId)
+	{
+		VendorEmpServices vendEmpObj = new VendorEmpServices();
+		int ret = vendEmpObj.deleteVendorEmployeeService(vEmpId); 
+		if(ret>0)
+		{
+			return new ModelAndView("redirect:/showVendorEmp");
+		}
+		return new ModelAndView("welcome");
+	}
+	
+	
+	@RequestMapping(value="/editVendorEmployeeSave")
+	public ModelAndView editVendorEmployeeService(@ModelAttribute("venEmp") VendorEmp venEmp)
+	{
+		VendorEmpServices vendEmpObj = new VendorEmpServices();
+		// Call Update
+		vendEmpObj.updateVendorEmployeeService(venEmp.getvEmpId(), venEmp.getVenId(), venEmp.getvEmpName(), venEmp.getvEmpEmail(), 
+				venEmp.getvEmpLocation(), venEmp.getvEmpAddress(), venEmp.getvEmpPhone(), venEmp.getvEmpSpecialty());
+		return new ModelAndView("redirect:/showVendorEmp");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/showLDTrainingMember")
+	public String showLDTeamMembersService(ModelMap ldtmMap, HttpServletRequest req)
+	{
+		LDTeamServices objLDTeamService = new LDTeamServices();
+		List<LDTeam> listOfLDTMembers = objLDTeamService.showAllTrainingMemberService();
+		ldtmMap.addAttribute("ldtmList", listOfLDTMembers);
+		req.getSession().putValue("loginMessage", " ");
+		return "showLDTrainingMember";
+	}
+	
+	
+	@RequestMapping(value="/insertLDTrainingMembers")
+	public String inserLDTeamMembersService()
+	{
+		return "insertLDTrainingMembers";
+	}
+	
+	
+	@RequestMapping(value="/saveLDTMember")
+	public ModelAndView saveLDTeamMembersService(HttpServletRequest req, HttpServletResponse res)
+	{
+		LDTeamServices objLDTeamService = new LDTeamServices();
+		int ret = objLDTeamService.insertNewTrainingMemberService(req.getParameter("ldtmName"), req.getParameter("ldtmLocation"), 
+				req.getParameter("ldtmEmail"), req.getParameter("ldtmPhone"), req.getParameter("techSpecialty"));
+		if(ret>0)
+		{
+			req.getSession().putValue("loginMessage", " ");
+			return new ModelAndView("redirect:/showLDTrainingMember");
+		}
+		else
+		{
+			String message = req.getParameter("ldtmEmail") + " Already Exists";
+			req.getSession().putValue("loginMessage", message);
+			return new ModelAndView("insertLDTrainingMembers");
+		}
+	}
+	
+	
+	@RequestMapping(value="/deleteLDTrainingMember/{ldtmId}")
+	public ModelAndView deleteLDTeamMembersService(@PathVariable Integer ldtmId)
+	{
+		LDTeamServices objLDTeamService = new LDTeamServices();
+		int ret = objLDTeamService.deleteTrainingMemberService(ldtmId);
+		if(ret>0)
+		{
+			return new ModelAndView("redirect:/showLDTrainingMember");
+		}
+		return new ModelAndView("welcome");
+	}
+	
+	
+	@RequestMapping(value="/saveEditLDTMember")
+	public ModelAndView editLDTMemberService(@ModelAttribute("member") LDTeam member)
+	{
+		LDTeamServices objLDTeamService = new LDTeamServices();
+		// Call Update
+		objLDTeamService.updateTrainingMemberService(member.getLdtmId(), member.getLdtmName(), member.getLdtmLocation(), member.getLdtmEmail(),  member.getLdtmPhone(),  member.getTechSpecialty());
+		return new ModelAndView("redirect:/showLDTrainingMember");
+	}
+	
+	
+	@RequestMapping(value="/editLDTMember/{ldtmId}")
+	public ModelAndView editLDTeamService(@PathVariable Integer ldtmId)
+	{
+		LDTeamServices objLDTeamService = new LDTeamServices();
+		LDTeam member = objLDTeamService.getTrainingMember(ldtmId); 
+		return new ModelAndView("editLDTrainingMembers", "command", member);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value="/move/{trfID}")
 	public ModelAndView moveThis(@PathVariable Integer trfID){
