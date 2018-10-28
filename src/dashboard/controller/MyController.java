@@ -82,6 +82,19 @@ public class MyController
 		return new ModelAndView("editRequest", "command", trf);
 	}
 	
+	@RequestMapping(value="/confirmTRFDetails/{trfID}")
+	public ModelAndView confirmService(@PathVariable int trfID) {
+		TrainingRequestFormServices objRF = new TrainingRequestFormServices();
+		TrainingRequestForm trf = objRF.fetchTrainingRequest(trfID);
+		return new ModelAndView("confirmTRFDetails", "command", trf);
+	}
+	
+	@RequestMapping(value="/nomineeUpload/{trfID}")
+	public ModelAndView uploadService(@PathVariable int trfID) {
+		TrainingRequestFormServices objRF = new TrainingRequestFormServices();
+		TrainingRequestForm trf = objRF.fetchTrainingRequest(trfID);
+		return new ModelAndView("nomineeUpload", "command", trf);
+	}
 
 	@RequestMapping(value="/saveEditRequest")
 	public ModelAndView updateConfirmService(HttpServletRequest req, HttpServletResponse res) throws ParseException {

@@ -32,10 +32,14 @@
 <script src="${jqueryJS}"></script>
 <script src="${bootstrapJS}"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel = "stylesheet" type = "text/css" href = "/WEB-INF/resources/style.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/WEB-INF/resources/style.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Requestor Dashboard | TRM</title>
 </head>
 <body>
@@ -88,15 +92,26 @@
 											<div class="progress">
 												<div class="progress-bar progressbar-TE" role="progressbar"
 													aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-													style="width: 100%;">${trm.getOsID()}</div>
+													style="width: ${(trm.getOsID()/9)*100}%;">${trm.getOsID()}</div>
+
 											</div>
 										</td>
 										<!-- Actions-->
 										<td>
-											<c:if test='${trm.getOsID()==1}'>
-												<a data-toggle="modal" data-target="#editRequest" href="editRequest/${trm.getTrfID()}">Edit a Request</a>
-											</c:if>
-											
+											<c:choose>
+												<c:when test='${trm.getOsID()==1}'>
+													<a data-toggle="modal" data-target="#editRequest"
+														href="editRequest/${trm.getTrfID()}">Edit a Request</a>
+												</c:when>
+												<c:when test='${trm.getOsID()==2}'>
+													<a data-toggle="modal" data-target="#confirmDetails"
+														href="confirmTRFDetails/${trm.getTrfID()}">Confirm Details</a>
+												</c:when>
+												<c:when test='${trm.getOsID()==3}'>
+													<a data-toggle="modal" data-target="#s"
+														href="nomineeUpload/${trm.getTrfID()}">Upload Nominees</a>
+												</c:when>
+											</c:choose>
 										</td>
 									</tr>
 								</c:forEach>
@@ -108,16 +123,24 @@
 			</div>
 		</div>
 	</div>
-			<div id="editRequest" class="modal fade" role="dialog">
-				<div class="modal-dialog">
-					<div class="modal-content">
-			      		<div class="modal-footer">
-			        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			      		</div>
-			    	</div>
-			  	</div>
+	<div id="editRequest" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
 			</div>
-
+		</div>
+	</div>
+	<div id="confirmDetails" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Footer -->
 	<div>
 		<footer class="bg-dashboard-dark"> <span>&copy;
