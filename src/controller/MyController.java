@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dao.Login.Login;
 import dao.Login.LoginServices;
+import dao.Login.Requesterdao;
 import dao.ldtm.LDTeam;
 import dao.ldtm.LDTeamServices;
 import dao.vendor.Vendor;
@@ -51,30 +52,34 @@ public class MyController{
 
 		LoginServices obj = new LoginServices();
 		Login myLogin = obj.isUserValid(user, pass);
+		Requesterdao reqLogin = obj.isRequesterValid(user, pass);
+		
+		System.out.println(myLogin);
+		
+		
 		if (myLogin != null) {
 
-			if (myLogin.getRole_name().equalsIgnoreCase("MANAGER")) {
+			if(myLogin.getRole_name().equalsIgnoreCase("MANAGER") || myLogin.getRole_name().equalsIgnoreCase("LD SPOC")) {
 				
 				req.getSession().putValue("loginmessage", myLogin.getUserName());
-				return new ModelAndView("redirect:/RequestDashboard");
-			}
-			else if (myLogin.getRole_name().equalsIgnoreCase("LD SPOC"))
-			{
-				req.getSession().putValue("loginmessage", myLogin.getUserName());
 				return new ModelAndView("redirect:/AdminDashboard");
+			} else if (myLogin.getRole_name().equalsIgnoreCase("EXECUTOR")) {
+				req.getSession().putValue("loginmessage", myLogin.getUserName());
+				return new ModelAndView("redirect:/Execdashboard");
+			}else {
+				
+				return new ModelAndView("redirect:/RequstorDash");						//Requester Dashboard
 			}
-			else if (myLogin.getRole_name().equalsIgnoreCase("EXECUTOR"))
-			{
-				req.getSession().putValue("loginmessage", myLogin.getRole_name());
-				return new ModelAndView("redirect:/ExecutiveDashboard");
-			}
-			else {
-				return new ModelAndView("redirect:/");
-			}
-		} else {
-			return new ModelAndView("redirect:/");
-		}
+	}else if (reqLogin != null) {
+		
+		req.getSession().putValue("loginmessage", reqLogin.getRequester_name());
+		return new ModelAndView("redirect:/RequestDash");
+	}else {
+		
+		return new ModelAndView("redirect:/");
 	}
+
+}
 	
 	@RequestMapping(value="/AdminDashboard")
 	public String showAdminDashboard(ModelMap DashboardTablesMap){
