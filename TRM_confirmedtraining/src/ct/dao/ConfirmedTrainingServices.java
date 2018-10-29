@@ -45,10 +45,6 @@ public class ConfirmedTrainingServices {
 			return ret;
 		}
 	
-	public int createCT(){
-		int ret = 0;
-		return ret;
-	}
 	//Read
 	public List<ConfirmedTraining> readCT()
 	{
@@ -207,8 +203,13 @@ public class ConfirmedTrainingServices {
 					new Object[]{ctProposedEndTime, ctID});
 			return ret;
 		}
-	
-	
+		
+	//get trf id numbers that aren't in confirmed training but exist in in_progress_training
+	public List<String> getUnusedIDs(){
+		List<String> list =(List<String>) temp.queryForList("SELECT TRF_ID FROM IN_PROGRESS_TRAINING WHERE TRF_ID NOT IN (SELECT I.TRF_ID FROM IN_PROGRESS_TRAINING I JOIN CONFIRMED_TRAINING C ON I.TRF_ID = C.TRF_ID)", String.class);		
+		return list;
+	}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
 	//Delete
@@ -234,6 +235,8 @@ public class ConfirmedTrainingServices {
 	public static void main(String args[]) throws ParseException
 	{
 		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
+
+		System.out.println(cts.getUnusedIDs().size());
 		//4 ints, 10 strings, 1 int, 1 string, 1 int, 2 strings, 1 int, 2 strings, 2 ints
 		
 		//cts.updateCT("32A", "Phoenix, Arizona", 3, 1);

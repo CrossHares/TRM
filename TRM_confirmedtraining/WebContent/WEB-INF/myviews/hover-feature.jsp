@@ -177,6 +177,8 @@
 
   <!--Open the Modal -->
 <a data-toggle="modal" data-target="#newCT"  href = "insertct">Insert</a>
+<br>
+ <a href = "insertct">Insert</a>
 
   <!-- The Modal -->
   <div class="modal" id="newCT">

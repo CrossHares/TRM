@@ -15,6 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ct.dao.ConfirmedTraining;
 import ct.dao.ConfirmedTrainingServices;
+import ct.dao.Trf;
+import ct.dao.TrfServices;
+import ldtm.dao.LDTeam;
+import ldtm.dao.LDTeamServices;
 
 
 @Controller
@@ -78,17 +82,22 @@ public class ConfirmedTrainingController {
 	}
 	//insert ct
 	@RequestMapping(value = "/insertct")
-	public String insertCTService(){
-		System.out.println("insertion");
+	public String insertCTService(ModelMap trfmap){
+
+		TrfServices trfs = new TrfServices();
+		List<Trf> trflist = trfs.getAllTrf();
+		trfmap.addAttribute("listofTRF", trflist);
+		
 		return "newconfirmedtraining";
 	}	
 	
+	
 	@RequestMapping(value = "/saveCT")
-	public ModelAndView saveCTFormService2(@ModelAttribute("ct") ConfirmedTraining ct) throws ParseException{
+	public ModelAndView saveCTFormService(@ModelAttribute("ct") ConfirmedTraining ct) throws ParseException{
 		System.out.println("insertion Save----------");
 
-		
 		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
+		
 		int ret = cts.createNewCT(ct.getTRF_ID(), ct.getVER_ID(), ct.getVEN_ID(), ct.getTT_ID(), 
 				ct.getOS_ID(), ct.getCT_PROJECT_ID(),ct.getCT_TECHNOLOGY(),
 				ct.getCT_TRAINING_OBJECTIVES(), ct.getCT_DATE_REQUESTED(), ct.getCT_PROPOSED_START_DATE(), 
