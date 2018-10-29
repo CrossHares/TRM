@@ -20,6 +20,8 @@ import dao.dashboard_firstTable.SecondTable;
 import trf.dao.TrainingRequestForm;
 import trf.dao.TrainingRequestFormServices;
 
+import pkg.TRMEmailAPI;
+
 @Controller
 public class MyController
 {
@@ -134,6 +136,7 @@ public class MyController
 	   ret = objRF.updateTRFOS_ID(Integer.parseInt(req.getParameter("trfID")), 3);
 		
 	   if (ret > 1) {
+	   	new TRMEmailAPI().sendAttachmentEmail("Mark_Gorewicz@syntelinc.com", "excel", "Please fill out carefully", "C:\\Users\\MG5050949\\Downloads\\Java-Nominiees.xlsx");
 			return new ModelAndView("redirect:/RequestDash");
 		} else {
 			return new ModelAndView("error");

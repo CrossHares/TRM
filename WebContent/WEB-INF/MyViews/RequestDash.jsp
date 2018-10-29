@@ -108,7 +108,7 @@
 														href="confirmTRFDetails/${trm.getTrfID()}">Confirm Details</a>
 												</c:when>
 												<c:when test='${trm.getOsID()==3}'>
-													<a data-toggle="modal" data-target="#s"
+													<a data-toggle="modal" data-target="#upload"
 														href="nomineeUpload/${trm.getTrfID()}">Upload Nominees</a>
 												</c:when>
 											</c:choose>
@@ -133,6 +133,15 @@
 		</div>
 	</div>
 	<div id="confirmDetails" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="upload" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-footer">
