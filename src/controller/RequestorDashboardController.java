@@ -129,7 +129,7 @@ public class RequestorDashboardController
 		FirstTableService objIPRF = new FirstTableService();
 		int ret = 0;
 		
-	   ret = objRF.updateTRFOS_ID(Integer.parseInt(req.getParameter("trfID")), 3);
+	   ret = objRF.updateTRFOS_ID(Integer.parseInt(req.getParameter("trfID")), 4);
 		
 	   if (ret > 1) {
 			return new ModelAndView("redirect:/RequestDash");
@@ -138,8 +138,4 @@ public class RequestorDashboardController
 		}
 	}
 	
-	@RequestMapping(value="/nomineeUpload/{trfID}")
-	public ModelAndView uploadService(@PathVariable int trfID) {
-		return new ModalAndView("redirect:/RequestDash");
-	}
 }
