@@ -38,7 +38,14 @@
 			 <form action="saveCT"> 
 			 
 			<table >   
-			          
+			          <tr><td>TRF_ID:</td>    
+			          <td> <select name ="TRF_ID" >
+			               <option>1</option>
+			               <option>2</option>
+			               <option>3</option>
+			               <option>4</option>
+			               <option>5</option>
+			           </select></td>  </tr>
 			         <tr>  <!-- first row -->
 			         <td>Technology:</td>    
 			          <td> <select name ="CT_TECHNOLOGY" >
@@ -106,9 +113,9 @@
 			    
 			          <td>Vendor ID:</td>    
 			          <td><select  name = "VEN_ID" >
-			               <option>1</option>
-			               <option>2</option>
-			               <option>3</option>
+			               <option>101</option>
+			               <option>102</option>
+			               <option>103</option>
 			           </select></td>  
 			         </tr>  
 			          
