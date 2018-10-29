@@ -103,9 +103,9 @@
          <tr>
                   <td>Learning Development Training Member:</td>    
           <td> <form:select path = "LDTM_ID">
-               <option>Liji Shynu</option>
-               <option>Majesh Rajput</option>
-               <option>John Doe</option>
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
            </form:select></td> 
            
             <td>Training Source:</td>    
