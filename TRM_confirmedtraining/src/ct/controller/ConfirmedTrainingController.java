@@ -81,7 +81,7 @@ public class ConfirmedTrainingController {
 		return "newconfirmedtraining";
 	}	
 	
-	@RequestMapping(value = "/saveCT") 
+	@RequestMapping(value = "/saveCT2") 
 	public ModelAndView saveCTFormService(HttpServletRequest req,HttpServletResponse res) throws ParseException{
 		ConfirmedTrainingServices obj = new ConfirmedTrainingServices();
 		
@@ -116,52 +116,29 @@ public class ConfirmedTrainingController {
 		}
 	}
 	
-//	@RequestMapping(value = "/saveCT2")
-//	public ModelAndView saveCTFormService2(@ModelAttribute("ct") ConfirmedTraining ct) throws ParseException{
-//		System.out.println("insertion Save----------");
-//		
-//		int VER_ID = ct.getVER_ID();
-//		int VEN_ID= ct.getVEN_ID();
-//		int TT_ID = ct.getTT_ID();
-//		int OS_ID = ct.getOS_ID();
-//		
-//		String CT_PROJECT_ID = ct.getCT_PROJECT_ID();
-//		String CT_TECHNOLOGY = ct.getCT_TECHNOLOGY();
-//		String CT_TRAINING_OBJECTIVES = ct.getCT_TRAINING_OBJECTIVES();
-//		String CT_DATE_REQUESTED = ct.getCT_DATE_REQUESTED();
-//		String CT_PROPOSED_START_DATE =  ct.getCT_PROPOSED_START_DATE();
-//		String CT_PROPOSED_END_DATE = ct.getCT_PROPOSED_END_DATE();
-//		String CT_PROPOSED_START_TIME = ct.getCT_PROPOSED_START_TIME();
-//		String CT_PROPOSED_END_TIME = ct.getCT_PROPOSED_END_TIME();
-//		String CT_PROPOSED_LOCATION = ct.getCT_PROPOSED_LOCATION();
-//		
-//		String CT_PROJECT_TRAINING_SPOC = ct.getCT_PROJECT_TRAINING_SPOC();
-//		int CT_APPROX_NO_EMPLOYEES = ct.getCT_APPROX_NO_EMPLOYEES();
-//		String CT_REQUESTOR_EMPLOYEE_ID = ct.getCT_REQUESTOR_EMPLOYEE_ID();
-//		String CT_APPROVED_FILE_LOCATION = ct.getCT_APPROVED_FILE_LOCATION();
-//		String CT_ROOM_NO = ct.getCT_ROOM_NO();
-//		int LDTM_ID = ct.getLDTM_ID();
-//		
-//		int CT_TRAINING_SOURCE = ct.getCT_TRAINING_SOURCE();
-//		String CT_NOMINATION_FILE = ct.getCT_NOMINATION_FILE();
-//		String CT_ASSIGNED_EXEC = ct.getCT_ASSIGNED_EXEC();
-//
-//		
-//		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
-//		int ret = cts.createNewCT(VER_ID, VEN_ID, TT_ID, OS_ID, CT_PROJECT_ID,
-//				CT_TECHNOLOGY,CT_TRAINING_OBJECTIVES, CT_DATE_REQUESTED, CT_PROPOSED_START_DATE, 
-//				CT_PROPOSED_END_DATE, CT_PROPOSED_START_TIME, CT_PROPOSED_END_TIME,CT_PROPOSED_LOCATION, 
-//				CT_ROOM_NO, LDTM_ID, CT_PROJECT_TRAINING_SPOC,CT_APPROX_NO_EMPLOYEES, 
-//				CT_REQUESTOR_EMPLOYEE_ID, CT_APPROVED_FILE_LOCATION, CT_TRAINING_SOURCE,
-//			  CT_NOMINATION_FILE, CT_ASSIGNED_EXEC );
-//
-//
-//		if(ret>0){
-//			return new ModelAndView("redirect:/confirmed");
-//		}
-//		else{
-//			return new ModelAndView("error");
-//		}
-//		
-//	}
+	@RequestMapping(value = "/saveCT")
+	public ModelAndView saveCTFormService2(@ModelAttribute("ct") ConfirmedTraining ct) throws ParseException{
+		System.out.println("insertion Save----------");
+
+		
+		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
+		int ret = cts.createNewCT(ct.getTRF_ID(), ct.getVER_ID(), ct.getVEN_ID(), ct.getTT_ID(), 
+				ct.getOS_ID(), ct.getCT_PROJECT_ID(),ct.getCT_TECHNOLOGY(),
+				ct.getCT_TRAINING_OBJECTIVES(), ct.getCT_DATE_REQUESTED(), ct.getCT_PROPOSED_START_DATE(), 
+				ct.getCT_PROPOSED_END_DATE(), ct.getCT_PROPOSED_START_TIME(), 
+				ct.getCT_PROPOSED_END_TIME(), ct.getCT_PROPOSED_LOCATION(), 
+				ct.getCT_ROOM_NO(), ct.getLDTM_ID(), ct.getCT_PROJECT_TRAINING_SPOC(),
+				ct.getCT_APPROX_NO_EMPLOYEES(), ct.getCT_REQUESTOR_EMPLOYEE_ID(), 
+				ct.getCT_APPROVED_FILE_LOCATION(), ct.getCT_TRAINING_SOURCE(),
+				ct.getCT_NOMINATION_FILE(), ct.getCT_ASSIGNED_EXEC() );
+
+
+		if(ret>0){
+			return new ModelAndView("redirect:/confirmed");
+		}
+		else{
+			return new ModelAndView("error");
+		}
+		
+	}
 }

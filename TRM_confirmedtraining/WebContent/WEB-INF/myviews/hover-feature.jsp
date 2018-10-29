@@ -265,9 +265,10 @@
     
           <td>Vendor ID:</td>    
           <td><select  name = "VEN_ID" >
-               <option>1</option>
-               <option>2</option>
-               <option>3</option>
+               <option>101</option>
+               <option>102</option>
+               <option>103</option>
+               <option>104</option>
            </select></td>  
          </tr>  
           
