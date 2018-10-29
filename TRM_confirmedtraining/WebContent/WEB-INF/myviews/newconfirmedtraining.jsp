@@ -48,7 +48,7 @@ document.getElementById("endtime").min = document.getElementById("starttime").in
          <!-- second row -->
          <tr>
           <td>Date Requested:</td>    
-          <td><input type="date" name = "CT_DATE_REQUESTED" /></td>    
+          <td><input type="date" name = "CT_DATE_REQUESTED" required/></td>    
           <td>Training Objectives:</td>    
           <td><textarea name = "CT_TRAINING_OBJECTIVES" /></textarea> </td>      
          </tr> 
@@ -56,10 +56,10 @@ document.getElementById("endtime").min = document.getElementById("starttime").in
           <!-- third row -->
          <tr>
                   <td>Proposed Start Date:</td>    
-          <td><input type="date" id="startdate" name = "CT_PROPOSED_START_DATE"></td>  
+          <td><input type="date" id="startdate" name = "CT_PROPOSED_START_DATE" required></td>  
 
                   <td>Proposed End Date:</td>    
-          <td><input type="date"  id = "enddate" name = "CT_PROPOSED_END_DATE"></td>  
+          <td><input type="date"  id = "enddate" name = "CT_PROPOSED_END_DATE" required></td>  
          </tr> 
          
           <!--fourth row -->
@@ -163,7 +163,7 @@ document.getElementById("endtime").min = document.getElementById("starttime").in
                   <td>Project SPOC:</td>    
           <td><input type="text" name = CT_PROJECT_TRAINING_SPOC"  /></td>  
            <td>Class Size:</td>    
-          <td><input type="number" name = "CT_APPROX_NO_EMPLOYEES"  /></td>  
+          <td><input type="number" name = "CT_APPROX_NO_EMPLOYEES" required/></td>  
          </tr> 
 
 		<!-- row -->

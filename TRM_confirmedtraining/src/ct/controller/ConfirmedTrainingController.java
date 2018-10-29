@@ -81,41 +81,6 @@ public class ConfirmedTrainingController {
 		return "newconfirmedtraining";
 	}	
 	
-	@RequestMapping(value = "/saveCT2") 
-	public ModelAndView saveCTFormService(HttpServletRequest req,HttpServletResponse res) throws ParseException{
-		ConfirmedTrainingServices obj = new ConfirmedTrainingServices();
-		
-		int trfid = Integer.parseInt(req.getParameter("TRF_ID"));
-		int verid = Integer.parseInt(req.getParameter("VER_ID"));
-		int venid = Integer.parseInt(req.getParameter("VEN_ID"));
-		int ttid = Integer.parseInt(req.getParameter("TT_ID"));
-		int osid = Integer.parseInt(req.getParameter("OS_ID"));
-		int ldtm = Integer.parseInt(req.getParameter("LDTM_ID"));
-		int capacity = Integer.parseInt(req.getParameter("CT_APPROX_NO_EMPLOYEES"));
-		int source = Integer.parseInt(req.getParameter("CT_TRAINING_SOURCE"));
-		String ctreq = req.getParameter("CT_DATE_REQUESTED"); //parse to java date
-		String ctstart = req.getParameter("CT_PROPOSED_START_DATE");
-		String ctend = req.getParameter("CT_PROPOSED_END_DATE");
-		
-		int ret = obj.createNewCT(trfid, verid, venid,ttid,osid,
-				req.getParameter("CT_PROJECT_ID"), req.getParameter("CT_TECHNOLOGY"),
-				req.getParameter("CT_TRAINING_OBJECTIVES"), ctreq, ctstart, ctend, 
-				req.getParameter("CT_PROPOSED_START_TIME"), req.getParameter("CT_PROPOSED_END_TIME"), 
-				req.getParameter("CT_PROPOSED_LOCATION"), req.getParameter("CT_ROOM_NO"), ldtm, 
-				req.getParameter("CT_PROJECT_TRAINING_SPOC"), capacity, 
-				req.getParameter("CT_REQUESTOR_EMPLOYEE_ID"), req.getParameter("CT_APPROVED_FILE_LOCATION"), 
-				source, req.getParameter("CT_NOMINATION_FILE"), 
-				req.getParameter("CT_ASSIGNED_EXEC"));
-
-		
-		if(ret>0){
-			return new ModelAndView("redirect:/confirmed");
-		}
-		else{
-			return new ModelAndView("error");
-		}
-	}
-	
 	@RequestMapping(value = "/saveCT")
 	public ModelAndView saveCTFormService2(@ModelAttribute("ct") ConfirmedTraining ct) throws ParseException{
 		System.out.println("insertion Save----------");
