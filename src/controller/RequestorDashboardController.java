@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dao.dashboard_firstTable.FirstTableService;
 import dao.dashboard_firstTable.SecondTable;
+import dashboard.controller.TRMEmailAPI;
 import trf.dao.TrainingRequestForm;
 import trf.dao.TrainingRequestFormServices;
 
@@ -132,6 +133,7 @@ public class RequestorDashboardController
 	   ret = objRF.updateTRFOS_ID(Integer.parseInt(req.getParameter("trfID")), 4);
 		
 	   if (ret > 1) {
+	   	new TRMEmailAPI().sendAttachmentEmail("Mark_Gorewicz@syntelinc.com", "excel", "Please fill out carefully", "C:\\Users\\MG5050949\\Downloads\\Java-Nominiees.xlsx"); //need path
 			return new ModelAndView("redirect:/RequestDash");
 		} else {
 			return new ModelAndView("error");
