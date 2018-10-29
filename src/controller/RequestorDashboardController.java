@@ -28,8 +28,11 @@ public class RequestorDashboardController
 	@RequestMapping(value="/RequestDash")
 	public String showRequestorDashboard(ModelMap rfmap)
 	{
+		Session ses = Session.getDefaultInstance();
+		String reqID = ses.getAttribute("requester_id");
+		
 		TrainingRequestFormServices objRF = new TrainingRequestFormServices();
-		List<TrainingRequestForm> listofRequests = objRF.readTRFByRId("JJ12312");
+		List<TrainingRequestForm> listofRequests = objRF.readTRFByRId(reqID);
 		rfmap.addAttribute("values", listofRequests);
 		return "RequestDash"; //returning view name
 	}
@@ -133,5 +136,10 @@ public class RequestorDashboardController
 		} else {
 			return new ModelAndView("error");
 		}
+	}
+	
+	@RequestMapping(value="/nomineeUpload/{trfID}")
+	public ModelAndView uploadService(@PathVariable int trfID) {
+		return new ModalAndView("redirect:/RequestDash");
 	}
 }
