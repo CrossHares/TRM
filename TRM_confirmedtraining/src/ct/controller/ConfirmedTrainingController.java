@@ -63,10 +63,12 @@ public class ConfirmedTrainingController {
 		System.out.println("Edit Save");
 	
 		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
-		System.out.println("----------------------------------------------------------------------**");;
+		System.out.println("----------------------------------------------------------------------**");
 		//call update function
-		int ret = cts.updateCT(ct.getCT_ROOM_NO(), ct.getCT_APPROVED_FILE_LOCATION(), ct.getLDTM_ID(), ct.getTRF_ID());
+		int ret = cts.updateCT(ct.getCT_ROOM_NO(), ct.getCT_PROPOSED_LOCATION(), ct.getLDTM_ID(), ct.getTRF_ID());
 		
+		System.out.println("trfid = " + ct.getTRF_ID());
+		System.out.println("location = " + ct.getCT_PROPOSED_LOCATION());
 		if(ret>0){
 			return new ModelAndView("redirect:/confirmed");
 		}

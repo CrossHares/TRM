@@ -236,7 +236,7 @@ public class ConfirmedTrainingServices {
 		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
 		//4 ints, 10 strings, 1 int, 1 string, 1 int, 2 strings, 1 int, 2 strings, 2 ints
 		
-		
+		//cts.updateCT("32A", "Phoenix, Arizona", 3, 1);
 //		cts.createNewCT(6,3,102,1,1,"w","w","w","2017-05-12","2017-05-12","2017-05-12","w","w","w","w",1,"w",1,"w","w",1,"w","w");
 		
 	}

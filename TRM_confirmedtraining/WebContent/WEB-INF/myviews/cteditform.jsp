@@ -18,7 +18,11 @@
  <form:form method="POST" action="../TRM_confirmedtraining/editctsave"> 
  
  
- <table >   
+ <table > 
+ 		<tr>
+ 		<td>TRF ID</td>
+ 		<td><form:input path = "TRF_ID" readonly= "true"/></td>
+ 		</tr>  
           
          <tr>  <!-- first row -->
          <td>Technology:</td>    
@@ -66,7 +70,7 @@
                <option>Phoenix</option>
            </form:select>
            <td>Room Number:</td>    
-          <td><form:input path= "CT_ROOM_NO" type="number"/></td>  
+          <td><form:input path= "CT_ROOM_NO" type="text"/></td>  
        </td>  
          </tr> 
          
