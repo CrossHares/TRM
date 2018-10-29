@@ -58,7 +58,7 @@
 		                        "<tr><td>Training SPOC: </td><td>"+data['CT_PROJECT_TRAINING_SPOC']+"</td></tr>"+
 		                        "<tr><td>Class Size: </td><td>"+data['CT_APPROX_NO_EMPLOYEES']+"</td></tr>"+
 		                        "<tr><td>Requester ID: </td><td>"+data['CT_REQUESTOR_EMPLOYEE_ID']+"</td></tr>"+
-		                        "<tr><td>Approved File Location: </td><td>"+data['CT_APPROVED_FILE_LOCATION']+"</td></tr>"+
+		                        "<tr><td>File Location: </td><td>"+data['CT_APPROVED_FILE_LOCATION']+"</td></tr>"+
 		                        "<tr><td>Training Source: </td><td>"+data['CT_TRAINING_SOURCE']+"</td></tr>"+
 		                        "<tr><td>Nomination File: </td><td>"+data['CT_NOMINATION_FILE']+"</td></tr>"+
 		                        "<tr><td>Assigned Executive: </td><td>"+data['CT_ASSIGNED_EXEC']+"</td></tr>"+
@@ -113,10 +113,12 @@
                 	              	
                 });
                 $("a[data-toggle='popover'][class='collapse-btn']").each(function(){
+                	var id = $(this).attr('href');
+           			$(this).attr('href','#');
                 	$(this).attr('data-content',
                 	"<button type=\"button\" onclick=\"alert('Edited!')\">Edit</button>"+
                 	"<br>"+
-                	"<button type=\"button\" onclick=\"alert('Updated!')\">Update</button>"
+                	"<a href=\"deleteCT/"+id+"\" onclick=\"return confirm('Are you sure?')\">Delete</a>"
                 	);
                 });
             });
@@ -165,7 +167,7 @@
 							<td>${ctrain.getCT_TRAINING_SOURCE()}</td>     
 							<td>${ctrain.getCT_ASSIGNED_EXEC()}</td>  
 
-						<td><a class="collapse-btn" href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="">***</a>
+						<td><a class="collapse-btn" href="${ctrain.getTRF_ID()}" data-toggle="popover" data-placement="right" data-html="true" data-content="">***</a>
                     </tr>
                 </c:forEach>
             </table> 
