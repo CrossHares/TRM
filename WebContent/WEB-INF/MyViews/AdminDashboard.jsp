@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,13 +10,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	
 		<!-- CSS & Font Awesome -->
-		<spring:url value="/resources/CSS/bootstrap.min.css"  var="bootstrapCSS"/>
-		<spring:url value="/resources/CSS/custom.css"  var="customCSS"/>
+<%-- 		<spring:url value="/resources/CSS/bootstrap.min.css"  var="bootstrapCSS"/>
+ --%>		<spring:url value="/resources/CSS/custom.css"  var="customCSS"/>
 		<spring:url value="/resources/FontAwesome/fontawesome-free-5.4.1-web/css/all.css" var="fontAwesome" />
 		
-		<!-- JavaScripts -->
+<%-- 		<!-- JavaScripts -->
 		<spring:url value="/resources/JSFiles/bootstrap.min.js"  var="bootstrapJS"/>
-		<spring:url value="/resources/JSFiles/jquery-3.3.1.min.js" var="jqueryJS" />
+		<spring:url value="/resources/JSFiles/jquery-3.3.1.min.js" var="jqueryJS" /> --%>
 		
 		<!-- Images -->
 		<spring:url value="/resources/imgs/logo-sm.png" var="logo"></spring:url>
@@ -24,11 +26,8 @@
 <%-- 		<link href="${bootstrapCSS}" rel="stylesheet" /> --%>
 <%-- 		<script src="${jqueryJS}"></script> --%>
 <%-- 		<script src="${bootstrapJS}"></script> --%>
-		
-<!-- 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-		<!-- Latest compiled and minified CSS -->
+
+	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	
 	<!-- jQuery library -->
@@ -48,7 +47,7 @@
 <!-- Navbar -->
 <div id="nav-wrapper">
 	<nav class="navbar navbar-expand-lg navbar-light bg-dashboard-darkblue"> 
-    	<a class="navbar-brand" href="#"><img src="${logo}" class="logo-corner" alt="logo"/></a>
+    	<a class="navbar-brand" href="#" class="my-2 my-lg-0"><img src="${logo}" class="logo-corner" alt="logo"/></a>
     	<div id="profile">
         	<span>Hello, <%= session.getAttribute("loginmessage") %></span>
       	</div>
@@ -126,15 +125,18 @@
                       </tr>
                     </thead>
                     <tbody>
-                    	<d:forEach var="nrqv" items="${NewRequestTableValues}">
-                    	<d:if test='${nrqv.getHidestatus()==1}'>
-							<tr>
-								<td>${nrqv.getTrfID()}</td> 
-								<td>${nrqv.getTechnology()}</td>
-								<td>${nrqv.getDateRequested()}</td>
-								<td><a href="move/${nrqv.getTrfID()}"><i class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
-							</tr>
-							</d:if>
+						<d:forEach var="dash" items="${NewRequestTableValues}">
+							<d:if test='${dash.getHidestatus()==1}'>
+								<tr>
+									<td><a id="a${dash.getTrfID()}" href="${dash.getTrfID()}" title="Request Form" data-toggle="popover" data-trigger="hover" data-placement="right" data-html="true" data-content="">
+				                        ${dash.getTrfID()}</a></td>
+									<td>${dash.getTechnology()}</td>
+									<td>${dash.getDateRequested()}</td>
+									<td><a data-toggle="modal" data-target="#editRequest" href="editRequest/${dash.getTrfID()}">Edit</a></td>
+									<td><a href="delete/${dash.getTrfID()}" onclick="return confirm('Are you sure? Click OK to continue: ')">Delete</a></td>
+									<td><a href="">Move</a></td>
+								</tr>
+							</d:if>	
 						</d:forEach>
                     </tbody>
                   </table>
@@ -243,7 +245,7 @@
   </div>
   
   
-<div class="modal fade" id="edit1">
+<%-- <div class="modal fade" id="edit1">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-body">
@@ -269,7 +271,7 @@
 		</div>
 	</div>
 </div>
-
+ --%>
 <script>
             function formTable(data,id)
             {
@@ -295,7 +297,7 @@
                 jQuery.ajax({
                     "method": "GET",
 
-                    "url": "TMRRequestHandler?trfId=" +trfId,
+                    "url": "TMRRequestHandlerK?trfId=" +trfId,
                     "success": function(data) {
                         handleLookupAjaxSuccess(data,id);
                     },
@@ -313,7 +315,7 @@
                 formTable(jsonData,id);
             }
             
-            $(document).ready(function(){
+             $(document).ready(function(){
 				$("a[data-toggle='popover']").popover();
                 $("a[data-toggle='popover'][class!='collapse-btn']").each(function(){
                 	var trfId = $(this).attr('href');
@@ -338,14 +340,92 @@
                 	console.log("editm-----"+editf);
                 	$(this).attr('href','#');
                 	$(this).attr('data-content',
-                	"<a data-toggle=\"modal\" data-target=\"" + editm + "\" class=\"btn btn-primary\" href=\""+editf+"\">"+ formName +"</a>"+
+                	"<a  class=\"btn btn-primary\" href=\""+editf+"\">"+ formName +"</a>"+
                 	"<br>"+
                 	"<button type=\"button\" onclick=\"alert('Deleted!')\">Delete</button>"
                 	);
-                });//a data-toggle="modal" href="editform2/${dash.getTrfID()}" data-target="#edit2">edit from 2</a></
+                }); 
+                ///a data-toggle="modal" href="editform2/${dash.getTrfID()}" data-target="#edit2">edit from 2</a></
+                //data-toggle=\"modal\" data-target=\"" + editm + "\"
             });
 
 </script>
+
+<!-- <script>
+            function formTable(data,id)
+            {
+            	console.log(id);
+            	$('#'+id).attr(
+                	{
+                		"data-html":"true",
+                        "data-content": 
+                        "<div>"+
+	                        "<table class=\"class\">"+
+		                        "<tr><td>Request Form ID: </td><td>"+data['trfID']+"</td></tr>"+
+		                        "<tr><td>Vertical: </td><td>"+data['verID']+"</td></tr>"+
+		                        "<tr><td>Training Type: </td><td>"+data['ttID']+"</td></tr>"+
+		                        "<tr><td>Project ID: </td><td>"+data['trfProjectID']+"</td></tr>"+
+		                        "<tr><td>Technology: </td><td>"+data['technology']+"</td></tr>"+
+		                        "<tr><td>Training Objectives: </td><td>"+data['trainingObjectives']+"</td></tr>"+
+		                        "<tr><td>Date Requested: </td><td>"+data['dateRequested']+"</td></tr>"+
+		                        "<tr><td>Proposed End Date: </td><td>"+data['proposedEndDate']+"</td></tr>"+
+		                        "<tr><td>Project Training SPOC: </td><td>"+data['projectSPOC']+"</td></tr>"+
+		                        "<tr><td>Nominations: </td><td>"+data['appxEmployees']+"</td></tr>"+
+		                        "<tr><td>Requestor Employee ID: </td><td>"+data['requestorEmpID']+"</td></tr>"+
+		                        "<tr><td>Vendor File Location: </td><td>"+data['fileLocation']+"</td></tr>"+
+		                        "<tr><td>Training Source: </td><td>"+data['trainingSource']+"</td></tr>"+
+	                        "</table>"+
+                   	 	"</div>"
+                	}); 
+            }
+        	/*
+        	handleLookup function triggers your servlet. 
+        	After the word "url", add a link which is a combination of your servlet name, question mark, and 
+        	your parameter you want to pass to the backend.
+        	*/
+            function handleLookup(trfID,id) {
+                console.log("sending AJAX request to backend Java Servlet");
+
+                jQuery.ajax({
+                    "method": "GET",
+
+                    "url": "TMRRequestHandler?trfID="+trfID,
+                    "success": function(data) {
+                        handleLookupAjaxSuccess(data,id);
+                    },
+                    "error": function(errorData) {
+                        console.log("lookup ajax error");
+                        console.log(errorData);
+                    }
+                })
+            }
+            /*
+        	handleLookupAjaxSuccess function takes your json object, parse it, and call formTable function.
+        	*/
+            function handleLookupAjaxSuccess(data,id) {
+                console.log("lookup ajax successful");
+                console.log(jsonData);
+                var jsonData = JSON.parse(data);
+                
+                formTable(jsonData,id);
+            }
+            /*
+            When your html or jsp file is ready, the code below will call all the functions above.
+ 	            Don't worry about it. Copy and paste the snipplet.
+            */
+            $(document).ready(function(){
+				$("a[data-toggle='popover']").popover();
+                $("a[data-toggle='popover'][class!='collapse-btn']").each(function(){
+                	var trfID = $(this).attr('href');
+                	var id = $(this).attr('id');
+                	handleLookup(trfID,id);
+                	              	
+                });
+                console.log("Hello"); 
+            });
+            
+ 
+        </script>	 -->
 
 </body>
 </html>

@@ -63,12 +63,12 @@ td{
       	</div>
 	</nav>
     <nav id="nav-links" class="nav nav-pills nav-fill bg-dashboard-dark">
-      <li class="nav-item"><a class="nav-link nav-active" href="#"><i class="fas fa-desktop"></i> Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="AdminDashboard"><i class="fas fa-desktop"></i> Home</a></li>
       <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-chalkboard-teacher"></i> Training</a></li>
       <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-wpforms"></i> Request Form</a></li>
       <li class="nav-item"><a class="nav-link" href="reports"><i class="fas fa-chart-bar"></i> Reports</a></li>
       <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-users"></i> Users</a></li>
-      <li class="nav-item"><a class="nav-link" href="showAllVendors"><i class="fas fa-box-open"></i> Vendors</a></li>
+      <li class="nav-item"><a class="nav-link nav-active" href="#"><i class="fas fa-box-open"></i> Vendors</a></li>
       <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-book-reader"></i> Trainers</a></li>
     </nav>
 </div>
@@ -105,12 +105,12 @@ td{
 									<td>${ven.getVenEmail()}</td>
 									<td>
 										<a data-toggle="modal" href="editVendor/${ven.getVenId()}" data-target="#editVen">
-											<img src="/TRMProject/images/editicon.jpg" width=30 height=30/>
+											<i class="far fa-2x fa-arrow-alt-circle-right"></i>
 										</a>
 									</td>
 									<td>
 										<a href="deleteVendor/${ven.getVenId()}" onclick="return confirm('Are you sure?')">
-											<img src="/TRMProject/images/delete.png" width=30 height=30/>
+											<i class="far fa-2x fa-times-circle" style="color: red"></i>
 										</a>
 									</td>
 								</tr>
@@ -143,7 +143,7 @@ td{
       		<div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Edit Vendor</h4>
         </div>
         <div class="modal-body">
         	<form method="POST" action="editVendorSave"> 
