@@ -15,7 +15,7 @@
           </div>
         <div class="modal-body">
 
- <form:form method="POST" action="../editctsave"> 
+ <form:form method="POST" action="../TRM_confirmedtraining/editctsave"> 
  
  
  <table >   

@@ -11,8 +11,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
 		
+		<!-- alternate css -->
+		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		 
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		
@@ -20,7 +23,11 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		
 		<!-- Latest compiled JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+		
+		<!-- previous bootstrap for popup feature -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
         <script>
         	/*
         	formTable function generates the hover block. 
@@ -115,29 +122,18 @@
                 $("a[data-toggle='popover'][class='collapse-btn']").each(function(){
                 	var id = $(this).attr('href');
            			$(this).attr('href','#');
+           			
                 	$(this).attr('data-content',
-                	"<button type=\"button\" onclick=\"alert('Edited!')\">Edit</button>"+
-                	"<br>"+
+                			
+                	"<a href=\"editCT/"+id+"\" data-toggle='modal' data-target='#editCT' >Edit</a>"+
+                			"<br>" +
                 	"<a href=\"deleteCT/"+id+"\" onclick=\"return confirm('Are you sure?')\">Delete</a>"
                 	);
                 });
             });
 
         </script>
-        <script>
-			var date = new Date();
-			y = date.getFullYear();
-			m = date.getMonth() + 1;
-			d = date.getDate();
-			var mindate = y + "-" + m + "-" + d;
-			var maxdate = y + "-"+ (m+2) + "-" + d;
-			
-			document.getElementById("startdate").min = mindate;
-			document.getElementById("startdate").max = maxdate;
-			document.getElementById("enddate").min = document.getElementById("startdate").innerHTML;
-			document.getElementById("endtime").min = document.getElementById("starttime").innerHTML;
-</script>
-        
+               
     </head>
     <body>
 
@@ -174,8 +170,8 @@
           
         </div>
 
- <!-- Insert Section -->
 
+ <!-- Insert Section -->
 
 <div class="container">
 
@@ -186,186 +182,8 @@
   <div class="modal" id="newCT">
     <div class="modal-dialog">
       <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
- 
- 
- <form action="saveCT"> 
- 
-<table >   
-          <tr>
-          <td>Vertical ID</td>
-          <td><select name ="TRF_ID" >
-               <option>1</option>
-               <option>2</option>
-               <option>3</option>
-               <option>4</option>
-               <option>5</option>
-               <option>6</option>
-               <option>7</option>
-               <option>8</option>
-           </select></td>
-          </tr>
-          
-         <tr>  <!-- first row -->
-         <td>Technology:</td>    
-          <td> <select name ="CT_TECHNOLOGY" >
-               <option>Java</option>
-               <option>C++</option>
-               <option>SQL</option>
-               <option>Python</option>
-               <option>Ruby on Rails</option>
-           </select></td>  
-           <td>Requester Employee ID:</td>
-           <td><input type="text" name="CT_REQUESTOR_EMPLOYEE_ID"  /></td> 
-         </tr> 
-         
-         <!-- second row -->
-         <tr>
-          <td>Date Requested:</td>    
-          <td><input type="date" name = "CT_DATE_REQUESTED" required/></td>    
-          <td>Training Objectives:</td>    
-          <td><textarea name = "CT_TRAINING_OBJECTIVES" /></textarea> </td>      
-         </tr> 
-         
-          <!-- third row -->
-         <tr>
-                  <td>Proposed Start Date:</td>    
-          <td><input type="date" id="startdate" name = "CT_PROPOSED_START_DATE" required></td>  
 
-                  <td>Proposed End Date:</td>    
-          <td><input type="date"  id = "enddate" name = "CT_PROPOSED_END_DATE" required></td>  
-         </tr> 
-         
-          <!--fourth row -->
-         <tr>
-                  <td>Proposed Start Time:</td>    
-          <td><input type="time" id = "starttime" name ="CT_PROPOSED_START_TIME"/></td>  
-
-                  <td>Proposed End Time:</td>    
-          <td><input type="time" id = "endtime" name = "CT_PROPOSED_END_TIME"  /></td>  
-         </tr> 
-       
-         <tr>
-                  <td>Proposed Training Location:</td>    
-          <td> 
-           <select name = "CT_PROPOSED_LOCATION">
-               <option>Nashville, Tennessee</option>
-               <option>Memphis, Tennessee</option>
-               <option>Phoenix, Arizona</option>
-               <option>New York, New York</option>
-               <option>Pune, India</option>
-               <option>Chennai, India</option>
-           </select>
-           <td>Room Number:</td>    
-          <td><input type="text" name = "CT_ROOM_NO"  /></td>  
-       </td>  
-         </tr> 
-         
-         <!-- fifth row -->
-         
-         <tr>    
-          <td>Vertical ID:</td>    
-          <td><select name = "VER_ID" >
-               <option>1</option>
-               <option>2</option>
-               <option>3</option>
-           </select></td>  
-    
-          <td>Vendor ID:</td>    
-          <td><select  name = "VEN_ID" >
-               <option>101</option>
-               <option>102</option>
-               <option>103</option>
-               <option>104</option>
-           </select></td>  
-         </tr>  
-          
-            <!-- sixth row -->
-            <tr>    
-          <td>Training Status ID:</td>    
-          <td>
-          <select  name ="TT_ID">
-               <option>1</option>
-               <option>2</option>
-               <option>3</option>
-           </select></td>  
-         <td>Overall Status ID:</td>    
-          <td><select  name ="OS_ID">
-               <option>1</option>
-               <option>2</option>
-               <option>3</option>
-           </select></td>  
-         </tr>   
-         
-         <!-- seventh row -->
-         <tr>
-          <td>Project ID:</td>    
-          <td><select  name = "CT_PROJECT_ID">
-               <option>1</option>
-               <option>2</option>
-               <option>3</option>
-           </select></td>  
-            <td>Assigned Executive:</td>    
-          <td>
-          <select name = "CT_ASSIGNED_EXEC" >
-               <option>Exec1</option>
-               <option>Exec2</option>
-               <option>Exec3</option>
-           </select>
-          </td>  
-         </tr>
-         
-         <!-- eightth row -->
-         <tr>
-                  <td>Learning Development Team Member ID:</td>    
-          <td> <select name = "LDTM_ID">
-               <option>1</option>
-               <option>2</option>
-               <option>3</option>
-           </select></td> 
-           
-            <td>Training Source:</td>    
-          <td> <select name = "CT_TRAINING_SOURCE">
-               <option>1</option>
-               <option>2</option>
-               <option>3</option>
-           </select></td>   
-         </tr> 
-         <tr>
-         
-         <!-- row -->
-         <tr>
-                  <td>Project SPOC:</td>    
-          <td><input type="text" name = CT_PROJECT_TRAINING_SPOC"  /></td>  
-           <td>Class Size:</td>    
-          <td><input type="number" name = "CT_APPROX_NO_EMPLOYEES" required/></td>  
-         </tr> 
-
-		<!-- row -->
-          <tr>
-                  <td>Approved File Location:</td>    
-          <td><input type="text" name ="CT_APPROVED_FILE_LOCATION"  /></td>  
-         </tr> 
-         
-          <tr>
-                  <td>Training Nomination File:</td>    
-          <td><input type="text" name="CT_NOMINATION_FILE"  /></td>  
-  
-          <td> </td>    
-          <td><input type="submit" value="Request Training" /></td>    
-         </tr>    
-        </table>    
-		 </form>  
- 
-        </div>
+		 <!-- populate-->
         
       </div>
     </div>
@@ -374,5 +192,23 @@
 </div>
 
 
+
+ <!-- Edit Section -->
+
+<div class="container">
+
+
+  <!-- The Modal -->
+  <div class="modal" id="editCT">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+		 <!-- populate-->
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
     </body>
 </html>
