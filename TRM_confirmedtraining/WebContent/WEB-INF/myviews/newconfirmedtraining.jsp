@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix = "form" uri="http://www.springframework.org/tags/form" %>
 
@@ -26,11 +27,6 @@ document.getElementById("endtime").min = document.getElementById("starttime").in
 <body>
 
 
-	<div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">New Confirmed Training</h4>
-          </div>
-        <div class="modal-body">
 
  <form action="saveCT"> 
  
@@ -42,6 +38,8 @@ document.getElementById("endtime").min = document.getElementById("starttime").in
                <option>Java</option>
                <option>C++</option>
                <option>SQL</option>
+               <option>Python</option>
+               <option>Ruby on Rails</option>
            </select></td>  
            <td>Requester Employee ID:</td>
            <td><input type="text" name="CT_REQUESTOR_EMPLOYEE_ID"  /></td> 
@@ -146,18 +144,16 @@ document.getElementById("endtime").min = document.getElementById("starttime").in
          <tr>
                   <td>Learning Development Team Member ID:</td>    
           <td> <select name = "LDTM_ID">
-               <option>Liji Shynu</option>
-               <option>Majesh Rajput</option>
-               <option>John Doe</option>
-               <option>Brad Pitt</option>
-               <option>Jane Doe</option>
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
            </select></td> 
            
             <td>Training Source:</td>    
           <td> <select name = "CT_TRAINING_SOURCE">
-               <option>Internal</option>
-               <option>Development Team</option>
-               <option>Vendor</option>
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
            </select></td>   
          </tr> 
          <tr>
@@ -187,9 +183,10 @@ document.getElementById("endtime").min = document.getElementById("starttime").in
         
 		 </form>  
 
-      </div>
-    </div>
+  
 
+    </div>
+  </div>
 
 </body>
 </html>

@@ -14,7 +14,7 @@ public class ConfirmedTrainingServices {
 	JdbcTemplate temp = MyJDBCTemplate.getJdbcTemplate();
 	
 	//Create
-		public int createNewCT(int VER_ID, int VEN_ID, int TT_ID, int OS_ID, 
+		public int createNewCT(int TRF_ID, int VER_ID, int VEN_ID, int TT_ID, int OS_ID, 
 				String CT_PROJECT_ID, String CT_TECHNOLOGY, String CT_TRAINING_OBJECTIVES, 
 				String CT_DATE_REQUESTED, String CT_PROPOSED_START_DATE, String CT_PROPOSED_END_DATE, 
 				String CT_PROPOSED_START_TIME, String CT_PROPOSED_END_TIME,String CT_PROPOSED_LOCATION, 
@@ -23,20 +23,22 @@ public class ConfirmedTrainingServices {
 				String CT_NOMINATION_FILE, String CT_ASSIGNED_EXEC ) throws ParseException
 		{
 			//format date input
+			
 			Date javareq = new SimpleDateFormat("yyyy-MM-dd").parse(CT_DATE_REQUESTED);
 			String oraclereq = new SimpleDateFormat("dd/MMM/yyyy").format(javareq);
 			
-			Date javaStartDate = new SimpleDateFormat("yyyy-MM-dd").parse(CT_DATE_REQUESTED);
+			Date javaStartDate = new SimpleDateFormat("yyyy-MM-dd").parse(CT_PROPOSED_START_DATE);
 			String oracleStartDate = new SimpleDateFormat("dd/MMM/yyyy").format(javaStartDate);
 			
-			Date javaEndDate = new SimpleDateFormat("yyyy-MM-dd").parse(CT_DATE_REQUESTED);
+			Date javaEndDate = new SimpleDateFormat("yyyy-MM-dd").parse(CT_PROPOSED_END_DATE);
 			String oraclEndDate = new SimpleDateFormat("dd/MMM/yyyy").format(javaEndDate);
 			
 			//insert into database
-			int ret = temp.update("insert into CONFIRMED_TRAINING values(gTRFno.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-					new Object[]{VER_ID, VEN_ID, TT_ID, OS_ID, CT_PROJECT_ID,
-							CT_TECHNOLOGY,CT_TRAINING_OBJECTIVES, oraclereq, oracleStartDate, 
-							oraclEndDate, CT_PROPOSED_START_TIME, CT_PROPOSED_END_TIME,CT_PROPOSED_LOCATION, 
+			int ret = temp.update("insert into CONFIRMED_TRAINING values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,null,null)",
+					new Object[]{TRF_ID, VER_ID, VEN_ID, TT_ID, OS_ID, CT_PROJECT_ID,
+							CT_TECHNOLOGY,CT_TRAINING_OBJECTIVES, 
+							oraclereq, oracleStartDate,	oraclEndDate, 
+							CT_PROPOSED_START_TIME, CT_PROPOSED_END_TIME,CT_PROPOSED_LOCATION, 
 							CT_ROOM_NO, LDTM_ID, CT_PROJECT_TRAINING_SPOC,CT_APPROX_NO_EMPLOYEES, 
 							CT_REQUESTOR_EMPLOYEE_ID, CT_APPROVED_FILE_LOCATION, CT_TRAINING_SOURCE,
 						  CT_NOMINATION_FILE, CT_ASSIGNED_EXEC });
@@ -234,7 +236,8 @@ public class ConfirmedTrainingServices {
 		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
 		//4 ints, 10 strings, 1 int, 1 string, 1 int, 2 strings, 1 int, 2 strings, 2 ints
 		
-		//cts.createNewCT(1,101,1,1,"w","w","w","2015-05-15","2015-05-15","2015-05-15","w","w","w","w",1,"w",1,"w","w",1,"w","w",1,1);
+		
+//		cts.createNewCT(6,3,102,1,1,"w","w","w","2017-05-12","2017-05-12","2017-05-12","w","w","w","w",1,"w",1,"w","w",1,"w","w");
 		
 	}
 }

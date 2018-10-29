@@ -8,8 +8,8 @@
 </head>
 <body>
 
+<!-- <a href ="confirmed">Show All Confirmed Trainings</a><br> -->
+
 <a href ="confirmed">Show All Confirmed Trainings</a><br>
-
-
 </body>
 </html>
