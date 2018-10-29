@@ -48,7 +48,7 @@
 			class="navbar navbar-expand-lg navbar-light bg-dashboard-darkblue">
 		<a class="navbar-brand" href="#"><img src="${logo}"></a>
 		<div id="profile">
-			<span>Hello, User!</span>
+			<span>Hello, <%= session.getAttribute("loginmessage") %>!</span>
 		</div>
 		</nav>
 		<nav id="nav-links" class="nav nav-pills nav-fill bg-dashboard-dark">
