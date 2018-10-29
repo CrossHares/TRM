@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,6 +25,9 @@ import org.springframework.web.servlet.ModelAndView;
 import dao.Login.Login;
 import dao.Login.LoginServices;
 import dao.Login.Requesterdao;
+import dao.dashboard_firstTable.FirstTable;
+import dao.dashboard_firstTable.FirstTableService;
+import dao.dashboard_firstTable.SecondTable;
 import dao.ldtm.LDTeam;
 import dao.ldtm.LDTeamServices;
 import dao.vendor.Vendor;
@@ -62,9 +66,11 @@ public class MyController{
 			if(myLogin.getRole_name().equalsIgnoreCase("MANAGER") || myLogin.getRole_name().equalsIgnoreCase("LD SPOC")) {
 				
 				req.getSession().putValue("loginmessage", myLogin.getUserName());
+				req.getSession().putValue("ld_user_email", myLogin.getGet_user_email());
 				return new ModelAndView("redirect:/AdminDashboard");
 			} else if (myLogin.getRole_name().equalsIgnoreCase("EXECUTOR")) {
 				req.getSession().putValue("loginmessage", myLogin.getUserName());
+				req.getSession().putValue("ld_executor_email", myLogin.getGet_user_email());
 				return new ModelAndView("redirect:/Execdashboard");
 			}else {
 				
@@ -73,6 +79,8 @@ public class MyController{
 	}else if (reqLogin != null) {
 		
 		req.getSession().putValue("loginmessage", reqLogin.getRequester_name());
+		req.getSession().putValue("req_email", reqLogin.getRequester_email());
+		req.getSession().putValue("req_id", reqLogin.getRequester_id());
 		return new ModelAndView("redirect:/RequestDash");
 	}else {
 		
@@ -82,11 +90,13 @@ public class MyController{
 }
 	
 	@RequestMapping(value="/AdminDashboard")
-	public String showAdminDashboard(ModelMap DashboardTablesMap){
+	public String showAdminDashboard(ModelMap DashboardTablesMap, HttpServletRequest req){
 		
 		//Table 1 - New Request Table
 		NewRequestTableServices objNewRequestTable = new NewRequestTableServices();
-		List<NewRequestTable> NewRequestTableVals = objNewRequestTable.getFirstTableData();
+		Object emailIds = req.getSession().getAttribute("ld_user_email");
+		String newEmail = emailIds.toString();
+		List<NewRequestTable> NewRequestTableVals = objNewRequestTable.getFirstTableData(newEmail);
 		DashboardTablesMap.addAttribute("NewRequestTableValues", NewRequestTableVals);
 		
 		//Table 2 - New Request Table
@@ -264,27 +274,6 @@ public class MyController{
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping(value="/showLDTrainingMember")
 	public String showLDTeamMembersService(ModelMap ldtmMap, HttpServletRequest req)
 	{
@@ -355,37 +344,7 @@ public class MyController{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@RequestMapping(value="/move/{trfID}")
 	public ModelAndView moveThis(@PathVariable Integer trfID){
 		NewRequestTableServices obj = new NewRequestTableServices();
@@ -459,17 +418,26 @@ public class MyController{
 		return new ModelAndView("error");
 	}
 	
-	@RequestMapping(value="/delete/{trfid}")
-	public ModelAndView deleterow(@PathVariable Integer trfid){
-		System.out.println("In the  delete function");
+	@RequestMapping(value="/delete/{trfID}")
+	public ModelAndView deleterow(@PathVariable Integer trfID){
 		NewRequestTableServices obj = new NewRequestTableServices();
-		int ret = obj.deletebutton(trfid);
+		int ret = obj.deletebutton(trfID);
 		if(ret>0)
-			return new ModelAndView("redirect:/viewFirstTable");
+			return new ModelAndView("redirect:/AdminDashboard");
 		return new ModelAndView("error");
 	}
 	
-	
+	@RequestMapping(value="/deleteMiddle/{trfid}")
+	public ModelAndView deleteMiddle(@PathVariable Integer trfid)
+	{
+		System.out.println("In the  delete function");
+		FirstTableService obj = new FirstTableService();
+		int ret = obj.deletebutton(trfid);
+		if(ret>0)
+			return new ModelAndView("redirect:/AdminDashboard");
+		  
+		  return new ModelAndView("error");
+	}
 	
 	
 	
@@ -526,46 +494,24 @@ public class MyController{
 		return "requestsfromeachvertical";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(value="/viewFirstTable")
+	public String showFirstTable(ModelMap firstTableMap, @PathVariable Object emailID){
+		
+		FirstTableService objFirstTable = new FirstTableService();
+		String emailID2 = emailID.toString();
+		List<FirstTable> firsttable = objFirstTable.getFirstTableData(emailID2);
+		firstTableMap.addAttribute("firstTableValues", firsttable);
+		
+		FirstTableService objSecondTable = new FirstTableService();
+		List<SecondTable> secondTable = objSecondTable.getSecondTableData();
+		firstTableMap.addAttribute("secondTableValues", secondTable);
+		
+		FirstTableService objThirdTable = new FirstTableService();
+		List<SecondTable> thirdTable = objThirdTable.getThirdTableData();
+		firstTableMap.addAttribute("thirdTableValues", thirdTable);
+		
+		return "firstTable";
+	}
 	
 	
 	/*	@RequestMapping(value="/reports")

@@ -41,26 +41,11 @@
 	
 </head>
 <body>
-
 <!-- Navbar -->
-<div id="nav-wrapper">
-	<nav class="navbar navbar-expand-lg navbar-light bg-dashboard-darkblue"> 
-    	<a class="navbar-brand" href="#" class="my-2 my-lg-0"><img src="${logo}" class="logo-corner" alt="logo"/></a>
-    	<div id="profile">
-        	<span>Hello, <%= session.getAttribute("loginmessage") %></span>
-      	</div>
-	</nav>
-    <nav id="nav-links" class="nav nav-pills nav-fill bg-dashboard-dark">
-      <li class="nav-item"><a class="nav-link nav-active" href="#"><i class="fas fa-desktop"></i> Home</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-chalkboard-teacher"></i> Training</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-wpforms"></i> Request Form</a></li>
-      <li class="nav-item"><a class="nav-link" href="reports"><i class="fas fa-chart-bar"></i> Reports</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-users"></i> Users</a></li>
-      <li class="nav-item"><a class="nav-link" href="showAllVendors"><i class="fas fa-box-open"></i> Vendors</a></li>
-      <li class="nav-item"><a class="nav-link" href="showLDTrainingMember"><i class="fas fa-book-reader"></i> Trainers</a></li>
-    </nav>
-</div>
 
+<div class="modal-header">
+</div>
+<div class="modal-body">
 <div class="container-fluid main-content bg-dashboard-darkblue">
 
 
@@ -70,11 +55,15 @@
     		<div class="card-title-border">
             	<h2 class="card-title">${trfID}</h2>
             </div>
-			<a href="../editform1internal/${trfID}">InternalTraining</a>
+			<a href="../editform1internal/${trfID}" onclick="return confirm('Are you sure you want to submit?')" >InternalTraining</a>
 		</div>
 	</div>
 </div>
 	
+</div>
+
+</div>
+<div class="modal-footer">
 </div>
 
 

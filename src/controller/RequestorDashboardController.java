@@ -6,34 +6,38 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.DashboardTables.NewRequestTableServices;
 import dao.dashboard_firstTable.FirstTableService;
 import dao.dashboard_firstTable.SecondTable;
-import dashboard.controller.TRMEmailAPI;
+import pkg.TRMEmailAPI;
 import trf.dao.TrainingRequestForm;
 import trf.dao.TrainingRequestFormServices;
 
 @Controller
+@SessionAttributes
 public class RequestorDashboardController
 {
 	//for testing purposes set to request dash
 	
 	@RequestMapping(value="/RequestDash")
-	public String showRequestorDashboard(ModelMap rfmap)
+	public String showRequestorDashboard(ModelMap rfmap, HttpServletRequest req)
 	{
-		Session ses = Session.getDefaultInstance();
-		String reqID = ses.getAttribute("requester_id");
+		String requester = req.getSession().getAttribute("req_id").toString();
 		
 		TrainingRequestFormServices objRF = new TrainingRequestFormServices();
-		List<TrainingRequestForm> listofRequests = objRF.readTRFByRId(reqID);
+		List<TrainingRequestForm> listofRequests = objRF.readTRFByRId(requester);
 		rfmap.addAttribute("values", listofRequests);
 		return "RequestDash"; //returning view name
 	}
@@ -128,16 +132,20 @@ public class RequestorDashboardController
 	public ModelAndView confirmTrainingService(HttpServletRequest req, HttpServletResponse res) throws ParseException {
 		TrainingRequestFormServices objRF = new TrainingRequestFormServices();
 		FirstTableService objIPRF = new FirstTableService();
+		
+	
+		String email = req.getSession().getAttribute("req_email").toString();
+
+		String f = "../WebContent/resources/Java-Nominiees.xlsx";
 		int ret = 0;
 		
-	   ret = objRF.updateTRFOS_ID(Integer.parseInt(req.getParameter("trfID")), 4);
+	   ret = objRF.updateTRFOS_ID(Integer.parseInt(req.getParameter("trfID")), 3);
 		
 	   if (ret > 1) {
-	   	new TRMEmailAPI().sendAttachmentEmail("Mark_Gorewicz@syntelinc.com", "excel", "Please fill out carefully", "C:\\Users\\MG5050949\\Downloads\\Java-Nominiees.xlsx"); //need path
+		   new TRMEmailAPI().sendAttachmentEmail(email, "Excel", "Please fill out carefully",f);
 			return new ModelAndView("redirect:/RequestDash");
 		} else {
 			return new ModelAndView("error");
 		}
 	}
-	
 }

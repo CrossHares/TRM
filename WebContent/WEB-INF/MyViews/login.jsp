@@ -45,12 +45,12 @@
 		ses.putValue("loginMessage", "");
 	
 	%>
-	
-        <div class="container-fluid bg">
+            <div class="container-fluid bg">
             <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-12"></div>
-                <div class="col-md-4 col-sm-4 col-xs-12 logo-container"><img src="${logo}" class="logo-corner" alt="logo"/></div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
+            	<div class="col-md-4 col-sm-3 col-xs-12"></div>
+                <div class="col-md-3 col-sm-3 col-xs-12 logo-container"><img class = "logo" src="resources/images/logo-md.png" alt="logo"></div>
+                <div class="col-md-1 col-sm-3 col-xs-12"></div>
+                <div class="col-md-3 col-sm-3 col-xs-12 "> 
                  <!-- form start-->
                     <form class="form-container" action="showDashboard" method="post">
                         <h1>Welcome</h1>
@@ -62,7 +62,7 @@
                                 <label for="input-password">Password</label>
                                 <input name="password" type="password" class="form-control" id="input-password" placeholder="Enter Password">
                             </div>
-                                <button type="submit" class="btn btn-success btn-block">Log-in</button>
+                                <button type="submit" class="btn btn-success">Log-in</button>
                     </form>
                 <!--form end-->
                 </div>

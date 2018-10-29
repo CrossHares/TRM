@@ -45,5 +45,8 @@
 	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Spring Jars/spring-webmvc-portlet-3.2.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/sqldeveloper/jdbc/lib/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/Additional JARs/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/TRMAPIs/TRMAPIs/javax.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/TRMAPIs/TRMAPIs/TRMExcelAPI.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel/Desktop/TRMAPIs/TRMAPIs/TRMMailSender.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -70,11 +70,11 @@
   <table >    
         <tr>  
         <td>Start Date</td>    
-         <td><input type="date" name="StartDate" required size="20" height="50"/></td>  
+         <td><input type="date" name="StartDate" id="startdate" required size="20" height="50"/></td>  
          </tr>   
          <tr>    
           <td>End Date </td>   
-          <td><input type="date" name="EndDate" required size="20" height="50"/></td>  
+          <td><input type="date" name="EndDate" id="enddate" required size="20" height="50"/></td>  
          </tr>    
          <tr>    
           <td>Location</td>    
@@ -82,22 +82,34 @@
          </tr>   
          <tr>    
           <td>Start Time</td>    
-          <td><input type="text" name="StartTime" required size="20" height="50"/></td>  
+          <td><input type="time" name="StartTime" required size="20" height="50"/></td>  
          </tr>   
          <tr>    
           <td>End Time</td>    
-          <td><input type="text" name="EndTime" required size="20" height="50"/></td>  
+          <td><input type="time" name="EndTime" required size="20" height="50"/></td>  
          </tr>  
          <tr>    
           <td>Objectives</td>    
-          <td><input type="text" name="Objectives" required size="50" height="70"/></td>  
+          <td><textarea name="Objectives" rows="5" required></textarea></td>  
          </tr> 
              
         
        </table>  
 <br> 
-<input type="submit" value ="Submit"/>
+<input type="submit"  onclick="return confirm('Are you sure regarding all details?')" value ="Submit"/>
 </form>
+<script>
+var date = new Date();
+y = date.getFullYear();
+m = date.getMonth() + 1;
+d = date.getDate();
+var mindate = y + "-" + m + "-" + d;
+var maxdate = y + "-"+ (m+2) + "-" + d;
+document.getElementById("startdate").min = mindate;
+document.getElementById("startdate").max = maxdate;
+document.getElementById("enddate").min = mindate;
+document.getElementById("enddate").max = maxdate;
+</script>
 </div>
 </div>
 

@@ -132,9 +132,8 @@
 				                        ${dash.getTrfID()}</a></td>
 									<td>${dash.getTechnology()}</td>
 									<td>${dash.getDateRequested()}</td>
-									<td><a data-toggle="modal" data-target="#editRequest" href="editRequest/${dash.getTrfID()}">Edit</a></td>
-									<td><a href="delete/${dash.getTrfID()}" onclick="return confirm('Are you sure? Click OK to continue: ')">Delete</a></td>
-									<td><a href="">Move</a></td>
+									<td><a href="delete/${dash.getTrfID()}" onclick="return confirm('Are you sure? Click OK to continue: ')"><i class="far fa-2x fa-times-circle" style="color: red"></i></a></td>
+									<td><a href="move/${dash.getTrfID()}"><i class="far fa-2x fa-arrow-alt-circle-right"></i></a></td>
 								</tr>
 							</d:if>	
 						</d:forEach>
@@ -262,16 +261,24 @@
 		</div>
 	</div>
 </div> 
-
-<div class="modal fade" id="edit3">
+--%>
+<div class="modal fade" id="toShow">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-body">
-			</div>
+			
 		</div>
 	</div>
 </div>
- --%>
+
+<script>
+	function populateContentInModal(e,source,target)
+	{
+		e.preventDefault();
+		var toShow = $(source).attr("href");
+		console.log(toShow);
+		$(target).modal("show").find(".modal-content").load(toShow);
+	}
+</script>
 <script>
             function formTable(data,id)
             {
@@ -281,23 +288,23 @@
                         "data-content": 
                         "<div>"+
 	                        "<table class=\"class\">"+
-		                        "<tr><td>Request ID: </td><td>"+data['trfId']+"</td></tr>"+
-		                        "<tr><td>Ver ID: </td><td>"+data['verId']+"</td></tr>"+
-		                        "<tr><td>Technology: </td><td>"+data['tech']+"</td></tr>"+
-		                        "<tr><td>Training Objectives: </td><td>"+data['object']+"</td></tr>"+
+		                        "<tr><td>Request ID: </td><td>"+data['trfID']+"</td></tr>"+
+		                        "<tr><td>Ver ID: </td><td>"+data['verID']+"</td></tr>"+
+		                        "<tr><td>Technology: </td><td>"+data['technology']+"</td></tr>"+
+		                        "<tr><td>Training Objectives: </td><td>"+data['trainingObjectives']+"</td></tr>"+
 	                        "</table>"+
                    	 	"</div>"
                 	});
                 
             }
             
-            function handleLookup(trfId,id) {
+            function handleLookup(trfID,id) {
                 console.log("sending AJAX request to backend Java Servlet");
 
                 jQuery.ajax({
                     "method": "GET",
 
-                    "url": "TMRRequestHandlerK?trfId=" +trfId,
+                    "url": "TMRRequestHandlerK?trfID=" +trfID,
                     "success": function(data) {
                         handleLookupAjaxSuccess(data,id);
                     },
@@ -318,15 +325,16 @@
              $(document).ready(function(){
 				$("a[data-toggle='popover']").popover();
                 $("a[data-toggle='popover'][class!='collapse-btn']").each(function(){
-                	var trfId = $(this).attr('href');
+                	var trfID = $(this).attr('href');
                 	var id = $(this).attr('id');
-                	handleLookup(trfId,id);
+                	handleLookup(trfID,id);
                 	              	
                 });
                 $("a[data-toggle='popover'][class='collapse-btn']").each(function(){
                 	var btnc = $(this).attr('href');
                 	var arrayB = btnc.split("/");
                 	var editf ="editform"+arrayB[0]+"/"+arrayB[1];
+                	var deletef ="deleteMiddle/"+arrayB[1];
                 	var editm = "#edit" + arrayB[0];
                 	var formName="";
                 	console.log(editm);
@@ -340,18 +348,22 @@
                 	console.log("editm-----"+editf);
                 	$(this).attr('href','#');
                 	$(this).attr('data-content',
-                	"<a  class=\"btn btn-primary\" href=\""+editf+"\">"+ formName +"</a>"+
+                	"<a id=\"populateModal\" class=\"btn btn-primary\" href=\""+editf+"\" data-toggle=\"modal\" data-target=\"#toShow\">"+ formName +"</a>"+
                 	"<br>"+
-                	"<button type=\"button\" onclick=\"alert('Deleted!')\">Delete</button>"
+                	"<a class=\"btn btn-danger\" href=\""+deletef+"\">Delete</button>"
                 	);
                 }); 
-                ///a data-toggle="modal" href="editform2/${dash.getTrfID()}" data-target="#edit2">edit from 2</a></
-                //data-toggle=\"modal\" data-target=\"" + editm + "\"
+                $("#populateModal").on("click",function(event){
+                	populateContentInModal(event,"#populateModal","#toShow")
+                });
+                //<a data-toggle="modal" href="editform2/${dash.getTrfID()}" data-target="#edit2">edit from 2</a></
+               //data-toggle=\"modal\" data-target=\"" + editm + "\"
             });
+           	
 
 </script>
 
-<!-- <script>
+<script>
             function formTable(data,id)
             {
             	console.log(id);
@@ -425,7 +437,7 @@
             });
             
  
-        </script>	 -->
+        </script>	
 
 </body>
 </html>

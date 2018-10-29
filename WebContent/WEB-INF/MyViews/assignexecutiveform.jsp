@@ -73,7 +73,7 @@
 								<option value="${executivename.getLD_USER_NAME()}">${executivename.getLD_USER_NAME()}</option>
 							</c:forEach>
 						</select>
-						<input type="submit" value ="Submit"/>
+						<input type="submit" onclick="return confirm('Are you sure you'd assign this Executive?')" value ="Submit"/>
 					</form>
 			</div>
 		</div>
