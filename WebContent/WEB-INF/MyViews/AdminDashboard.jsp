@@ -7,26 +7,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<title>Admin Dashboard | TRM</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	
-		<!-- CSS & Font Awesome -->
-<%-- 		<spring:url value="/resources/CSS/bootstrap.min.css"  var="bootstrapCSS"/>
- --%>		<spring:url value="/resources/CSS/custom.css"  var="customCSS"/>
-		<spring:url value="/resources/FontAwesome/fontawesome-free-5.4.1-web/css/all.css" var="fontAwesome" />
+	<!-- CSS & Font Awesome -->
+	<spring:url value="/resources/CSS/custom.css"  var="customCSS"/>
+	<spring:url value="/resources/FontAwesome/fontawesome-free-5.4.1-web/css/all.css" var="fontAwesome" />
+	
+	<!-- Images -->
+	<spring:url value="/resources/imgs/logo-sm.png" var="logo"></spring:url>
+	
+	<link href="${customCSS}" rel="stylesheet" />
+	<link href="${fontAwesome}" rel="stylesheet" />
 		
-<%-- 		<!-- JavaScripts -->
-		<spring:url value="/resources/JSFiles/bootstrap.min.js"  var="bootstrapJS"/>
-		<spring:url value="/resources/JSFiles/jquery-3.3.1.min.js" var="jqueryJS" /> --%>
-		
-		<!-- Images -->
-		<spring:url value="/resources/imgs/logo-sm.png" var="logo"></spring:url>
-		
-		<link href="${customCSS}" rel="stylesheet" />
-		<link href="${fontAwesome}" rel="stylesheet" />
-<%-- 		<link href="${bootstrapCSS}" rel="stylesheet" /> --%>
-<%-- 		<script src="${jqueryJS}"></script> --%>
-<%-- 		<script src="${bootstrapJS}"></script> --%>
-
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	
@@ -37,16 +30,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	
 	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-	<title>Admin Dashboard | TRM</title>
-	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>	
 	
 </head>
 <body>
 
 <!-- Navbar -->
 <div id="nav-wrapper">
-	<nav class="navbar navbar-expand-lg navbar-light bg-dashboard-darkblue"> 
+	<nav class="navbar navbar-light bg-dashboard-darkblue"> 
     	<a class="navbar-brand" href="#" class="my-2 my-lg-0"><img src="${logo}" class="logo-corner" alt="logo"/></a>
     	<div id="profile">
         	<span>Hello, <%= session.getAttribute("loginmessage") %></span>

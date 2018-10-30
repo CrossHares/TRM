@@ -30,13 +30,6 @@ a{
     color: white !important;
 }
 
-.navbar-expand-lg {
-	-ms-flex-flow: row nowrap;
-	flex-flow: row nowrap;
-    -ms-flex-pack: start;
-    justify-content: safe !important;
-}
-
 .main-content{
     padding-top: 30px;
     padding-bottom: 30px;

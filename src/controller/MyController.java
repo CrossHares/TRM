@@ -71,7 +71,7 @@ public class MyController{
 			} else if (myLogin.getRole_name().equalsIgnoreCase("EXECUTOR")) {
 				req.getSession().putValue("loginmessage", myLogin.getUserName());
 				req.getSession().putValue("ld_executor_email", myLogin.getGet_user_email());
-				return new ModelAndView("redirect:/Execdashboard");
+				return new ModelAndView("redirect:/ExecDashboard");
 			}else {
 				
 				return new ModelAndView("redirect:/RequstorDash");						//Requester Dashboard
@@ -513,45 +513,5 @@ public class MyController{
 		return "firstTable";
 	}
 	
-	
-	/*	@RequestMapping(value="/reports")
-	public String showReports()
-	{
-		return "reports";
-	}*/
-	
-	
-	/*
-	
-	@RequestMapping(value="/showchartsview")
-	public String viewChartsService(ModelMap SPOCChartDataMap)
-	{
-		ChartServices chartServices = new ChartServices();
-		JSONObject chartData = chartServices.getChartData();
-		SPOCChartDataMap.addAttribute(chartData);
-		
-		return "chartsview";
-	}
-	
-	@RequestMapping(value="/showmodelmapview")
-	public String modelMapTestService(ModelMap SPOCChartDataMap)
-	{
-		ChartServices chartServices = new ChartServices();
-		JSONObject chartData = chartServices.getChartData();
-		SPOCChartDataMap.addAttribute("spocChartData",chartData);
-		System.out.println(SPOCChartDataMap);
-		
-		return "modelmaptest";
-	}
-	
-	@RequestMapping(value="/showchartsfromjsonview")
-	public String viewChartsFromJsonService(ModelMap SPOCChartDataMap)
-	{
-		ChartServices chartServices = new ChartServices();
-		JSONObject chartData = chartServices.getSPOC_CoursesDataFromDb();
-		SPOCChartDataMap.addAttribute("spocChartData",chartData);
-		
-		return "chartsfromjsonview";
-	}*/
 	
 }
