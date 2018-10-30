@@ -124,7 +124,9 @@
            			$(this).attr('href','#');
            			
                 	$(this).attr('data-content',
-                			
+                		
+                	//"<a href=\"editCT/"+id+"\" >Edit</a>"+
+                	//		"<br>" +
                 	"<a href=\"editCT/"+id+"\" data-toggle='modal' data-target='#editCT' >Edit</a>"+
                 			"<br>" +
                 	"<a href=\"deleteCT/"+id+"\" onclick=\"return confirm('Are you sure?')\">Delete</a>"
@@ -178,7 +180,7 @@
   <!--Open the Modal -->
 <a data-toggle="modal" data-target="#newCT"  href = "insertct">Insert</a>
 <br>
- <a href = "insertct">Insert</a>
+<!-- <a href = "insertct">Insert</a> --> 
 
   <!-- The Modal -->
   <div class="modal" id="newCT">

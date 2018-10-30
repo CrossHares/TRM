@@ -105,12 +105,13 @@
          
          <!-- eightth row -->
          <tr>
-                  <td>Learning Development Training Member:</td>    
-          <td> <form:select path = "LDTM_ID">
-               <option>1</option>
-               <option>2</option>
-               <option>3</option>
-           </form:select></td> 
+         
+             <td>Learning Development Team Member:</td>    
+			          <td> <select name = "ldtmName">
+			               <option>LIJI SHYNU</option>
+			               <option>SARAH COLEMAN</option>
+			                <option>MIKE WALLACE</option>
+			           </select></td> 
            
             <td>Training Source:</td>    
           <td> <form:input path = "CT_TRAINING_SOURCE" readonly="true"/></td>   

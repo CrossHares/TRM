@@ -65,16 +65,19 @@ public class ConfirmedTrainingController {
 	}
 	
 	@RequestMapping(value = "/editctsave")
-	public ModelAndView editVendorSaveService(@ModelAttribute("ct") ConfirmedTraining ct){
+	public ModelAndView editVendorSaveService(@ModelAttribute("ct") ConfirmedTraining ct,  @ModelAttribute("ld") LDTeam ld, ModelMap ldmap){
 		System.out.println("Edit Save");
 	
 		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
-		System.out.println("----------------------------------------------------------------------**");
-		//call update function
-		int ret = cts.updateCT(ct.getCT_ROOM_NO(), ct.getCT_PROPOSED_LOCATION(), ct.getLDTM_ID(), ct.getTRF_ID());
 		
-		System.out.println("trfid = " + ct.getTRF_ID());
-		System.out.println("location = " + ct.getCT_PROPOSED_LOCATION());
+		LDTeamServices ldteam = new LDTeamServices();
+		int ldmember = ldteam.getIDfromName(ld.getLdtmName());
+		ldmap.addAttribute("getLD", ldteam);
+		System.out.println("ld member = " + ldmember);
+		
+		//call update function
+		int ret = cts.updateCT(ct.getCT_ROOM_NO(), ct.getCT_PROPOSED_LOCATION(), ldmember, ct.getTRF_ID());
+
 		if(ret>0){
 			return new ModelAndView("redirect:/confirmed");
 		}
@@ -95,7 +98,8 @@ public class ConfirmedTrainingController {
 	
 	
 	@RequestMapping(value = "/saveCT")
-	public ModelAndView saveCTFormService(@ModelAttribute("ct") ConfirmedTraining ct, @ModelAttribute("ts") TrainingSource ts, ModelMap tmap) throws ParseException{
+	public ModelAndView saveCTFormService(@ModelAttribute("ct") ConfirmedTraining ct, @ModelAttribute("ts") TrainingSource ts, ModelMap tmap,  @ModelAttribute("ld") LDTeam ld) 
+		throws ParseException{
 		System.out.println("insertion Save----------");
 
 		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
@@ -103,12 +107,16 @@ public class ConfirmedTrainingController {
 		int trainingsource = tss.getIDfromSource(ts.getTsdesc()); //gets id
 		tmap.addAttribute("tslist", tss);
 		
+		LDTeamServices ldteam = new LDTeamServices();
+		int ldmember = ldteam.getIDfromName(ld.getLdtmName());
+		tmap.addAttribute("getLD", ldteam);
+		
 		int ret = cts.createNewCT(ct.getTRF_ID(), ct.getVER_ID(), ct.getVEN_ID(), ct.getTT_ID(), 
 				ct.getOS_ID(), ct.getCT_PROJECT_ID(),ct.getCT_TECHNOLOGY(),
 				ct.getCT_TRAINING_OBJECTIVES(), ct.getCT_DATE_REQUESTED(), ct.getCT_PROPOSED_START_DATE(), 
 				ct.getCT_PROPOSED_END_DATE(), ct.getCT_PROPOSED_START_TIME(), 
 				ct.getCT_PROPOSED_END_TIME(), ct.getCT_PROPOSED_LOCATION(), 
-				ct.getCT_ROOM_NO(), ct.getLDTM_ID(), ct.getCT_PROJECT_TRAINING_SPOC(),
+				ct.getCT_ROOM_NO(),ldmember, ct.getCT_PROJECT_TRAINING_SPOC(),
 				ct.getCT_APPROX_NO_EMPLOYEES(), ct.getCT_REQUESTOR_EMPLOYEE_ID(), 
 				ct.getCT_APPROVED_FILE_LOCATION(), trainingsource,
 				ct.getCT_NOMINATION_FILE(), ct.getCT_ASSIGNED_EXEC() );
