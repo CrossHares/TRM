@@ -19,6 +19,8 @@ import ct.dao.Trf;
 import ct.dao.TrfServices;
 import ldtm.dao.LDTeam;
 import ldtm.dao.LDTeamServices;
+import trainingsource.TrainingSource;
+import trainingsource.TrainingSourceServices;
 
 
 @Controller
@@ -93,10 +95,13 @@ public class ConfirmedTrainingController {
 	
 	
 	@RequestMapping(value = "/saveCT")
-	public ModelAndView saveCTFormService(@ModelAttribute("ct") ConfirmedTraining ct) throws ParseException{
+	public ModelAndView saveCTFormService(@ModelAttribute("ct") ConfirmedTraining ct, @ModelAttribute("ts") TrainingSource ts, ModelMap tmap) throws ParseException{
 		System.out.println("insertion Save----------");
 
 		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
+		TrainingSourceServices tss = new TrainingSourceServices();
+		int trainingsource = tss.getIDfromSource(ts.getTsdesc()); //gets id
+		tmap.addAttribute("tslist", tss);
 		
 		int ret = cts.createNewCT(ct.getTRF_ID(), ct.getVER_ID(), ct.getVEN_ID(), ct.getTT_ID(), 
 				ct.getOS_ID(), ct.getCT_PROJECT_ID(),ct.getCT_TECHNOLOGY(),
@@ -105,7 +110,7 @@ public class ConfirmedTrainingController {
 				ct.getCT_PROPOSED_END_TIME(), ct.getCT_PROPOSED_LOCATION(), 
 				ct.getCT_ROOM_NO(), ct.getLDTM_ID(), ct.getCT_PROJECT_TRAINING_SPOC(),
 				ct.getCT_APPROX_NO_EMPLOYEES(), ct.getCT_REQUESTOR_EMPLOYEE_ID(), 
-				ct.getCT_APPROVED_FILE_LOCATION(), ct.getCT_TRAINING_SOURCE(),
+				ct.getCT_APPROVED_FILE_LOCATION(), trainingsource,
 				ct.getCT_NOMINATION_FILE(), ct.getCT_ASSIGNED_EXEC() );
 
 

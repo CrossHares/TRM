@@ -46,14 +46,9 @@
 			               		<option value = ${ctrain.trfid}> ${ctrain.trfid}</option> 
 			               </c:forEach>
 			           </select></td>  
-			           
-			       
+	       
 			          		           </tr>
-			      
-			      
-			      
-			      
-			      
+      
 			         <tr>  <!-- first row -->
 			         <td>Technology:</td>    
 			          <td> <select name ="CT_TECHNOLOGY" >
@@ -172,10 +167,10 @@
 			           </select></td> 
 			           
 			            <td>Training Source:</td>    
-			          <td> <select name = "CT_TRAINING_SOURCE">
-			               <option>1</option>
-			               <option>2</option>
-			               <option>3</option>
+			          <td> <select name = "tsdesc">
+			               <option>INTERNAL</option>
+			               <option>DEVELOPMENT TEAM</option>
+			               <option>VENDOR</option>
 			           </select></td>   
 			         </tr> 
 			         <tr>
