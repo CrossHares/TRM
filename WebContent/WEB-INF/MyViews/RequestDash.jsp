@@ -34,11 +34,20 @@
 </head>
 <body>
 	<div id="nav-wrapper">
+<<<<<<< HEAD
 		<nav class="navbar navbar-light bg-dashboard-darkblue"> 
     		<a class="navbar-brand" href="#" class="my-2 my-lg-0"><img src="${logo}" class="logo-corner" alt="logo"/></a>
 	    	<div id="profile">
 	        	<span>Hello, <%= session.getAttribute("loginmessage") %></span>
 	      	</div>
+=======
+		<nav
+			class="navbar navbar-expand-lg navbar-light bg-dashboard-darkblue">
+		<a class="navbar-brand" href="#"><img src="${logo}"></a>
+		<div id="profile">
+			<span>Hello, <%= session.getAttribute("loginmessage") %>!</span>
+		</div>
+>>>>>>> 625095dc415a99cd8dfe885f242cf52dfd10b24a
 		</nav>
 		<nav id="nav-links" class="nav nav-pills nav-fill bg-dashboard-dark">
 			<li class="nav-item"><a class="nav-link nav-active" href="RequestDash"><i class="fas fa-desktop"></i> Home</a></li>
