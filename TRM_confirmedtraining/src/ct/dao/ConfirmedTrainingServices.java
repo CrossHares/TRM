@@ -1,7 +1,13 @@
 package ct.dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -204,11 +210,6 @@ public class ConfirmedTrainingServices {
 			return ret;
 		}
 		
-	//get trf id numbers that aren't in confirmed training but exist in in_progress_training
-	public List<String> getUnusedIDs(){
-		List<String> list =(List<String>) temp.queryForList("SELECT TRF_ID FROM IN_PROGRESS_TRAINING WHERE TRF_ID NOT IN (SELECT I.TRF_ID FROM IN_PROGRESS_TRAINING I JOIN CONFIRMED_TRAINING C ON I.TRF_ID = C.TRF_ID)", String.class);		
-		return list;
-	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
@@ -229,14 +230,36 @@ public class ConfirmedTrainingServices {
 					new Object[]{ctID}, new ConfirmedTrainingMapper());
 			return ipt;
 		}
-	
+
+		public List<Integer> getVenIDs()throws SQLException
+		{
+			List<Integer> vlist = new ArrayList<Integer>();
+			String url =  "jdbc:oracle:thin:@localhost:1521:XE";
+			Connection con = DriverManager.getConnection(url,"system","syntel123$"); //connection is an interface
+			PreparedStatement stat = con.prepareStatement("Select distinct VEN_ID from in_progress_training"); 
+			ResultSet result = stat.executeQuery();
+
+
+			while(result.next()){	
+				int vid = result.getInt(1);
+				vlist.add(vid);
+			}
+			
+			return vlist;
+		}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public static void main(String args[]) throws ParseException
+	public static void main(String args[]) throws ParseException, SQLException
 	{
 		ConfirmedTrainingServices cts = new ConfirmedTrainingServices();
-
-		System.out.println(cts.getUnusedIDs().size());
+		 List<Integer> venlist = cts.getVenIDs();
+		 
+		 for(int i=0;i<venlist.size();i++){
+			 System.out.println(venlist.get(i));
+		 }
+		 
+		
+		//System.out.println(cts.getUnusedIDs().size());
 		//4 ints, 10 strings, 1 int, 1 string, 1 int, 2 strings, 1 int, 2 strings, 2 ints
 		
 		//cts.updateCT("32A", "Phoenix, Arizona", 3, 1);

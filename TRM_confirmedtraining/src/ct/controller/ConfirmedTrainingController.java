@@ -1,5 +1,6 @@
 package ct.controller;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
@@ -21,6 +22,8 @@ import ldtm.dao.LDTeam;
 import ldtm.dao.LDTeamServices;
 import trainingsource.TrainingSource;
 import trainingsource.TrainingSourceServices;
+import ven.dao.Vendor;
+import ven.dao.VendorServices;
 
 
 @Controller
@@ -87,10 +90,16 @@ public class ConfirmedTrainingController {
 	}
 	//insert ct
 	@RequestMapping(value = "/insertct")
-	public String insertCTService(ModelMap trfmap){
-
+	public String insertCTService(ModelMap trfmap) throws SQLException{
+		
 		TrfServices trfs = new TrfServices();
 		List<Trf> trflist = trfs.getAllTrf();
+		
+		VendorServices vendor = new VendorServices();
+
+		List<Vendor> vlist = vendor.showAllVendorService();
+		
+		trfmap.addAttribute("venIDlist", vlist);
 		trfmap.addAttribute("listofTRF", trflist);
 		
 		return "newconfirmedtraining";

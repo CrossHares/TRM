@@ -115,10 +115,11 @@
 			           </select></td>  
 			    
 			          <td>Vendor ID:</td>    
-			          <td><select  name = "VEN_ID" >
-			               <option>101</option>
-			               <option>102</option>
-			               <option>103</option>
+			            <td> <select name ="VEN_ID" >
+			               <c:forEach var = "VEN" items = "${venIDlist}">
+			               
+			               		<option value = ${VEN.getVenId()}> ${VEN.getVenId()}</option> 
+			               </c:forEach>
 			           </select></td>  
 			         </tr>  
 			          
